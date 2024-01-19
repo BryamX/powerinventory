@@ -31,7 +31,7 @@ public class controladorCategoria {
         this.vista.setVisible(true);
         this.vista.setBorder(null);
         this.vista.setLocation(0, -23);
-        
+        controlKey();
     }
     
     public void iniciarcontroladorCategoria(){
@@ -190,4 +190,22 @@ public class controladorCategoria {
     public void salir(){
         vista.dispose();
     }
+    public void controlKey() {
+        vista.getTxtnombre().addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e){
+                Validar.letras(vista.getTxtnombre(), 15); 
+            }
+        });
+        vista.getTxtdescripcion().addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e){
+                Validar.letras(vista.getTxtdescripcion(), 15); 
+            }
+        });
+
+    }
+    
+    
+    
 }

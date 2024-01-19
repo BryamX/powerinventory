@@ -41,6 +41,7 @@ public class controladorClientes {
         vista.setVisible(true);
         this.vista.setBorder(null);
         this.vista.setLocation(0, -23);
+        controlKey();
     }
 
     public void iniciaControl() {
@@ -226,4 +227,40 @@ public class controladorClientes {
     public void salir(){
         vista.dispose();
     }
+    public void controlKey() {
+        vista.getTxtcedula().addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e){
+                Validar.numero(vista.getTxtcedula(), 10); 
+            }
+        });
+        vista.getTxtnombres().addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e){
+                Validar.letras_espacios(vista.getTxtnombres(), 20); 
+            }
+        });
+        vista.getTxtapellidos().addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e){
+                Validar.letras_espacios(vista.getTxtnombres(), 20); 
+            }
+        });
+        vista.getTxtdireccion().addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e){
+                Validar.letras_espacios(vista.getTxtdireccion(), 80); 
+            }
+        });
+        vista.getTxttelefono().addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e){
+                Validar.numero(vista.getTxttelefono(), 10); 
+            }
+        });
+        
+
+
+    }
+    
 }

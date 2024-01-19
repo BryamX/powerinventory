@@ -18,7 +18,7 @@ import java.util.logging.Logger;
  */
 public class Conexion {
     
-    String cadenaConexion = "jdbc:postgresql://localhost:5432/superinver";
+    String cadenaConexion = "jdbc:postgresql://localhost:5433/superinver";
     String userPG = "postgres";
     String passPG = "1234";
     
