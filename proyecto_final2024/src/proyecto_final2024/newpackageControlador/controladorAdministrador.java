@@ -102,7 +102,7 @@ public class controladorAdministrador {
     }
 
     private void abrirDialogo(boolean nuevo) {
-//        limpiarCampos();
+        limpiarCampos();
         if (nuevo) {
             vista.getjDialog1().setTitle("CREAR NUEVO ADMINISTRADOR");
         } else if (!nuevo) {
@@ -121,7 +121,7 @@ public class controladorAdministrador {
             vista.getTxtnombres().setText(nombres2);
             vista.getTxtapellidos().setText(apellidos2);
             vista.getTxtdireccion().setText(direccion2);
-            vista.getTxtgenero().setText(genero2);
+            vista.getCmbgenero().setSelectedItem(genero2);
             vista.getTxttelefono().setText(telefono2);
             SimpleDateFormat formatoFecha = new SimpleDateFormat("yyy-MM-dd");
             Date fechaFormat = formatoFecha.parse(fecha_nacimiento2);
@@ -143,7 +143,7 @@ public class controladorAdministrador {
             String nombres = vista.getTxtnombres().getText();
             String apellidos = vista.getTxtapellidos().getText();
             String direccion = vista.getTxtdireccion().getText();
-            String genero = vista.getTxtgenero().getText();
+            String genero = vista.getCmbgenero().getSelectedItem().toString();
             String telefono = vista.getTxttelefono().getText();
             java.util.Date fehca = vista.getdtfecha().getDate();;
             long auxfecha_Nacimiento = fehca.getTime();
@@ -165,6 +165,7 @@ public class controladorAdministrador {
             if (per.grabarAdministrador() == null) {
                 JOptionPane.showMessageDialog(null, "Cliente creado con exito");
                 listarAdministrador();
+                vista.getjDialog1().dispose();
             } else {
                 JOptionPane.showMessageDialog(null, "No se pudo crear el Cliente");
             }
@@ -174,7 +175,7 @@ public class controladorAdministrador {
             String nombres = vista.getTxtnombres().getText();
             String apellidos = vista.getTxtapellidos().getText();
             String direccion = vista.getTxtdireccion().getText();
-            String genero = vista.getTxtgenero().getText();
+            String genero = vista.getCmbgenero().getSelectedItem().toString();
             String telefono = vista.getTxttelefono().getText();
             java.util.Date fehca = vista.getdtfecha().getDate();;
             long auxfecha_Nacimiento = fehca.getTime();
@@ -196,6 +197,7 @@ public class controladorAdministrador {
             if (per.modificarPersona() == null) {
                 JOptionPane.showMessageDialog(null, "Administrador modificado con exito");
                 listarAdministrador();
+                vista.getjDialog1().dispose();
             } else {
                 JOptionPane.showMessageDialog(null, "No se pudo modiciar al administrador");
             }
@@ -207,12 +209,12 @@ public class controladorAdministrador {
             vista.getTxtnombres().setText("");
             vista.getTxtapellidos().setText("");
             vista.getTxtdireccion().setText("");
-            vista.getTxtgenero().setText("");
+            vista.getCmbgenero().setSelectedIndex(0);
             vista.getTxttelefono().setText("");
             vista.getdtfecha().setDate(null);
             vista.getTxtusuario().setText("");
             vista.getpwContrasena().setText("");
-            vista.getTxtid_persona().setText("");
+            vista.getTxtid_persona().setText(ModeloAdministrador.generarCodigoPersonas());
    }
 
     public void eliminarAdmin() {

@@ -82,7 +82,7 @@ public class controladorProveedor {
     }
 
     private void abrirDialogo(boolean nuevo) {
-//        limpiarCampos();
+        limpiar();
         if (nuevo) {
             vista.getjDialog1().setTitle("CREAR NUEVO Proveedor");
         } else if (!nuevo) {
@@ -103,7 +103,7 @@ public class controladorProveedor {
             String nombres = vista.getTxtnombres().getText();
             String apellidos = vista.getTxtapellidos().getText();
             String direccion = vista.getTxtdireccion().getText();
-            String genero = vista.getTxtgenero().getText();
+            String genero = vista.getCmbgenero().getSelectedItem().toString();
             String telefono = vista.getTxttelefono().getText();
             java.util.Date fehca = vista.getdtfecha().getDate();;
             long auxfecha_Nacimiento = fehca.getTime();
@@ -133,6 +133,7 @@ public class controladorProveedor {
             if (per.grabarAdministrador() == null) {
                 JOptionPane.showMessageDialog(null, "Proveedor creado con exito");
                 listarProveedores();
+                vista.getjDialog1().dispose();
             } else {
                 JOptionPane.showMessageDialog(null, "No se pudo crear al proveedor");
             }
@@ -142,7 +143,7 @@ public class controladorProveedor {
             String nombres = vista.getTxtnombres().getText();
             String apellidos = vista.getTxtapellidos().getText();
             String direccion = vista.getTxtdireccion().getText();
-            String genero = vista.getTxtgenero().getText();
+            String genero = vista.getCmbgenero().getSelectedItem().toString();
             String telefono = vista.getTxttelefono().getText();
             java.util.Date fehca = vista.getdtfecha().getDate();;
             long auxfecha_Nacimiento = fehca.getTime();
@@ -171,6 +172,7 @@ public class controladorProveedor {
             if (per.modificarProveedor() == null) {
                 JOptionPane.showMessageDialog(null, "Proveedor modificado con exito");
                 listarProveedores();
+                vista.getjDialog1().dispose();
             } else {
                 JOptionPane.showMessageDialog(null, "No se pudo modificar al proveedor");
             }
@@ -202,7 +204,7 @@ public class controladorProveedor {
             vista.getTxtnombres().setText(nombresC);
             vista.getTxtapellidos().setText(apellidosC);
             vista.getTxtdireccion().setText(direccionC);
-            vista.getTxtgenero().setText(generoC);
+            vista.getCmbgenero().setSelectedItem(generoC);
             vista.getTxttelefono().setText(telefonoC);
             SimpleDateFormat formatoFecha = new SimpleDateFormat("yyy-MM-dd");
             Date fechaFormat = formatoFecha.parse(fecha_nacimientoC);
@@ -218,11 +220,11 @@ public class controladorProveedor {
             vista.getTxtnombres().setText("");
             vista.getTxtapellidos().setText("");
             vista.getTxtdireccion().setText("");
-            vista.getTxtgenero().setText("");
+            vista.getCmbgenero().setSelectedIndex(0);
             vista.getTxttelefono().setText("");
             vista.getdtfecha().setDate(null);
             vista.getCmbIdEmpresa().setSelectedItem("");
-            vista.getTxtidPer().setText("");
+            vista.getTxtidPer().setText(ModeloProveedor.generarCodigoPersona());
     }
 
     public void eliminarPro() {
