@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import proyecto_final2024.newpackageControlador.controladorProveedor;
+import proyecto_final2024.newpackageControlador.controladorClientes;
 
 public class ModeloFactura extends Factura {
 
@@ -20,66 +20,96 @@ public class ModeloFactura extends Factura {
     static public String nombre, codigobarras;
     static public float precio;
 
-    public static List<Proveedor> listarProveedor() {
+    public static List<Cliente> listarClientes() {
 
         Conexion cpg = new Conexion();
-        List<Proveedor> listaProveedor = new ArrayList<>();
+        List<Cliente> listaAdministrador = new ArrayList<>();
 
         String sql;
-        sql = "SELECT a.id_proveedor,e.nombre_empresa, a.cedula, p.nombres,p.apellidos, p.direccion, p.genero, p.telefono,p.fecha_nacimiento FROM public.proveedor a JOIN public.persona p ON a.cedula = p.cedula JOIN public.empresa e ON a.id_empresa = e.id_empresa";
+        sql = "SELECT a.id_cliente, a.frecuencia, a.calificacion,a.id_persona,p.cedula,p.nombres,p.apellidos, p.direccion, p.genero, p.telefono,p.fecha_nacimiento FROM public.cliente a JOIN public.persona p ON a.id_persona = p.id_persona";
         ResultSet rs = cpg.consultaDB(sql);
 
         try {
             while (rs.next()) {
 
-                Proveedor provee = new Proveedor();
+                Cliente admin = new Cliente();
+                admin.setId_person(rs.getString("id_persona"));
+                admin.setId_cliente(rs.getString("id_cliente"));
+                admin.setCalificacion(rs.getInt("calificacion"));
+                admin.setFecuencia(rs.getString("frecuencia"));
+                admin.setCedula(rs.getString("cedula"));
+                admin.setNombres(rs.getString("nombres"));
+                admin.setApellidos(rs.getString("apellidos"));
+                admin.setDireccion(rs.getString("direccion"));
+                admin.setGenero(rs.getString("genero"));
+                admin.setTelefono(rs.getString("telefono"));
+                admin.setFecha_nacimiento(rs.getDate("fecha_nacimiento"));
+                
 
-                provee.setId_empresa(rs.getString("nombre_empresa"));
-                provee.setId_proveedor(rs.getString("id_proveedor"));
-                provee.setCedula(rs.getString("cedula"));
-                provee.setNombres(rs.getString("nombres"));
-                provee.setApellidos(rs.getString("apellidos"));
-                provee.setDireccion(rs.getString("direccion"));
-                provee.setGenero(rs.getString("genero"));
-                provee.setTelefono(rs.getString("telefono"));
-                provee.setFecha_nacimiento(rs.getDate("fecha_nacimiento"));
+                listaAdministrador.add(admin);
 
-                listaProveedor.add(provee);
             }
 
             rs.close();
-            return listaProveedor;
+            return listaAdministrador;
 
         } catch (SQLException ex) {
             Logger.getLogger(ModeloAdministrador.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
-    }
 
-    public static List<Proveedor> ProveedorBuscadp() {
+    }
+    
+   public static List<Cliente> clienteBuscado() {
 
         Conexion cpg = new Conexion();
-        List<Proveedor> listaProveedor = new ArrayList<>();
+        List<Cliente> listaAdmin = new ArrayList<>();
 
         String sql;
-        sql = "SELECT a.id_proveedor,e.nombre_empresa, a.cedula, p.nombres,p.apellidos, p.direccion, p.genero, p.telefono,p.fecha_nacimiento FROM public.proveedor a JOIN public.persona p ON a.cedula = p.cedula JOIN public.empresa e ON a.id_empresa = e.id_empresa WHERE a.cedula like '" + controladorProveedor.cedulaCienteBuscado + "%'";
+        sql = "SELECT a.id_cliente, a.frecuencia, a.calificacion,a.id_persona,p.cedula, p.nombres,p.apellidos, p.direccion, p.genero, p.telefono,p.fecha_nacimiento FROM public.cliente a JOIN public.persona p ON a.id_persona = p.id_persona WHERE p.cedula like '"+controladorClientes.cliemnteBuscar+ "%'";
         ResultSet rs = cpg.consultaDB(sql);
 
         try {
             while (rs.next()) {
+                Cliente admin = new Cliente();
+                admin.setId_person(rs.getString("id_persona"));
+                admin.setId_cliente(rs.getString("id_cliente"));
+                admin.setCalificacion(rs.getInt("calificacion"));
+                admin.setFecuencia(rs.getString("frecuencia"));
+                admin.setCedula(rs.getString("cedula"));
+                admin.setNombres(rs.getString("nombres"));
+                admin.setApellidos(rs.getString("apellidos"));
+                admin.setDireccion(rs.getString("direccion"));
+                admin.setGenero(rs.getString("genero"));
+                admin.setTelefono(rs.getString("telefono"));
+                admin.setFecha_nacimiento(rs.getDate("fecha_nacimiento"));
+                
+                listaAdmin.add(admin);
 
-                Proveedor provee = new Proveedor();
+            }
+            rs.close();
+            return listaAdmin;
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "algo salio mal");
+            Logger.getLogger(ModeloAdministrador.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
 
-                provee.setId_empresa(rs.getString("nombre_empresa"));
-                provee.setId_proveedor(rs.getString("id_proveedor"));
-                provee.setCedula(rs.getString("cedula"));
-                provee.setNombres(rs.getString("nombres"));
-                provee.setApellidos(rs.getString("apellidos"));
-                provee.setDireccion(rs.getString("direccion"));
-                provee.setGenero(rs.getString("genero"));
-                provee.setTelefono(rs.getString("telefono"));
-                provee.setFecha_nacimiento(rs.getDate("fecha_nacimiento"));
+    public static List<Empresa> llenarEmpresas() {
+        Conexion cpg = new Conexion();
+        List<Empresa> listaProveedor = new ArrayList<>();
 
+        String sql;
+        sql = "SELECT id_empresa, nombre_empresa, descripcio_empresa FROM public.empresa";
+        ResultSet rs = cpg.consultaDB(sql);
+        try {
+            while (rs.next()) {
+                Empresa provee = new Empresa();
+
+                provee.setId_empresa(rs.getInt("id_empresa"));
+                provee.setNombre_empresa(rs.getString("nombre_empresa"));
+                provee.setDescripcion_empresa(rs.getString("descripcio_empresa"));
                 listaProveedor.add(provee);
             }
 

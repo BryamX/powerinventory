@@ -10,24 +10,24 @@ import java.util.Date;
  *
  * @author elshi
  */
-public class Cliente extends Persona{
-    
+public class Cliente extends Persona {
+
     private String id_cliente;
     private String fecuencia;
     private int calificacion;
+    private String id_person;
 
     public Cliente() {
         super();
     }
 
-    public Cliente(String id_cliente, String fecuencia, int calificacion, String id_persona, String cedula, String nombres, String apellidos, String direccion, String genero, String telefono, Date fecha_nacimiento) {
+    public Cliente(String id_cliente, String fecuencia, int calificacion, String id_person, String id_persona, String cedula, String nombres, String apellidos, String direccion, String genero, String telefono, Date fecha_nacimiento) {
         super(id_persona, cedula, nombres, apellidos, direccion, genero, telefono, fecha_nacimiento);
         this.id_cliente = id_cliente;
         this.fecuencia = fecuencia;
         this.calificacion = calificacion;
+        this.id_person = id_person;
     }
-
-    
 
     public String getId_cliente() {
         return id_cliente;
@@ -52,8 +52,14 @@ public class Cliente extends Persona{
     public void setCalificacion(int calificacion) {
         this.calificacion = calificacion;
     }
-    
-    
-    
+
+    public String getId_person() {
+        return id_person;
+    }
+
+    public void setId_person(String id_person) {
+        this.id_person = id_person;
+    }
+
     
 }

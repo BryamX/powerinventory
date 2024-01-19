@@ -22,10 +22,9 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import proyecto_final2024.newpackageModelo.ModeloFactura;
 import proyecto_final2024.newpackageModelo.Producto;
-import proyecto_final2024.newpackageModelo.Proveedor;
 import static proyecto_final2024.newpackageControlador.controladorProveedor.cedulaCienteBuscado;
+import proyecto_final2024.newpackageModelo.Cliente;
 import proyecto_final2024.newpackageModelo.Conexion;
-import proyecto_final2024.newpackageModelo.ModeloLogin;
 import proyecto_final2024.newpackageVista.VistaFacrura;
 
 /**
@@ -53,6 +52,8 @@ public class ControladorFactura {
     public ControladorFactura(VistaFacrura vista) {
         this.vista = vista;
         this.vista.setVisible(true);
+        this.vista.setBorder(null);
+        this.vista.setLocation(0, -23);
     }
 
     public void inicarControl() {
@@ -70,6 +71,7 @@ public class ControladorFactura {
         vista.getBtnanadir().addActionListener(l -> añadirProductos());
         vista.getQuitar().addActionListener(l -> eliminarproducto());
         vista.getBtnguardar().addActionListener(l -> crearEncabeszado());
+        vista.getBtncancelar().addActionListener(l -> salir());
 
     }
 
@@ -93,12 +95,12 @@ public class ControladorFactura {
             @Override
             public void keyReleased(KeyEvent e) {
                 cedulaCienteBuscado = "" + vista.getTxtfiltroClientes().getText();
-                List<Proveedor> miListaPro = ModeloFactura.ProveedorBuscadp();
+                List<Cliente> miListaPro = ModeloFactura.clienteBuscado();
                 DefaultTableModel mTabla = (DefaultTableModel) vista.getTbClientes().getModel();
                 mTabla.setRowCount(0);
                 miListaPro.forEach(admin -> {
                     String[] rowData = {
-                        admin.getId_proveedor(), admin.getNombres(), admin.getApellidos(), admin.getCedula()
+                        admin.getId_cliente(), admin.getNombres(), admin.getApellidos(), admin.getCedula()
                     };
                     mTabla.addRow(rowData);
                 });
@@ -139,11 +141,11 @@ public class ControladorFactura {
 
     public void listarProveedores() {
 
-        List<Proveedor> miListaPro = ModeloFactura.listarProveedor();
+        List<Cliente> miListaPro = ModeloFactura.listarClientes();
         DefaultTableModel mTabla = (DefaultTableModel) vista.getTbClientes().getModel();
         mTabla.setRowCount(0);
         miListaPro.stream().forEach(admin -> {
-            String[] rowData = {admin.getId_proveedor(), admin.getNombres(), admin.getApellidos(), admin.getCedula()};
+            String[] rowData = {admin.getId_cliente(), admin.getNombres(), admin.getApellidos(), admin.getCedula()};
             mTabla.addRow(rowData);
         });
     }
@@ -308,5 +310,9 @@ public class ControladorFactura {
             }
         }).start(); // Iniciar el hilo
 
+    }
+    
+    public void salir(){
+        vista.dispose();
     }
 }
