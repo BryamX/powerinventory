@@ -6,7 +6,6 @@ package proyecto_final2024.newpackageControlador;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.io.FileInputStream;
 import proyecto_final2024.newpackageModelo.ModeloAdministrador;
 import proyecto_final2024.newpackageVista.VistaAdministrador;
 import java.awt.event.MouseAdapter;
@@ -29,7 +28,7 @@ public class controladorAdministrador {
 
     private VistaAdministrador vista;
 
-    static public String cedula2, id2, nombres2, apellidos2, direccion2, genero2, telefono2, fecha_nacimiento2;
+    static public String idper2,cedula2, id2, nombres2, apellidos2, direccion2, genero2, telefono2, fecha_nacimiento2;
     static public String id_admin2, usuario2, contraseña2;
     static public String idPersonaBuscar;
     private FileInputStream Pep;
@@ -44,8 +43,8 @@ public class controladorAdministrador {
     }
 
     public void iniciaControl() {
+        vista.getTxtid_persona().setText(ModeloAdministrador.generarCodigoPersonas());
         listarAdministrador();
-
         vista.getTxtBUSCAR().addKeyListener(new KeyAdapter() {
             @Override
             public void keyReleased(KeyEvent e) {
@@ -55,7 +54,7 @@ public class controladorAdministrador {
                 mTabla.setRowCount(0);
                 miListaAdmin.forEach(admin -> {
                     String[] rowData = {
-                        admin.getId_administrador(), admin.getCedula(), admin.getNombres(), admin.getApellidos(), admin.getDireccion(), admin.getGenero(), admin.getTelefono(), String.valueOf(admin.getFecha_nacimiento()), admin.getUsuario(), admin.getContraseña()
+                        admin.getId_administrador(), admin.getCedula(), admin.getNombres(), admin.getApellidos(), admin.getDireccion(), admin.getGenero(), admin.getTelefono(), String.valueOf(admin.getFecha_nacimiento()), admin.getUsuario(), admin.getContraseña(),admin.getIdPersona()
                     };
                     mTabla.addRow(rowData);
                 });
@@ -76,6 +75,7 @@ public class controladorAdministrador {
                 fecha_nacimiento2 = (vista.getjTableAdmin().getValueAt(i, 7).toString());
                 usuario2 = (vista.getjTableAdmin().getValueAt(i, 8).toString());
                 contraseña2 = (vista.getjTableAdmin().getValueAt(i, 9).toString());
+                idper2 = (vista.getjTableAdmin().getValueAt(i, 10).toString());
             }
         });
 
@@ -85,7 +85,6 @@ public class controladorAdministrador {
         vista.getBtnGuardar().addActionListener(l -> grabarAdministrador());
         vista.getBtnELIMINAR().addActionListener(l -> eliminarAdmin());
         vista.getBtnSalir().addActionListener(l -> salir());
-
     }
 
     public void listarAdministrador() {
@@ -95,14 +94,14 @@ public class controladorAdministrador {
         mTabla = (DefaultTableModel) vista.getjTableAdmin().getModel();
         mTabla.setNumRows(0);
         miListaAdmin.stream().forEach(admin -> {
-            String[] rowData = {admin.getId_administrador(), admin.getCedula(), admin.getNombres(), admin.getApellidos(), admin.getDireccion(), admin.getGenero(), admin.getTelefono(), String.valueOf(admin.getFecha_nacimiento()), admin.getUsuario(), admin.getContraseña()};
+            String[] rowData = {admin.getId_administrador(), admin.getCedula(), admin.getNombres(), admin.getApellidos(), admin.getDireccion(), admin.getGenero(), admin.getTelefono(), String.valueOf(admin.getFecha_nacimiento()), admin.getUsuario(), admin.getContraseña(),admin.getIdPersona()};
             mTabla.addRow(rowData);
         });
 
     }
 
     private void abrirDialogo(boolean nuevo) {
-        limpiarCampos();
+//        limpiarCampos();
         if (nuevo) {
             vista.getjDialog1().setTitle("CREAR NUEVO ADMINISTRADOR");
         } else if (!nuevo) {
@@ -126,7 +125,7 @@ public class controladorAdministrador {
             SimpleDateFormat formatoFecha = new SimpleDateFormat("yyy-MM-dd");
             Date fechaFormat = formatoFecha.parse(fecha_nacimiento2);
             vista.getdtfecha().setDate(fechaFormat);
-
+            vista.getTxtid_persona().setText(idper2);
             vista.getTxtusuario().setText(usuario2);
             vista.getpwContrasena().setText(contraseña2);
         } catch (ParseException ex) {
@@ -138,6 +137,7 @@ public class controladorAdministrador {
     public void grabarAdministrador() {
         
         if (vista.getjDialog1().getTitle().contentEquals("CREAR NUEVO ADMINISTRADOR")) {
+            idper2 = vista.getTxtid_persona().getText();
             String cedula = vista.getTxtcedula().getText();
             String nombres = vista.getTxtnombres().getText();
             String apellidos = vista.getTxtapellidos().getText();
@@ -211,7 +211,8 @@ public class controladorAdministrador {
             vista.getdtfecha().setDate(null);
             vista.getTxtusuario().setText("");
             vista.getpwContrasena().setText("");
-    }
+            vista.getTxtid_persona().setText("");
+   }
 
     public void eliminarAdmin() {
         ModeloAdministrador admin = new ModeloAdministrador();
