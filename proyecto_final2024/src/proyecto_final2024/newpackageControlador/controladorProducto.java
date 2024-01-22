@@ -39,7 +39,7 @@ public class controladorProducto {
         this.vista.setBorder(null);
         this.vista.setLocation(0, -23);
         ModeloProducto.cargarBoxes(vista);
-        
+        controlKey();
     }
 
     public void iniciarControl() {
@@ -304,5 +304,40 @@ public class controladorProducto {
     public void salir(){
         leercodigodeBarras(false);
         vista.dispose();
+    }
+     public void controlKey() {
+        vista.getTxtnombre().addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e){
+                Validar.letras(vista.getTxtnombre(), 15); 
+            }
+        });
+         vista.getTxtdescripcion().addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e){
+                Validar.letras(vista.getTxtdescripcion(), 15); 
+            }
+        });
+          vista.getTxtpreciocompra().addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e){
+                Validar.dinero(vista.getTxtpreciocompra(), 15); 
+            }
+        });
+           vista.getTxtprecioVenta().addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e){
+                Validar.dinero(vista.getTxtprecioVenta(), 15); 
+            }
+        });
+            vista.getTxtcantidadbodega().addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e){
+                Validar.numero(vista.getTxtcantidadbodega(), 15); 
+            }
+        });
+
+
+
     }
 }

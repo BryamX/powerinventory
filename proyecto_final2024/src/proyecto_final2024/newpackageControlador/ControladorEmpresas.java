@@ -32,6 +32,7 @@ public class ControladorEmpresas {
         this.vista.setVisible(true);
         this.vista.setBorder(null);
         this.vista.setLocation(0, -23);
+           controlKey();
     }
     
     public void inicarControlador(){
@@ -148,5 +149,21 @@ public class ControladorEmpresas {
     
     public void salir(){
         vista.dispose();
+    }
+     public void controlKey() {
+        vista.getTxtNombreEm().addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e){
+                Validar.letras(vista.getTxtNombreEm(), 15); 
+            }
+        });
+        vista.getTxtDs().addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e){
+                Validar.letrasAREA(vista.getTxtDs(), 15); 
+            }
+        });
+
+
     }
 }

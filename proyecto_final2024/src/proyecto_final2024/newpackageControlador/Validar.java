@@ -292,5 +292,28 @@ public class Validar {
         } catch (Exception d) {
         }
     }
+    public static void letrasAREA(JTextArea texto, int longitud) {
+        try {
+            texto.addKeyListener(new KeyAdapter() {
+                @Override
+                public void keyTyped(KeyEvent e) {
+                    int key = e.getKeyChar();
+                    boolean mayusculas = key >= 65 && key <= 90;
+                    boolean minusculas = key >= 97 && key <= 122;
+                    boolean ñ = key == 209 || key == 241; //código ISO (ñ y Ñ);
+                    boolean VocMinTil = key==225 || key==233 || key==237 || key==243 || key==250 || key==252; //código ISO (á, é, í, ó, ú, ü);
+                    boolean VocMayTil = key==193 || key==201 || key==205 || key==211 || key==218 || key==220; //código ISO (á, é, í, ó, ú, Ü);
+                    
+                    if (!(minusculas || mayusculas ||ñ || VocMinTil || VocMayTil)) {
+                        e.consume();
+                    }
+                    if (texto.getText().length() >= longitud) {
+                        e.consume();
+                    }
+                }
+            });
+        } catch (Exception b) {
+        }
+    }
 
 }
