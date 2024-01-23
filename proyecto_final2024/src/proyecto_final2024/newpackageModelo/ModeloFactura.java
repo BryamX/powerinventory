@@ -266,4 +266,22 @@ public class ModeloFactura extends Factura {
         }
         return null;
      }
+     
+     public SQLException decontarStock(){
+       String sql="";
+         Integer cantidadProductos = ControladorFactura.cantidadProductos;
+         for (int i = 0; i < cantidadProductos; i++) {
+             sql = "UPDATE public.producto SET  cantidad_en_bodega= cantidad_en_bodega -'" + ControladorFactura.cantidadProductosV+ "' where codigo_barras = '" + ControladorFactura.idproductoV + "'";
+         }
+        return cpg.accionDB(sql);
+     }
+     
+     public SQLException aumentarStock(){
+       String sql="";
+         Integer cantidadProductos = ControladorFactura.cantidadProductos;
+         for (int i = 0; i < cantidadProductos; i++) {
+             sql = "UPDATE public.producto SET  cantidad_en_bodega= cantidad_en_bodega -'" + ControladorFactura.cantidadProductosV+ "' where codigo_barras = '" + ControladorFactura.idproductoV + "'";
+         }
+        return cpg.accionDB(sql);
+     }
 }

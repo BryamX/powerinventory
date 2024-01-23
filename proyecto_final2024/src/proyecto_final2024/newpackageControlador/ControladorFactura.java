@@ -238,6 +238,7 @@ public class ControladorFactura {
         if (fac.grabarEncabezadoFacura() == null) {
             JOptionPane.showMessageDialog(null, "Cabezera creada con exito");
             guardarDetalleFactura();
+            descontarSto();
         } else {
             JOptionPane.showMessageDialog(null, "No se pudo crear al proveedor");
         }
@@ -257,6 +258,15 @@ public class ControladorFactura {
             } else {
                 JOptionPane.showMessageDialog(null, "No se pudo crear el detalle");
             }
+        }
+    }
+
+    public void descontarSto() {
+        ModeloFactura fac = new ModeloFactura();
+        if (fac.decontarStock() == null) {
+            System.out.println("Stock descontado");
+        } else {
+            System.out.println("Error, el stock no se ha descontado");
         }
     }
 
@@ -311,8 +321,8 @@ public class ControladorFactura {
         }).start(); // Iniciar el hilo
 
     }
-    
-    public void salir(){
+
+    public void salir() {
         vista.dispose();
     }
 }
