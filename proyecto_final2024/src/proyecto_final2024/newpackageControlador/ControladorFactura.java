@@ -14,6 +14,9 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
@@ -23,8 +26,11 @@ import javax.swing.table.DefaultTableModel;
 import proyecto_final2024.newpackageModelo.ModeloFactura;
 import proyecto_final2024.newpackageModelo.Producto;
 import static proyecto_final2024.newpackageControlador.controladorProveedor.cedulaCienteBuscado;
+import static proyecto_final2024.newpackageControlador.controladorProveedor.fecha_nacimientoC;
 import proyecto_final2024.newpackageModelo.Cliente;
 import proyecto_final2024.newpackageModelo.Conexion;
+import proyecto_final2024.newpackageModelo.buscadorFacturas;
+import proyecto_final2024.newpackageModelo.cargarDetalledeFactura;
 import proyecto_final2024.newpackageVista.VistaFacrura;
 
 /**
@@ -43,11 +49,18 @@ public class ControladorFactura {
     public static Integer cantidadProductos;
 
     public static float precioproductosV;
+
+    //variables para el buscador de las facturas
+    public static String id_factutaBuscada, fechaFacturaBuscada, facEstadoBuscada, id_clienteBuscado, nombresBuscado, apellidosBuscado, cedulaBuscado;
+
+    //variables para el escanner
     public Socket s;
     public ServerSocket ssk;
     public InputStreamReader isr;
     public BufferedReader br;
     public String mensaje;
+
+    public static java.sql.Date fechadesdeEnviar, fechahastaEnviar;
 
     public ControladorFactura(VistaFacrura vista) {
         this.vista = vista;
@@ -62,6 +75,7 @@ public class ControladorFactura {
         vista.getTxtcodigoFactura().setText(ModeloFactura.generarCodigoFacrura());
         vista.getTxtnombreAdmin().setText(ControladorLogin.usuariosaux);
         vista.getTxtcodigoAdmin().setText(ControladorLogin.id);
+        vista.getBtnNuevo().setEnabled(false);
 
         vista.getTxtcodigoproducto().addActionListener(l -> obtenerProduto());
         vista.getBtnAbrirProductos().addActionListener(l -> buscarProductos());
@@ -72,7 +86,114 @@ public class ControladorFactura {
         vista.getQuitar().addActionListener(l -> eliminarproducto());
         vista.getBtnguardar().addActionListener(l -> crearEncabeszado());
         vista.getBtncancelar().addActionListener(l -> salir());
+        vista.getBtnbuscarFactura().addActionListener(l -> AbrirBuscadorfactura());
+        vista.getBtnBuscarFactura().addActionListener(l -> botonbuscarFactura());
+        vista.getBtnAceptarFacturaBuscada().addActionListener(l -> enviardatosoFactura());
+        vista.getBtnNuevo().addActionListener(l -> nuevaFactura());
+    }
 
+    public void nuevaFactura() {
+        vista.getBtnguardar().setEnabled(true);
+        vista.getBtnbuscarcliente().setEnabled(true);
+        vista.getTxtcodigoFactura().setText(ModeloFactura.generarCodigoFacrura());
+        vista.getTxtnombreAdmin().setText(ControladorLogin.usuariosaux);
+        vista.getTxtcodigoAdmin().setText(ControladorLogin.id);
+        vista.getTxtcodigocliente().setText("");
+        vista.getTxtnombrecliente().setText("");
+        vista.getTxtapellidocliente().setText("");
+        vista.getTxtcedulacliente().setText("");
+        vista.getTxtTotal().setText("");
+        vista.getDtFecha().setDate(null);
+        vista.getLblEstado().setText("PENDIENTE");
+        DefaultTableModel model = (DefaultTableModel) vista.getTbdetallefactura().getModel();
+        model.setRowCount(0);
+
+    }
+
+    public void AbrirBuscadorfactura() {
+        vista.getBtnNuevo().setEnabled(true);
+        vista.getBtnguardar().setEnabled(false);
+        vista.getBtnbuscarcliente().setEnabled(false);
+        vista.getjDialogFacturas().setSize(877, 400);
+        vista.getjDialogFacturas().setVisible(true);
+        vista.getjDialogFacturas().setLocationRelativeTo(null);
+        vista.getTbFacturabuscada().addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                int i = vista.getTbFacturabuscada().getSelectedRow();
+                id_factutaBuscada = (vista.getTbFacturabuscada().getValueAt(i, 0).toString());
+                fechaFacturaBuscada = (vista.getTbFacturabuscada().getValueAt(i, 1).toString());
+                facEstadoBuscada = (vista.getTbFacturabuscada().getValueAt(i, 2).toString());
+                id_clienteBuscado = (vista.getTbFacturabuscada().getValueAt(i, 3).toString());
+                nombresBuscado = (vista.getTbFacturabuscada().getValueAt(i, 4).toString());
+                apellidosBuscado = (vista.getTbFacturabuscada().getValueAt(i, 5).toString());
+                cedulaBuscado = (vista.getTbFacturabuscada().getValueAt(i, 6).toString());
+            }
+        });
+    }
+
+    public void botonbuscarFactura() {
+
+        if (vista.getFechaDesde().getDate() == null || vista.getFechahasta().getDate() == null) {
+            JOptionPane.showMessageDialog(null, "Porfavor no deje campos vacios");
+        } else {
+            java.util.Date fehca = vista.getFechaDesde().getDate();
+            long auxfecha = fehca.getTime();
+            fechadesdeEnviar = new java.sql.Date(auxfecha);
+
+            java.util.Date fechahasta = vista.getFechahasta().getDate();
+            long auxfecha_hasta = fechahasta.getTime();
+            fechahastaEnviar = new java.sql.Date(auxfecha_hasta);
+            List<buscadorFacturas> miListaPro = ModeloFactura.Buscarfacturas();
+            DefaultTableModel mTabla = (DefaultTableModel) vista.getTbFacturabuscada().getModel();
+            mTabla.setRowCount(0);
+            miListaPro.forEach(admin -> {
+                String[] rowData = {
+                    String.valueOf(admin.getIdfactura()), String.valueOf(admin.getFecha()), admin.getEstado(), String.valueOf(admin.getIdcliente()), admin.getNombres(), admin.getApellidos(), admin.getCedula()
+                };
+                mTabla.addRow(rowData);
+            });
+        }
+    }
+
+    //Envia los datos desde la busqueda que se hizo en la parte de buscar factura
+    public void enviardatosoFactura() {
+
+        int fila = vista.getTbFacturabuscada().getSelectedRow();
+        if (fila == -1) {
+            JOptionPane.showMessageDialog(null, "Selecione una factura");
+        } else {
+            try {
+                vista.getTxtcodigoFactura().setText(id_factutaBuscada);
+                SimpleDateFormat formatoFecha = new SimpleDateFormat("yyy-MM-dd");
+                Date fechaFormat;
+                fechaFormat = formatoFecha.parse(fechaFacturaBuscada);
+                vista.getDtFecha().setDate(fechaFormat);
+                vista.getLblEstado().setText(facEstadoBuscada);
+                vista.getTxtcodigocliente().setText(id_clienteBuscado);
+                vista.getTxtnombrecliente().setText(nombresBuscado);
+                vista.getTxtapellidocliente().setText(apellidosBuscado);
+                vista.getTxtcedulacliente().setText(cedulaBuscado);
+                cargarDetalle();
+                totales();
+                vista.getjDialogFacturas().dispose();
+            } catch (ParseException ex) {
+                Logger.getLogger(ControladorFactura.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
+    }
+
+    public void cargarDetalle() {
+        List<cargarDetalledeFactura> miListaPro = ModeloFactura.cargarDetalle();
+        DefaultTableModel mTabla = (DefaultTableModel) vista.getTbdetallefactura().getModel();
+        mTabla.setRowCount(0);
+        miListaPro.stream().forEach(admin -> {
+            vista.getTxtcodigoAdmin().setText(String.valueOf(admin.getId_Admin()));
+            vista.getTxtnombreAdmin().setText(admin.getUsario());
+            String[] rowData = {admin.getCodigo_barras(), admin.getNombreP(), String.valueOf(admin.getPrecio()), String.valueOf(admin.getCantidad())};
+            mTabla.addRow(rowData);
+        });
     }
 
     public void buscarClientes() {
@@ -169,16 +290,20 @@ public class ControladorFactura {
         vista.getjDialogClientes().dispose();
     }
 
+    //Envia los campos del producto que se uso en el buscador
     public void enviarcodigoProducto() {
         vista.getTxtcodigoproducto().setText(codigobarras);
+        vista.getLblNombreProducto().setText(nombreProducto);
         vista.getjDialogProductos().dispose();
     }
 
+    //Envia los capos del producto buscado con el scanner
     public void obtenerProduto() {
         ModeloFactura.BuscarProducto(vista.getTxtcodigoproducto().getText());
         vista.getLblNombreProducto().setText(ModeloFactura.nombre);
     }
 
+    //Añade los productos a la tabla del detalle de la factura
     public void añadirProductos() {
         ModeloFactura.MandarProducto(vista.getTxtcodigoproducto().getText());
         DefaultTableModel mTabla = (DefaultTableModel) vista.getTbdetallefactura().getModel();
@@ -190,8 +315,11 @@ public class ControladorFactura {
         });
         vista.getTbdetallefactura().setModel(mTabla);
         totales();
+        vista.getTxtcantidadproducto().setText("");
+        vista.getTxtcodigoproducto().setText("");
     }
 
+    //Elimina los productos del detalle de la factutura
     public void eliminarproducto() {
         DefaultTableModel mTabla = (DefaultTableModel) vista.getTbdetallefactura().getModel();
         int fila = vista.getTbdetallefactura().getSelectedRow();
@@ -207,12 +335,13 @@ public class ControladorFactura {
         }
     }
 
+    //Calcula el total de la factura
     public void totales() {
         int canfilas = vista.getTbdetallefactura().getRowCount();
         int sumatotal = 0;
         for (int i = 0; i < canfilas; i++) {
-            if (!vista.getTbdetallefactura().getValueAt(i, 3).equals("")) {
-                sumatotal += Integer.parseInt(vista.getTbdetallefactura().getValueAt(i, 3).toString());
+            if (!vista.getTbdetallefactura().getValueAt(i, 2).equals("")) {
+                sumatotal += Double.parseDouble(vista.getTbdetallefactura().getValueAt(i, 2).toString());
                 System.out.println(sumatotal);
             }
             vista.getTxtTotal().setText(String.valueOf(sumatotal));
@@ -221,7 +350,7 @@ public class ControladorFactura {
 
     public void crearEncabeszado() {
         idFactura = vista.getTxtcodigoFactura().getText();
-        String idCliente = vista.getTxtcedulacliente().getText();
+        String idCliente = vista.getTxtcodigocliente().getText();
         String idadmin = vista.getTxtcodigoAdmin().getText();
         Date fecha = vista.getDtFecha().getDate();
         long auxFecha = fecha.getTime();

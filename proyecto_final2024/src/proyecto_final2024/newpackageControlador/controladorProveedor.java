@@ -146,7 +146,7 @@ public class controladorProveedor {
             String direccion = vista.getTxtdireccion().getText();
             String genero = vista.getCmbgenero().getSelectedItem().toString();
             String telefono = vista.getTxttelefono().getText();
-            java.util.Date fehca = vista.getdtfecha().getDate();;
+            java.util.Date fehca = vista.getdtfecha().getDate();
             long auxfecha_Nacimiento = fehca.getTime();
             java.sql.Date fecha = new java.sql.Date(auxfecha_Nacimiento);
             String idEmpresa = vista.getCmbIdEmpresa().getSelectedItem().toString();
