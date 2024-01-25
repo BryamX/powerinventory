@@ -50,7 +50,8 @@ public class ControladorFactura {
     static public String cedigo, nombre, apellido, cedula;
     static public String codigobarras, nombreProducto, precio, cantidad;
     static public String codigoBuscar, idFactura;
-    public static int idproductoV, cantidadProductosV;
+    public static String idproductoV;
+    public static int cantidadProductosV;
 
     public static Integer cantidadProductos;
 
@@ -399,7 +400,7 @@ public class ControladorFactura {
         cantidadProductos = vista.getTbdetallefactura().getRowCount();
 
         for (int i = 0; i < vista.getTbdetallefactura().getRowCount(); i++) {
-            idproductoV = Integer.parseInt(vista.getTbdetallefactura().getValueAt(i, 0).toString());
+            idproductoV = vista.getTbdetallefactura().getValueAt(i, 0).toString();
             cantidadProductosV = Integer.parseInt(vista.getTbdetallefactura().getValueAt(i, 3).toString());
             precioproductosV = Float.valueOf(vista.getTbdetallefactura().getValueAt(i, 2).toString());
             if (fac.grabarDetalleFacura() == null) {
@@ -483,7 +484,7 @@ public class ControladorFactura {
                     getClass().getResource("/proyecto_final2024/newpackagevista/reportes/factura.jasper"));
 
             Map<String, Object> parametros = new HashMap<>();
-            parametros.put("idFactutra", vista.getTxtcodigoFactura().getText());
+            parametros.put("idFactutra", Integer.parseInt(vista.getTxtcodigoFactura().getText()));
             parametros.put("nombreoperario", vista.getTxtnombreAdmin().getText());
             parametros.put("idOperario", vista.getTxtcodigoAdmin().getText());
             parametros.put("nombrec", vista.getTxtnombrecliente().getText());
