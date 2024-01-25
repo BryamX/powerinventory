@@ -140,20 +140,21 @@ public class ControladorFactura {
             }
         });
         listaFacturas();
-       
+
     }
 
-    public void listaFacturas(){
+    public void listaFacturas() {
         List<buscadorFacturas> miListaPro = ModeloFactura.listafacturas();
-            DefaultTableModel mTabla = (DefaultTableModel) vista.getTbFacturabuscada().getModel();
-            mTabla.setRowCount(0);
-            miListaPro.forEach(admin -> {
-                String[] rowData = {
-                    String.valueOf(admin.getIdfactura()), String.valueOf(admin.getFecha()), admin.getEstado(), String.valueOf(admin.getIdcliente()), admin.getNombres(), admin.getApellidos(), admin.getCedula()
-                };
-                mTabla.addRow(rowData);
-            });
+        DefaultTableModel mTabla = (DefaultTableModel) vista.getTbFacturabuscada().getModel();
+        mTabla.setRowCount(0);
+        miListaPro.forEach(admin -> {
+            String[] rowData = {
+                String.valueOf(admin.getIdfactura()), String.valueOf(admin.getFecha()), admin.getEstado(), String.valueOf(admin.getIdcliente()), admin.getNombres(), admin.getApellidos(), admin.getCedula()
+            };
+            mTabla.addRow(rowData);
+        });
     }
+
     public void botonbuscarFactura() {
 
         if (vista.getFechaDesde().getDate() == null || vista.getFechahasta().getDate() == null) {
@@ -263,8 +264,8 @@ public class ControladorFactura {
                 int i = vista.getTbProductos().getSelectedRow();
                 codigobarras = (vista.getTbProductos().getValueAt(i, 0).toString());
                 nombreProducto = (vista.getTbProductos().getValueAt(i, 1).toString());
-                precio = (vista.getTbProductos().getValueAt(i, 2).toString());
-                cantidad = (vista.getTbProductos().getValueAt(i, 3).toString());
+                cantidad = (vista.getTbProductos().getValueAt(i, 2).toString());
+                precio = (vista.getTbProductos().getValueAt(i, 3).toString());
             }
         });
         vista.getTxtfiltrarProducto().addKeyListener(new KeyAdapter() {
@@ -327,18 +328,24 @@ public class ControladorFactura {
 
     //Añade los productos a la tabla del detalle de la factura
     public void añadirProductos() {
-        ModeloFactura.MandarProducto(vista.getTxtcodigoproducto().getText());
-        DefaultTableModel mTabla = (DefaultTableModel) vista.getTbdetallefactura().getModel();
-        mTabla.addRow(new Object[]{
-            ModeloFactura.codigobarras,
-            ModeloFactura.nombre,
-            ModeloFactura.precio * Integer.parseInt(vista.getTxtcantidadproducto().getText()),
-            vista.getTxtcantidadproducto().getText()
-        });
-        vista.getTbdetallefactura().setModel(mTabla);
-        totales();
-        vista.getTxtcantidadproducto().setText("");
-        vista.getTxtcodigoproducto().setText("");
+
+        if (Integer.parseInt(cantidad) < Integer.parseInt(vista.getTxtcantidadproducto().getText())) {
+            JOptionPane.showMessageDialog(null, "Productos insuficiente en stock");
+        } else {
+            ModeloFactura.MandarProducto(vista.getTxtcodigoproducto().getText());
+            DefaultTableModel mTabla = (DefaultTableModel) vista.getTbdetallefactura().getModel();
+            mTabla.addRow(new Object[]{
+                ModeloFactura.codigobarras,
+                ModeloFactura.nombre,
+                ModeloFactura.precio * Integer.parseInt(vista.getTxtcantidadproducto().getText()),
+                vista.getTxtcantidadproducto().getText()
+            });
+            vista.getTbdetallefactura().setModel(mTabla);
+            totales();
+            vista.getTxtcantidadproducto().setText("");
+            vista.getTxtcodigoproducto().setText("");
+        }
+
     }
 
     //Elimina los productos del detalle de la factutura
@@ -371,6 +378,8 @@ public class ControladorFactura {
     }
 
     public void crearEncabeszado() {
+        vista.getBtnguardar().setEnabled(false);
+        vista.getBtnNuevo().setEnabled(true);
         idFactura = vista.getTxtcodigoFactura().getText();
         String idCliente = vista.getTxtcodigocliente().getText();
         String idadmin = vista.getTxtcodigoAdmin().getText();
