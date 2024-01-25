@@ -8,10 +8,21 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
 import proyecto_final2024.newpackageModelo.Categoria;
+import proyecto_final2024.newpackageModelo.Conexion;
 import proyecto_final2024.newpackageModelo.ModeloCategoriaP;
 import proyecto_final2024.newpackageVista.VistaCategoria;
 
@@ -68,6 +79,28 @@ public class controladorCategoria {
         vista.getBtnaceptar().addActionListener(l -> crearModificarCategoria());
         vista.getBtnEliminar().addActionListener(l -> eliminarCategoria());
         vista.getBtnSalir().addActionListener(l -> salir());
+        vista.getBtnImprimir().addActionListener(l -> imprimirCategoria());
+    }
+    
+    public void imprimirCategoria(){
+        try {
+            JasperReport reporteCategoria = (JasperReport) JRLoader.loadObject(
+                    getClass().getResource("/reportes/reporteCliente.jasper"));
+       
+        Conexion con = new Conexion();
+        Map<String, Object> parametros = new HashMap <String, Object>();
+        parametros.put("titulo", "LISTADO DE CATEGORIAS" );
+        parametros.put("fecha", "30/01/2024" );
+//        parametros.put("marcar", 250d);
+        JasperPrint jp = JasperFillManager.fillReport(reporteCategoria, parametros, con.getCon());
+
+        JasperViewer Jv = new JasperViewer(jp, false);
+        Jv.setVisible(true);
+        
+        } catch (JRException ex) {
+            Logger.getLogger(controladorClientes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }
 
     private void abrirDialogo(boolean nuevo) {

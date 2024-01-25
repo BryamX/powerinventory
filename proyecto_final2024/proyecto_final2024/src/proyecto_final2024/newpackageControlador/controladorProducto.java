@@ -59,6 +59,7 @@ public class controladorProducto {
         vista.getBtnGuardar().addActionListener(l -> CrearModificarProducto());
         vista.getBtnBUSCAR().addActionListener(l -> buscarProducto());
         vista.getBtnSalir().addActionListener(l -> salir());
+        vista.getBtnIMPRIMIR().addActionListener(l -> imprimirProducto()); 
         vista.getTblproductos().addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 llenarCampos();
@@ -89,7 +90,7 @@ public class controladorProducto {
        
         Conexion con = new Conexion();
         Map<String, Object> parametros = new HashMap <String, Object>();
-        parametros.put("titulo", "LISTADO DE CLIENTES" );
+        parametros.put("titulo", "LISTADO DE PRODUCTOS" );
         parametros.put("fecha", "30/01/2024" );
 //        parametros.put("marcar", 250d);
         JasperPrint jp = JasperFillManager.fillReport(reporteProducto, parametros, con.getCon());
