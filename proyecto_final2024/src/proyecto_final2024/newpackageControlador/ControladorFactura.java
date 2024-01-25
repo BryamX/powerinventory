@@ -16,17 +16,23 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
 import proyecto_final2024.newpackageModelo.ModeloFactura;
 import proyecto_final2024.newpackageModelo.Producto;
 import static proyecto_final2024.newpackageControlador.controladorProveedor.cedulaCienteBuscado;
-import static proyecto_final2024.newpackageControlador.controladorProveedor.fecha_nacimientoC;
 import proyecto_final2024.newpackageModelo.Cliente;
 import proyecto_final2024.newpackageModelo.Conexion;
 import proyecto_final2024.newpackageModelo.buscadorFacturas;
@@ -90,6 +96,8 @@ public class ControladorFactura {
         vista.getBtnBuscarFactura().addActionListener(l -> botonbuscarFactura());
         vista.getBtnAceptarFacturaBuscada().addActionListener(l -> enviardatosoFactura());
         vista.getBtnNuevo().addActionListener(l -> nuevaFactura());
+        vista.getBtnimprimir().addActionListener(l -> imprimirFactura());
+        vista.getBtnListacompleta().addActionListener(l -> listaFacturas());
     }
 
     public void nuevaFactura() {
@@ -130,8 +138,21 @@ public class ControladorFactura {
                 cedulaBuscado = (vista.getTbFacturabuscada().getValueAt(i, 6).toString());
             }
         });
+        listaFacturas();
+       
     }
 
+    public void listaFacturas(){
+        List<buscadorFacturas> miListaPro = ModeloFactura.listafacturas();
+            DefaultTableModel mTabla = (DefaultTableModel) vista.getTbFacturabuscada().getModel();
+            mTabla.setRowCount(0);
+            miListaPro.forEach(admin -> {
+                String[] rowData = {
+                    String.valueOf(admin.getIdfactura()), String.valueOf(admin.getFecha()), admin.getEstado(), String.valueOf(admin.getIdcliente()), admin.getNombres(), admin.getApellidos(), admin.getCedula()
+                };
+                mTabla.addRow(rowData);
+            });
+    }
     public void botonbuscarFactura() {
 
         if (vista.getFechaDesde().getDate() == null || vista.getFechahasta().getDate() == null) {
@@ -449,6 +470,37 @@ public class ControladorFactura {
             }
         }).start(); // Iniciar el hilo
 
+    }
+
+    public void imprimirFactura() {
+        Conexion conexion = new Conexion();
+        Date fecha = vista.getDtFecha().getDate();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String fechaFinalComoString = sdf.format(fecha);
+
+        try {
+            JasperReport reporte = (JasperReport) JRLoader.loadObject(
+                    getClass().getResource("/proyecto_final2024/newpackagevista/reportes/factura.jasper"));
+
+            Map<String, Object> parametros = new HashMap<>();
+            parametros.put("idFactutra", vista.getTxtcodigoFactura().getText());
+            parametros.put("nombreoperario", vista.getTxtnombreAdmin().getText());
+            parametros.put("idOperario", vista.getTxtcodigoAdmin().getText());
+            parametros.put("nombrec", vista.getTxtnombrecliente().getText());
+            parametros.put("apellidoc", vista.getTxtapellidocliente().getText());
+            parametros.put("cedulac", vista.getTxtcedulacliente().getText());
+            parametros.put("fechaemicion", fechaFinalComoString);
+
+            JasperPrint jp = JasperFillManager.fillReport(
+                    reporte,
+                    parametros,
+                    conexion.getCon()
+            );
+            JasperViewer jv = new JasperViewer(jp, false);
+            jv.setVisible(true);
+        } catch (JRException ex) {
+            Logger.getLogger(ControladorFactura.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     public void salir() {

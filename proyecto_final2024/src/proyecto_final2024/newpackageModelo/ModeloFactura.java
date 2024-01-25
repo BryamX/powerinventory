@@ -316,6 +316,35 @@ public class ModeloFactura extends Factura {
         }
     }
      
+      public static List<buscadorFacturas> listafacturas() {
+        Conexion cpg = new Conexion();
+        List<buscadorFacturas> listaFacturas = new ArrayList<>();
+
+        String sql;
+        sql = "SELECT f.idfactura, f.fecha_factura, f.fac_estado, c.id_cliente, p.nombres, p.apellidos, p.cedula\n" +
+               "FROM cliente c\n" +
+               "JOIN persona p ON c.id_persona = p.id_persona\n" +
+               "JOIN factura f ON c.id_cliente = f.id_cliente";
+        ResultSet rs = cpg.consultaDB(sql);
+        try {
+            while (rs.next()) {
+                buscadorFacturas bus = new buscadorFacturas();
+                bus.setIdfactura(rs.getInt("idfactura"));
+                bus.setFecha(rs.getDate("fecha_factura"));
+                bus.setEstado(rs.getString("fac_estado"));
+                bus.setIdcliente(rs.getInt("id_cliente"));
+                bus.setNombres(rs.getString("nombres"));
+                bus.setApellidos(rs.getString("apellidos"));
+                bus.setCedula(rs.getString("cedula"));
+                listaFacturas.add(bus);
+            }
+            rs.close();
+            return listaFacturas;
+        } catch (SQLException ex) {
+            return null;
+        }
+    }
+     
      public static List<cargarDetalledeFactura> cargarDetalle() {
         Conexion cpg = new Conexion();
         List<cargarDetalledeFactura> listadetalle = new ArrayList<>();

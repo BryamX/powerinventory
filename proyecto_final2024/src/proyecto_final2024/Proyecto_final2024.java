@@ -19,14 +19,14 @@ public class Proyecto_final2024 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-  
-         VentanaLogin vista = new VentanaLogin();
-       ControladorLogin control = new ControladorLogin(vista);
-       control.inicarControladorLogin();
+//  
+//         VentanaLogin vista = new VentanaLogin();
+//       ControladorLogin control = new ControladorLogin(vista);
+//       control.inicarControladorLogin();
 
-//        VistaPrincipal vista = new VistaPrincipal();
-//       ControladorPaginaPrincipal control = new ControladorPaginaPrincipal(vista);
-//       control.inicarControladorPrincipal();
+        VistaPrincipal vista = new VistaPrincipal();
+       ControladorPaginaPrincipal control = new ControladorPaginaPrincipal(vista);
+       control.inicarControladorPrincipal();
  
     }
     

@@ -24,6 +24,11 @@ public class Conexion {
     String passPG = "1234";
     
     Connection con;
+
+    public Connection getCon() {
+        return con;
+    }
+    
     
     public Conexion(){
         

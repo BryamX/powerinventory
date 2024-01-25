@@ -41,6 +41,10 @@ public class VistaFacrura extends javax.swing.JInternalFrame {
         return btnaceptarProductos;
     }
 
+    public JButton getBtnListacompleta() {
+        return btnListacompleta;
+    }
+
     public JButton getBtnanular() {
         return btnanular;
     }
@@ -211,6 +215,7 @@ public class VistaFacrura extends javax.swing.JInternalFrame {
         fechaDesde = new com.toedter.calendar.JDateChooser();
         fechahasta = new com.toedter.calendar.JDateChooser();
         btnBuscarFactura = new javax.swing.JButton();
+        btnListacompleta = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         txtcodigoAdmin = new javax.swing.JLabel();
         txtnombreAdmin = new javax.swing.JLabel();
@@ -380,6 +385,8 @@ public class VistaFacrura extends javax.swing.JInternalFrame {
 
         btnBuscarFactura.setText("Buscar");
 
+        btnListacompleta.setText("Lista completa");
+
         javax.swing.GroupLayout jDialogFacturasLayout = new javax.swing.GroupLayout(jDialogFacturas.getContentPane());
         jDialogFacturas.getContentPane().setLayout(jDialogFacturasLayout);
         jDialogFacturasLayout.setHorizontalGroup(
@@ -406,26 +413,36 @@ public class VistaFacrura extends javax.swing.JInternalFrame {
                 .addGap(403, 403, 403)
                 .addComponent(btnAceptarFacturaBuscada)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jDialogFacturasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDialogFacturasLayout.createSequentialGroup()
+                    .addContainerGap(718, Short.MAX_VALUE)
+                    .addComponent(btnListacompleta)
+                    .addContainerGap(60, Short.MAX_VALUE)))
         );
         jDialogFacturasLayout.setVerticalGroup(
             jDialogFacturasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDialogFacturasLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jDialogFacturasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(fechahasta, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE)
+                    .addComponent(btnBuscarFactura, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jDialogFacturasLayout.createSequentialGroup()
-                        .addGroup(jDialogFacturasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jDialogFacturasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jDialogFacturasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(fechahasta, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jDialogFacturasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(fechaDesde, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
                                 .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(btnBuscarFactura, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jLabel17, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE))
+                        .addGap(0, 2, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnAceptarFacturaBuscada)
                 .addGap(20, 20, 20))
+            .addGroup(jDialogFacturasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDialogFacturasLayout.createSequentialGroup()
+                    .addContainerGap(12, Short.MAX_VALUE)
+                    .addComponent(btnListacompleta)
+                    .addContainerGap(303, Short.MAX_VALUE)))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -698,6 +715,7 @@ public class VistaFacrura extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnAceptarFacturaBuscada;
     private javax.swing.JButton btnAceptarbCLIENTE;
     private javax.swing.JButton btnBuscarFactura;
+    private javax.swing.JButton btnListacompleta;
     private javax.swing.JButton btnNuevo;
     private javax.swing.JButton btnaceptarProductos;
     private javax.swing.JButton btnanadir;
