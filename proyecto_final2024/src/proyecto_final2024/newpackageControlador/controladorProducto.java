@@ -312,12 +312,12 @@ public class controladorProducto {
                 Validar.letras(vista.getTxtnombre(), 15); 
             }
         });
-         vista.getTxtdescripcion().addKeyListener(new KeyAdapter() {
-            @Override
-            public void keyPressed(KeyEvent e){
-                Validar.letras(vista.getTxtdescripcion(), 15); 
-            }
-        });
+//         vista.getTxtdescripcion().addKeyListener(new KeyAdapter() {
+//            @Override
+//            public void keyPressed(KeyEvent e){
+//                Validar.letras(vista.getTxtdescripcion(), 15); 
+//            }
+//        });
           vista.getTxtpreciocompra().addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e){
