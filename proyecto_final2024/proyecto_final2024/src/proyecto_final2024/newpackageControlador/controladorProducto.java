@@ -390,10 +390,9 @@ public class controladorProducto {
     
     public void imprimirProductos() {
         String titulo = JOptionPane.showInputDialog("Ingresa el título:");
-        String sueldo = JOptionPane.showInputDialog("Ingresa el saldo:");
 
         // Verificar si el usuario ingresó algo
-        if (titulo != null && sueldo!=null) {
+        if (titulo != null) {
             Map<String, Object> parametros = new HashMap<String, Object>();
             try {
                 Conexion connection = new Conexion();
@@ -401,8 +400,7 @@ public class controladorProducto {
 
                 /// condicionales
                 parametros.put("titulo", titulo); ///// NO PUEDE ESTAR QUEMADO EL TITULO
-                parametros.put("Cupo", Integer.valueOf(sueldo));
-
+                
                 JasperPrint jp = JasperFillManager.fillReport(reporte, parametros, connection.getCon());
                 JasperViewer jv = new JasperViewer(jp, false);
                 jv.setVisible(true);
