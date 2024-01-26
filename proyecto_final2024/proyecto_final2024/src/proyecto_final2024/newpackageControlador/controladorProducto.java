@@ -392,7 +392,7 @@ public class controladorProducto {
             
             try {
                 Conexion connection = new Conexion();
-                JasperReport reporte = (JasperReport) JRLoader.loadObject(getClass().getResource("/reportes/reporteProductos.jasper"));
+                JasperReport reporte = (JasperReport) JRLoader.loadObject(getClass().getResource("/proyecto_final2024/newpackagevista/reportes/reporteProductos.jasper"));
                 JasperPrint jp = JasperFillManager.fillReport(reporte, null, connection.getCon());
                 JasperViewer jv = new JasperViewer(jp, false);
                 jv.setVisible(true);
