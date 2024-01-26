@@ -7,11 +7,19 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
 import proyecto_final2024.newpackageModelo.Conexion;
 import proyecto_final2024.newpackageModelo.ModeloProducto;
 import proyecto_final2024.newpackageModelo.Producto;
@@ -53,6 +61,9 @@ public class controladorProducto {
         vista.getBtnGuardar().addActionListener(l -> CrearModificarProducto());
         vista.getBtnBUSCAR().addActionListener(l -> buscarProducto());
         vista.getBtnSalir().addActionListener(l -> salir());
+        
+        vista.getBtnIMPRIMIR().addActionListener(l->imprimirProductos());
+        
         vista.getTblproductos().addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 llenarCampos();
@@ -374,6 +385,32 @@ public class controladorProducto {
                     Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, e);
                 }
             }).start();
+        }
+    }
+    
+    public void imprimirProductos() {
+        String titulo = JOptionPane.showInputDialog("Ingresa el título:");
+        String sueldo = JOptionPane.showInputDialog("Ingresa el saldo:");
+
+        // Verificar si el usuario ingresó algo
+        if (titulo != null && sueldo!=null) {
+            Map<String, Object> parametros = new HashMap<String, Object>();
+            try {
+                Conexion connection = new Conexion();
+                JasperReport reporte = (JasperReport) JRLoader.loadObject(getClass().getResource("/mvc2023/reportes/reporte1.jasper"));
+
+                /// condicionales
+                parametros.put("titulo", titulo); ///// NO PUEDE ESTAR QUEMADO EL TITULO
+                parametros.put("Cupo", Integer.valueOf(sueldo));
+
+                JasperPrint jp = JasperFillManager.fillReport(reporte, parametros, connection.getCon());
+                JasperViewer jv = new JasperViewer(jp, false);
+                jv.setVisible(true);
+
+            } catch (JRException ex) {
+                Logger.getLogger(controladorProducto.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
         }
     }
 
