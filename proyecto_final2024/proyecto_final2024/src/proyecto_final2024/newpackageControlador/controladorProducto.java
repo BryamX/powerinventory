@@ -230,12 +230,12 @@ public class controladorProducto {
             vista.getTxtnombre().setText(vista.getTblproductos().getValueAt(i, 1).toString());
             vista.getCbcodigoproveedor().setSelectedItem(vista.getTblproductos().getValueAt(i, 5).toString());
             String cedula = vista.getTblproductos().getValueAt(i, 5).toString();
-            String cedula10caracteres = cedula.substring(0, Math.min(cedula.length(), 2));
+            String cedula10caracteres = cedula.substring(0, Math.min(cedula.length(), 1));
             for (int j = 1; j < vista.getCbcodigoproveedor().getItemCount(); j++) {
                 String itemComboBox = vista.getCbcodigoproveedor().getItemAt(j).toString();
 
                 
-                String primerosDiezCaracteresComboBox = itemComboBox.substring(0, Math.min(itemComboBox.length(), 2));
+                String primerosDiezCaracteresComboBox = itemComboBox.substring(0, Math.min(itemComboBox.length(), 1));
 
                 
                 if (cedula10caracteres.equals(primerosDiezCaracteresComboBox)) {
