@@ -9,9 +9,18 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
 import proyecto_final2024.newpackageModelo.Categoria;
+import proyecto_final2024.newpackageModelo.Conexion;
 import proyecto_final2024.newpackageModelo.ModeloCategoriaP;
 import proyecto_final2024.newpackageVista.VistaCategoria;
 
@@ -67,6 +76,7 @@ public class controladorCategoria {
         vista.getBtnModificar().addActionListener(l -> abrirDialogo(false));
         vista.getBtnaceptar().addActionListener(l -> crearModificarCategoria());
         vista.getBtnEliminar().addActionListener(l -> eliminarCategoria());
+        vista.getBtnImprimir().addActionListener(l->imprimirCategorias());
         vista.getBtnSalir().addActionListener(l -> salir());
     }
 
@@ -204,6 +214,19 @@ public class controladorCategoria {
             }
         });
 
+    }
+    public void imprimirCategorias() {
+            
+            try {
+                Conexion connection = new Conexion();
+                JasperReport reporte = (JasperReport) JRLoader.loadObject(getClass().getResource("/proyecto_final2024/newpackagevista/reportes/reporteCategorias.jasper"));
+                JasperPrint jp = JasperFillManager.fillReport(reporte, null, connection.getCon());
+                JasperViewer jv = new JasperViewer(jp, false);
+                jv.setVisible(true);
+
+            } catch (JRException ex) {
+                Logger.getLogger(controladorCategoria.class.getName()).log(Level.SEVERE, null, ex);
+            }
     }
     
     
