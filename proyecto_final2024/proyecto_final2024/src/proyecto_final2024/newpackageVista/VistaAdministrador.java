@@ -6,6 +6,7 @@ package proyecto_final2024.newpackageVista;
 
 import com.toedter.calendar.JDateChooser;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JPasswordField;
 import javax.swing.JTable;
@@ -34,27 +35,32 @@ public class VistaAdministrador extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jDialog1 = new javax.swing.JDialog();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        txtcedula = new javax.swing.JTextField();
-        txtnombres = new javax.swing.JTextField();
-        txtapellidos = new javax.swing.JTextField();
-        txtdireccion = new javax.swing.JTextField();
-        txtgenero = new javax.swing.JTextField();
         txttelefono = new javax.swing.JTextField();
         txtusuario = new javax.swing.JTextField();
         dtFecha = new com.toedter.calendar.JDateChooser();
         pswContrasena = new javax.swing.JPasswordField();
         btnGuardar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
+        jLabel13 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
+        cmbgenero = new javax.swing.JComboBox<>();
+        jLabel2 = new javax.swing.JLabel();
+        txtcedula = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        txtnombres = new javax.swing.JTextField();
+        txtapellidos = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        txtdireccion = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
+        txtid_persona = new javax.swing.JTextField();
+        jLabel15 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         btnCREAR = new javax.swing.JButton();
         btnEDITAR = new javax.swing.JButton();
@@ -67,8 +73,63 @@ public class VistaAdministrador extends javax.swing.JInternalFrame {
         jLabel11 = new javax.swing.JLabel();
         btnSalir = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        btnIMPRIMIR = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JSeparator();
 
+        jDialog1.setBackground(new java.awt.Color(255, 255, 255));
+        jDialog1.setModal(true);
+        jDialog1.setResizable(false);
+        jDialog1.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel6.setText("GENERO:");
+        jDialog1.getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 270, 100, -1));
+
+        jLabel7.setText("TELEFONO:");
+        jDialog1.getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 320, 100, -1));
+
+        jLabel8.setText("FECHA NACIMIENTO:");
+        jDialog1.getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 360, 140, -1));
+
+        jLabel9.setText("USUARIO:");
+        jDialog1.getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 410, 110, -1));
+
+        jLabel10.setText("CONTRASEÑA:");
+        jDialog1.getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 460, 110, -1));
+        jDialog1.getContentPane().add(txttelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 310, 220, -1));
+        jDialog1.getContentPane().add(txtusuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 410, 220, -1));
+        jDialog1.getContentPane().add(dtFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 360, 310, -1));
+        jDialog1.getContentPane().add(pswContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 460, 220, -1));
+
+        btnGuardar.setText("Guardar");
+        jDialog1.getContentPane().add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 500, -1, -1));
+
+        jPanel2.setBackground(new java.awt.Color(255, 0, 0));
+
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/fondo2.jpeg"))); // NOI18N
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 580, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+
+        jDialog1.getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 580, 50));
+
+        jPanel3.setBackground(new java.awt.Color(255, 0, 0));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jDialog1.getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 530, 577, -1));
+
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+
+        cmbgenero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "Masculino", "Femenino" }));
+
+        jLabel2.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jLabel2.setText("CEDULA:");
 
         jLabel3.setText("NOMBRES:");
@@ -77,155 +138,79 @@ public class VistaAdministrador extends javax.swing.JInternalFrame {
 
         jLabel5.setText("DIRECCION:");
 
-        jLabel6.setText("GENERO:");
+        jLabel14.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        jLabel14.setText("CEDULA:");
 
-        jLabel7.setText("TELEFONO:");
-
-        jLabel8.setText("FECHA NACIMIENTO:");
-
-        jLabel9.setText("USUARIO:");
-
-        jLabel10.setText("CONTRASEÑA:");
-
-        btnGuardar.setText("Guardar");
-
-        jPanel2.setBackground(new java.awt.Color(255, 0, 0));
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 28, Short.MAX_VALUE)
-        );
-
-        jPanel3.setBackground(new java.awt.Color(255, 0, 0));
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 31, Short.MAX_VALUE)
-        );
-
-        javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
-        jDialog1.getContentPane().setLayout(jDialog1Layout);
-        jDialog1Layout.setHorizontalGroup(
-            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jDialog1Layout.createSequentialGroup()
-                .addGap(104, 104, 104)
-                .addGroup(jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jDialog1Layout.createSequentialGroup()
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(55, 55, 55)
-                        .addComponent(txtapellidos, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jDialog1Layout.createSequentialGroup()
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(55, 55, 55)
-                        .addComponent(txtdireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jDialog1Layout.createSequentialGroup()
-                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(55, 55, 55)
-                        .addComponent(txtgenero, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jDialog1Layout.createSequentialGroup()
-                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(55, 55, 55)
-                        .addComponent(txttelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jDialog1Layout.createSequentialGroup()
-                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(15, 15, 15)
-                        .addComponent(dtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jDialog1Layout.createSequentialGroup()
-                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(45, 45, 45)
-                        .addComponent(txtusuario, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jDialog1Layout.createSequentialGroup()
-                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(45, 45, 45)
-                        .addComponent(pswContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jDialog1Layout.createSequentialGroup()
-                        .addGap(395, 395, 395)
-                        .addComponent(btnGuardar))
-                    .addGroup(jDialog1Layout.createSequentialGroup()
-                        .addGroup(jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap(101, Short.MAX_VALUE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel4Layout.createSequentialGroup()
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(50, 50, 50)
+                            .addComponent(txtcedula, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel4Layout.createSequentialGroup()
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(45, 45, 45)
-                        .addGroup(jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtcedula, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtnombres, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGap(60, 60, 60)
+                            .addComponent(txtnombres, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel4Layout.createSequentialGroup()
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(60, 60, 60)
+                            .addComponent(txtapellidos, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel4Layout.createSequentialGroup()
+                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(60, 60, 60)
+                            .addComponent(txtdireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel4Layout.createSequentialGroup()
+                            .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(50, 50, 50)
+                            .addComponent(txtid_persona, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(cmbgenero, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(99, 99, 99))
         );
-        jDialog1Layout.setVerticalGroup(
-            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jDialog1Layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtcedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addGap(18, 18, 18)
-                .addGroup(jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jDialog1Layout.createSequentialGroup()
-                        .addGap(8, 8, 8)
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel14)
+                    .addComponent(txtid_persona, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(17, 17, 17)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(txtcedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(21, 21, 21)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
                         .addComponent(jLabel3))
                     .addComponent(txtnombres, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jDialog1Layout.createSequentialGroup()
-                        .addGap(11, 11, 11)
+                .addGap(17, 17, 17)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
                         .addComponent(jLabel4))
                     .addComponent(txtapellidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
-                .addGroup(jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jDialog1Layout.createSequentialGroup()
-                        .addGap(8, 8, 8)
+                .addGap(27, 27, 27)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
                         .addComponent(jLabel5))
                     .addComponent(txtdireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29)
-                .addGroup(jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jDialog1Layout.createSequentialGroup()
-                        .addGap(4, 4, 4)
-                        .addComponent(jLabel6))
-                    .addComponent(txtgenero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(21, 21, 21)
-                .addGroup(jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jDialog1Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jLabel7))
-                    .addComponent(txttelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
-                .addGroup(jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jDialog1Layout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(jLabel8))
-                    .addComponent(dtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
-                .addGroup(jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel9)
-                    .addGroup(jDialog1Layout.createSequentialGroup()
-                        .addGap(1, 1, 1)
-                        .addComponent(txtusuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(21, 21, 21)
-                .addGroup(jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jDialog1Layout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(jLabel10))
-                    .addComponent(pswContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(41, 41, 41)
-                .addComponent(btnGuardar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(cmbgenero, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(243, Short.MAX_VALUE))
         );
+
+        jDialog1.getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 580, 480));
+
+        jLabel15.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/fondo2.jpeg"))); // NOI18N
+        jDialog1.getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 530, 580, 40));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1460, 472));
@@ -248,18 +233,21 @@ public class VistaAdministrador extends javax.swing.JInternalFrame {
         btnELIMINAR.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
         btnELIMINAR.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/papelera-de-reciclaje (2).png"))); // NOI18N
         btnELIMINAR.setText("ELIMINAR");
-        jPanel1.add(btnELIMINAR, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 120, -1, -1));
+        jPanel1.add(btnELIMINAR, new org.netbeans.lib.awtextra.AbsoluteConstraints(1250, 120, -1, -1));
 
         btnACTUALIZAR.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
         btnACTUALIZAR.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/estado (1).png"))); // NOI18N
         btnACTUALIZAR.setText("ACTUALIZAR");
-        jPanel1.add(btnACTUALIZAR, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 120, -1, -1));
-        jPanel1.add(txtBUSCAR, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 217, -1));
+        jPanel1.add(btnACTUALIZAR, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 120, -1, -1));
+
+        txtBUSCAR.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
+        txtBUSCAR.setBorder(null);
+        jPanel1.add(txtBUSCAR, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 217, -1));
 
         btnBUSCAR.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
         btnBUSCAR.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/buscar (6).png"))); // NOI18N
         btnBUSCAR.setText("BUSCAR");
-        jPanel1.add(btnBUSCAR, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 120, -1, -1));
+        jPanel1.add(btnBUSCAR, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 110, -1, -1));
 
         jTableAdmin.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
         jTableAdmin.setModel(new javax.swing.table.DefaultTableModel(
@@ -289,11 +277,7 @@ public class VistaAdministrador extends javax.swing.JInternalFrame {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/WhatsApp Image 2024-01-21 at 10.41.50 PM.jpeg"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 0, 520, 430));
-
-        btnIMPRIMIR.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
-        btnIMPRIMIR.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/estado (1).png"))); // NOI18N
-        btnIMPRIMIR.setText("IMPRIMIR");
-        jPanel1.add(btnIMPRIMIR, new org.netbeans.lib.awtextra.AbsoluteConstraints(1230, 120, -1, -1));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 143, 220, 10));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -317,10 +301,6 @@ public class VistaAdministrador extends javax.swing.JInternalFrame {
 
     public JButton getBtnBUSCAR() {
         return btnBUSCAR;
-    }
-
-    public JButton getBtnIMPRIMIR() {
-        return btnIMPRIMIR;
     }
 
     public JButton getBtnCREAR() {
@@ -363,10 +343,15 @@ public class VistaAdministrador extends javax.swing.JInternalFrame {
         return txtdireccion;
     }
 
-    public JTextField getTxtgenero() {
-        return txtgenero;
+    public JComboBox<String> getCmbgenero() {
+        return cmbgenero;
     }
 
+    public JTextField getTxtid_persona() {
+        return txtid_persona;
+    }
+
+   
     public JTextField getTxtnombres() {
         return txtnombres;
     }
@@ -401,13 +386,16 @@ public class VistaAdministrador extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnEDITAR;
     private javax.swing.JButton btnELIMINAR;
     private javax.swing.JButton btnGuardar;
-    private javax.swing.JButton btnIMPRIMIR;
     private javax.swing.JButton btnSalir;
+    private javax.swing.JComboBox<String> cmbgenero;
     private com.toedter.calendar.JDateChooser dtFecha;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -419,14 +407,16 @@ public class VistaAdministrador extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable jTableAdmin;
     private javax.swing.JPasswordField pswContrasena;
     private javax.swing.JTextField txtBUSCAR;
     private javax.swing.JTextField txtapellidos;
     private javax.swing.JTextField txtcedula;
     private javax.swing.JTextField txtdireccion;
-    private javax.swing.JTextField txtgenero;
+    private javax.swing.JTextField txtid_persona;
     private javax.swing.JTextField txtnombres;
     private javax.swing.JTextField txttelefono;
     private javax.swing.JTextField txtusuario;

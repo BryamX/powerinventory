@@ -35,14 +35,17 @@ public class VistaEmpresa extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jDialog1 = new javax.swing.JDialog();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        txtNombreEm = new javax.swing.JTextField();
-        btnGuardar = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
+        jPanel5 = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        jPanel6 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         txtDs = new javax.swing.JTextArea();
+        btnGuardar = new javax.swing.JButton();
+        txtNombreEm = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jPanel7 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         btnCREAR = new javax.swing.JButton();
         btnEDITAR = new javax.swing.JButton();
@@ -55,85 +58,57 @@ public class VistaEmpresa extends javax.swing.JInternalFrame {
         jLabel10 = new javax.swing.JLabel();
         btnSalir = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        btnIMPRIMIR = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JSeparator();
 
-        jLabel2.setText("Nombre de la empresa");
+        jDialog1.setMinimumSize(new java.awt.Dimension(532, 320));
+        jDialog1.setModal(true);
 
-        jLabel3.setText("Descripcion de la empresa");
+        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnGuardar.setText("Guardar");
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/fondo2.jpeg"))); // NOI18N
+        jPanel5.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 530, 57));
 
-        jPanel2.setBackground(new java.awt.Color(255, 0, 0));
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 28, Short.MAX_VALUE)
-        );
-
-        jPanel3.setBackground(new java.awt.Color(255, 0, 0));
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 31, Short.MAX_VALUE)
-        );
+        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txtDs.setColumns(20);
         txtDs.setRows(5);
         jScrollPane2.setViewportView(txtDs);
 
+        jPanel6.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 100, 230, -1));
+
+        btnGuardar.setText("Guardar");
+        jPanel6.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 190, -1, -1));
+        jPanel6.add(txtNombreEm, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 20, 234, -1));
+
+        jLabel2.setText("Nombre de la empresa");
+        jPanel6.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 30, 110, -1));
+
+        jLabel3.setText("Descripcion de la empresa");
+        jPanel6.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 100, -1, -1));
+
+        jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/fondo2.jpeg"))); // NOI18N
+        jPanel7.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 532, 30));
+
         javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
         jDialog1.getContentPane().setLayout(jDialog1Layout);
         jDialog1Layout.setHorizontalGroup(
             jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jDialog1Layout.createSequentialGroup()
-                .addGroup(jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jDialog1Layout.createSequentialGroup()
-                        .addGap(499, 499, 499)
-                        .addComponent(btnGuardar))
-                    .addGroup(jDialog1Layout.createSequentialGroup()
-                        .addGroup(jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jDialog1Layout.createSequentialGroup()
-                                .addGap(104, 104, 104)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jDialog1Layout.createSequentialGroup()
-                                .addGap(83, 83, 83)
-                                .addComponent(jLabel3)))
-                        .addGap(45, 45, 45)
-                        .addGroup(jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtNombreEm, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
-                            .addComponent(jScrollPane2))))
-                .addContainerGap(11, Short.MAX_VALUE))
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 532, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jDialog1Layout.setVerticalGroup(
             jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDialog1Layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtNombreEm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addGap(26, 26, 26)
-                .addGroup(jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(275, 275, 275)
-                .addComponent(btnGuardar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -161,14 +136,18 @@ public class VistaEmpresa extends javax.swing.JInternalFrame {
         btnACTUALIZAR.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
         btnACTUALIZAR.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/estado (1).png"))); // NOI18N
         btnACTUALIZAR.setText("ACTUALIZAR");
-        jPanel1.add(btnACTUALIZAR, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 130, -1, -1));
-        jPanel1.add(txtBUSCAR, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 139, 159, -1));
+        jPanel1.add(btnACTUALIZAR, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 130, -1, -1));
+
+        txtBUSCAR.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
+        txtBUSCAR.setBorder(null);
+        jPanel1.add(txtBUSCAR, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 147, 220, 20));
 
         btnBUSCAR.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
         btnBUSCAR.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/buscar (6).png"))); // NOI18N
         btnBUSCAR.setText("BUSCAR");
-        jPanel1.add(btnBUSCAR, new org.netbeans.lib.awtextra.AbsoluteConstraints(195, 129, -1, -1));
+        jPanel1.add(btnBUSCAR, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 140, -1, -1));
 
+        jTableAdmin.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
         jTableAdmin.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
@@ -196,11 +175,7 @@ public class VistaEmpresa extends javax.swing.JInternalFrame {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/WhatsApp Image 2024-01-21 at 10.41.50 PM.jpeg"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 0, 510, 420));
-
-        btnIMPRIMIR.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
-        btnIMPRIMIR.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/estado (1).png"))); // NOI18N
-        btnIMPRIMIR.setText("IMPRIMIR");
-        jPanel1.add(btnIMPRIMIR, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 130, -1, -1));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 220, 10));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -220,10 +195,6 @@ public class VistaEmpresa extends javax.swing.JInternalFrame {
 
     public JButton getBtnACTUALIZAR() {
         return btnACTUALIZAR;
-    }
-
-    public JButton getBtnIMPRIMIR() {
-        return btnIMPRIMIR;
     }
 
     public JButton getBtnBUSCAR() {
@@ -280,18 +251,21 @@ public class VistaEmpresa extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnEDITAR;
     private javax.swing.JButton btnELIMINAR;
     private javax.swing.JButton btnGuardar;
-    private javax.swing.JButton btnIMPRIMIR;
     private javax.swing.JButton btnSalir;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable jTableAdmin;
     private javax.swing.JTextField txtBUSCAR;
     private javax.swing.JTextArea txtDs;

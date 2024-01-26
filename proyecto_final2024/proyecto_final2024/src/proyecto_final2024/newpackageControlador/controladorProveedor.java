@@ -87,7 +87,7 @@ public class controladorProveedor {
         vista.getBtnGuardar().addActionListener(l -> grabarProveedor());
         vista.getBtnELIMINAR().addActionListener(l -> eliminarPro());
         vista.getBtnSalir().addActionListener(l -> salir());
-        vista.getBtnIMPRIMIR().addActionListener(l -> imprimirProveedor());
+//        vista.getBtnIMPRIMIR().addActionListener(l -> imprimirProveedor());
     }
     
     public void imprimirProveedor(){
@@ -131,7 +131,7 @@ public class controladorProveedor {
             String nombres = vista.getTxtnombres().getText();
             String apellidos = vista.getTxtapellidos().getText();
             String direccion = vista.getTxtdireccion().getText();
-            String genero = vista.getTxtgenero().getText();
+//            String genero = vista.getTxtgenero().getText();
             String telefono = vista.getTxttelefono().getText();
             java.util.Date fehca = vista.getdtfecha().getDate();;
             long auxfecha_Nacimiento = fehca.getTime();
@@ -152,7 +152,7 @@ public class controladorProveedor {
             per.setNombres(nombres);
             per.setApellidos(apellidos);
             per.setDireccion(direccion);
-            per.setGenero(genero);
+//            per.setGenero(genero);
             per.setTelefono(telefono);
             per.setFecha_nacimiento(fecha);
             per.setId_empresa(String.valueOf(codigo));
@@ -169,7 +169,7 @@ public class controladorProveedor {
             String nombres = vista.getTxtnombres().getText();
             String apellidos = vista.getTxtapellidos().getText();
             String direccion = vista.getTxtdireccion().getText();
-            String genero = vista.getTxtgenero().getText();
+//            String genero = vista.getTxtgenero().getText();
             String telefono = vista.getTxttelefono().getText();
             java.util.Date fehca = vista.getdtfecha().getDate();;
             long auxfecha_Nacimiento = fehca.getTime();
@@ -190,7 +190,7 @@ public class controladorProveedor {
             per.setNombres(nombres);
             per.setApellidos(apellidos);
             per.setDireccion(direccion);
-            per.setGenero(genero);
+//            per.setGenero(genero);
             per.setTelefono(telefono);
             per.setFecha_nacimiento(fecha);
             per.setId_empresa(String.valueOf(codigo));
@@ -229,7 +229,7 @@ public class controladorProveedor {
             vista.getTxtnombres().setText(nombresC);
             vista.getTxtapellidos().setText(apellidosC);
             vista.getTxtdireccion().setText(direccionC);
-            vista.getTxtgenero().setText(generoC);
+//            vista.getTxtgenero().setText(generoC);
             vista.getTxttelefono().setText(telefonoC);
             SimpleDateFormat formatoFecha = new SimpleDateFormat("yyy-MM-dd");
             Date fechaFormat = formatoFecha.parse(fecha_nacimientoC);
@@ -244,7 +244,7 @@ public class controladorProveedor {
             vista.getTxtnombres().setText("");
             vista.getTxtapellidos().setText("");
             vista.getTxtdireccion().setText("");
-            vista.getTxtgenero().setText("");
+//            vista.getTxtgenero().setText("");
             vista.getTxttelefono().setText("");
             vista.getdtfecha().setDate(null);
             vista.getCmbIdEmpresa().setSelectedItem("");

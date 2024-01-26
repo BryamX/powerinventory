@@ -76,7 +76,7 @@ public class ControladorEmpresas {
         vista.getBtnGuardar().addActionListener(l -> grabareditarEmpresa());
         vista.getBtnELIMINAR().addActionListener(l -> eliminarEmpre());
         vista.getBtnSalir().addActionListener(l -> salir());
-        vista.getBtnIMPRIMIR().addActionListener(l -> imprimirEmpresa());
+//        vista.getBtnIMPRIMIR().addActionListener(l -> imprimirEmpresa());
     }
     
     public void imprimirEmpresa(){

@@ -95,7 +95,7 @@ public class controladorClientes {
         vista.getBtnGuardar().addActionListener(l -> grabarAdministrador());
         vista.getBtnELIMINAR().addActionListener(l -> eliminarAdmin());
         vista.getBtnSalir().addActionListener(l -> salir());
-        vista.getBtnIMPRIMIRCLIENTE().addActionListener(l -> imprimirClientes());
+//        vista.getBtnIMPRIMIRCLIENTE().addActionListener(l -> imprimirClientes());
 
     }
     
@@ -155,7 +155,7 @@ public class controladorClientes {
             vista.getTxtnombres().setText(nombresC);
             vista.getTxtapellidos().setText(apellidosC);
             vista.getTxtdireccion().setText(direccionC);
-            vista.getTxtgenero().setText(generoC);
+//            vista.getTxtgenero().setText(generoC);
             vista.getTxttelefono().setText(telefonoC);
             SimpleDateFormat formatoFecha = new SimpleDateFormat("yyy-MM-dd");
             Date fechaFormat = formatoFecha.parse(fecha_nacimientoC);
@@ -176,7 +176,7 @@ public class controladorClientes {
             String nombres = vista.getTxtnombres().getText();
             String apellidos = vista.getTxtapellidos().getText();
             String direccion = vista.getTxtdireccion().getText();
-            String genero = vista.getTxtgenero().getText();
+//            String genero = vista.getTxtgenero().getText();
             String telefono = vista.getTxttelefono().getText();
             java.util.Date fehca = vista.getdtfecha().getDate();;
             long auxfecha_Nacimiento = fehca.getTime();
@@ -189,7 +189,7 @@ public class controladorClientes {
             per.setNombres(nombres);
             per.setApellidos(apellidos);
             per.setDireccion(direccion);
-            per.setGenero(genero);
+//            per.setGenero(genero);
             per.setTelefono(telefono);
             per.setFecha_nacimiento(fecha);
             per.setFecuencia(freciencia);
@@ -207,7 +207,7 @@ public class controladorClientes {
             String nombres = vista.getTxtnombres().getText();
             String apellidos = vista.getTxtapellidos().getText();
             String direccion = vista.getTxtdireccion().getText();
-            String genero = vista.getTxtgenero().getText();
+//            String genero = vista.getTxtgenero().getText();
             String telefono = vista.getTxttelefono().getText();
             java.util.Date fehca = vista.getdtfecha().getDate();;
             long auxfecha_Nacimiento = fehca.getTime();
@@ -220,7 +220,7 @@ public class controladorClientes {
             per.setNombres(nombres);
             per.setApellidos(apellidos);
             per.setDireccion(direccion);
-            per.setGenero(genero);
+//            per.setGenero(genero);
             per.setTelefono(telefono);
             per.setFecha_nacimiento(fecha);
             per.setFecuencia(freciencia);
@@ -240,7 +240,7 @@ public class controladorClientes {
             vista.getTxtnombres().setText("");
             vista.getTxtapellidos().setText("");
             vista.getTxtdireccion().setText("");
-            vista.getTxtgenero().setText("");
+//            vista.getTxtgenero().setText("");
             vista.getTxttelefono().setText("");
             vista.getdtfecha().setDate(null);
             vista.getTxtfrecuencia().setText("");

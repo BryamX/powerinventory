@@ -42,10 +42,10 @@ public class VentanaLogin extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        pswContrasena = new javax.swing.JPasswordField();
-        txtUsuario = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
+        pswContrasena = new javax.swing.JPasswordField();
         jSeparator2 = new javax.swing.JSeparator();
+        txtUsuario = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         btnInicarSesion = new javax.swing.JButton();
@@ -66,14 +66,16 @@ public class VentanaLogin extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Times New Roman", 2, 30)); // NOI18N
         jLabel1.setText("contraseña:");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 320, -1, -1));
-
-        pswContrasena.setBorder(null);
-        jPanel1.add(pswContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 350, 290, 38));
-
-        txtUsuario.setBorder(null);
-        jPanel1.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 230, 310, 38));
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 390, 290, -1));
+
+        pswContrasena.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
+        pswContrasena.setBorder(null);
+        jPanel1.add(pswContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 368, 300, 20));
         jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 270, 290, -1));
+
+        txtUsuario.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
+        txtUsuario.setBorder(null);
+        jPanel1.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 248, 310, 20));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/logopro1.png"))); // NOI18N
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 140, 210, -1));

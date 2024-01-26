@@ -89,15 +89,22 @@ public class VistaCategoria extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jDialog1 = new javax.swing.JDialog();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        txtidcategoria = new javax.swing.JTextField();
-        txtnombre = new javax.swing.JTextField();
+        jPanel2 = new javax.swing.JPanel();
         txtdescripcion = new javax.swing.JTextField();
         btnaceptar = new javax.swing.JButton();
         btncancelar = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        txtnombre = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        txtidcategoria = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
+        jSeparator1 = new javax.swing.JSeparator();
         txtbuscar = new javax.swing.JTextField();
         btnbuscar = new javax.swing.JButton();
         btnCrear = new javax.swing.JButton();
@@ -110,57 +117,76 @@ public class VistaCategoria extends javax.swing.JInternalFrame {
         jLabel10 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
 
-        jLabel1.setText("ID:");
+        jDialog1.setResizable(false);
 
-        jLabel2.setText("Nombre:");
-
-        jLabel3.setText("Descripcion:");
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel2.add(txtdescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 200, 214, 20));
 
         btnaceptar.setText("Aceptar");
+        jPanel2.add(btnaceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 250, -1, -1));
 
         btncancelar.setText("Cancelar");
+        jPanel2.add(btncancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 250, -1, -1));
+
+        jLabel3.setText("Descripcion:");
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 200, -1, -1));
+        jPanel2.add(txtnombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 130, 214, -1));
+
+        jLabel2.setText("Nombre:");
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 130, -1, -1));
+
+        jLabel1.setText("ID:");
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 60, -1, -1));
+        jPanel2.add(txtidcategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 60, 106, -1));
+
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/fondo2.jpeg"))); // NOI18N
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 520, 50));
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/fondo2.jpeg"))); // NOI18N
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 520, 30));
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/WhatsApp Image 2024-01-21 at 10.41.50 PM.jpeg"))); // NOI18N
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 520, 240));
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 520, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 50, Short.MAX_VALUE)
+        );
+
+        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 520, 50));
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 520, Short.MAX_VALUE)
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 30, Short.MAX_VALUE)
+        );
+
+        jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 520, 30));
 
         javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
         jDialog1.getContentPane().setLayout(jDialog1Layout);
         jDialog1Layout.setHorizontalGroup(
             jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDialog1Layout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addGroup(jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel1))
-                .addGap(18, 18, 18)
-                .addGroup(jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jDialog1Layout.createSequentialGroup()
-                        .addComponent(btnaceptar)
-                        .addGap(46, 46, 46)
-                        .addComponent(btncancelar))
-                    .addComponent(txtnombre, javax.swing.GroupLayout.DEFAULT_SIZE, 214, Short.MAX_VALUE)
-                    .addComponent(txtdescripcion)
-                    .addComponent(txtidcategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(84, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jDialog1Layout.setVerticalGroup(
             jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDialog1Layout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addGroup(jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(txtidcategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(txtnombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addComponent(txtdescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
-                .addGroup(jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnaceptar)
-                    .addComponent(btncancelar))
-                .addGap(58, 58, 58))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -170,12 +196,16 @@ public class VistaCategoria extends javax.swing.JInternalFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(1454, 499));
         jPanel1.setVerifyInputWhenFocusTarget(false);
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel1.add(txtbuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 166, 226, -1));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 220, 10));
+
+        txtbuscar.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
+        txtbuscar.setBorder(null);
+        jPanel1.add(txtbuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 167, 226, 20));
 
         btnbuscar.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
         btnbuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/buscar (6).png"))); // NOI18N
         btnbuscar.setText("Buscar");
-        jPanel1.add(btnbuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 150, -1, -1));
+        jPanel1.add(btnbuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 150, -1, -1));
 
         btnCrear.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
         btnCrear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/alineacion-central (1).png"))); // NOI18N
@@ -198,6 +228,7 @@ public class VistaCategoria extends javax.swing.JInternalFrame {
         btnImprimir.setText("IMPRIMIR");
         jPanel1.add(btnImprimir, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 150, -1, -1));
 
+        tblcategorias.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
         tblcategorias.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
@@ -256,8 +287,15 @@ public class VistaCategoria extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable tblcategorias;
     private javax.swing.JTextField txtbuscar;
     private javax.swing.JTextField txtdescripcion;
