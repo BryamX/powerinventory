@@ -79,8 +79,8 @@ public class ControladorPaginaPrincipal {
     }
     public void abrirFatura(){
         VistaFacrura fac = new VistaFacrura();
-//        vista.getDktPrincipal().add(proveedor);
-//        proveedor.setSize(vista.getDktPrincipal().getSize().width, vista.getDktPrincipal().getSize().height);
+        vista.getDktPrincipal().add(fac);
+        fac.setSize(vista.getDktPrincipal().getSize().width, vista.getDktPrincipal().getSize().height);
         ControladorFactura controPro = new ControladorFactura(fac);
         controPro.inicarControl();
     }

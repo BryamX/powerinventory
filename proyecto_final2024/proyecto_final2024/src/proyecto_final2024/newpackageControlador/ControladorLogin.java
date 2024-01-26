@@ -5,6 +5,8 @@
  */
 package proyecto_final2024.newpackageControlador;
 
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.util.List;
 import javax.swing.JOptionPane;
 import proyecto_final2024.newpackageModelo.Administrador;
@@ -24,6 +26,7 @@ public class ControladorLogin {
     public ControladorLogin(VentanaLogin login) {
         this.login = login;
         this.login.setVisible(true);
+        controlKey();
     }
     
     public void inicarControladorLogin(){
@@ -50,6 +53,22 @@ public class ControladorLogin {
         } else{
             JOptionPane.showMessageDialog(null,"Verifique su usuario o contraseña");
         }
+    }
+    public void controlKey() {
+        login.getTxtUsuario().addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e){
+                Validar.letras(login.getTxtUsuario(), 15); 
+            }
+        });
+        login.getPswContrasena().addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e){
+                Validar.contraseña(login.getPswContrasena(), 15); 
+            }
+        });
+
+
     }
   
 }

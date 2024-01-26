@@ -15,17 +15,20 @@ public class Administrador extends Persona{
     private String id_administrador;
     private String usuario; 
     private String contraseña;
+    private String idPersona;
 
     public Administrador() {
         super();
     }
 
-    public Administrador(String id_administrador, String usuario, String contraseña, String id_persona, String cedula, String nombres, String apellidos, String direccion, String genero, String telefono, Date fecha_nacimiento) {
+    public Administrador(String id_administrador, String usuario, String contraseña, String idPersona, String id_persona, String cedula, String nombres, String apellidos, String direccion, String genero, String telefono, Date fecha_nacimiento) {
         super(id_persona, cedula, nombres, apellidos, direccion, genero, telefono, fecha_nacimiento);
         this.id_administrador = id_administrador;
         this.usuario = usuario;
         this.contraseña = contraseña;
+        this.idPersona = idPersona;
     }
+
 
     public String getId_administrador() {
         return id_administrador;
@@ -50,8 +53,13 @@ public class Administrador extends Persona{
     public void setContraseña(String contraseña) {
         this.contraseña = contraseña;
     }
-    
-    
-    
+
+    public String getIdPersona() {
+        return idPersona;
+    }
+
+    public void setIdPersona(String idPersona) {
+        this.idPersona = idPersona;
+    }
     
 }

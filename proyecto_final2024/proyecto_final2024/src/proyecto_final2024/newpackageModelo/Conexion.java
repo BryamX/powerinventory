@@ -19,10 +19,16 @@ import java.util.logging.Logger;
 public class Conexion {
     
     String cadenaConexion = "jdbc:postgresql://localhost:5432/superinver";
+//    String cadenaConexion = "jdbc:postgresql://localhost:5433/superinver"; Luis
     String userPG = "postgres";
     String passPG = "1234";
     
     Connection con;
+
+    public Connection getCon() {
+        return con;
+    }
+    
     
     public Conexion(){
         
@@ -64,10 +70,6 @@ public class Conexion {
         
         
         
-    }
-    
-    public Connection getCon() {
-        return con;
     }
     
     

@@ -125,14 +125,14 @@ public class ModeloProducto extends Producto {
 
     public static void cargarBoxes(VistaProducto vista) {
         cargarComboBox(vista.getCbcodigoproveedor(),
-                "SELECT pr.id_proveedor, p.nombres, p.cedula  FROM persona p INNER JOIN proveedor pr ON p.cedula = pr.cedula",
+                "SELECT p.cedula, p.nombres, pr.id_proveedor FROM persona p INNER JOIN proveedor pr ON p.id_persona = pr.id_persona",
                 "Error al cargar proveedores");
         cargarComboBox(vista.getCbcategoria(), "SELECT id_categoria, nombre_categoria FROM categoria_producto",
                 "Error al cargar categorías");
     }
 
     public static void cargarComboBox(JComboBox comboBox, String sql, String errorMsg) {
-        try (Connection con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/super", "postgres", "1234");
+        try (Connection con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/superinver", "postgres", "1234");
                 PreparedStatement preparedStatement = con.prepareStatement(sql);
                 ResultSet resultSet = preparedStatement.executeQuery()) {
             System.out.println("Consulta SQL: " + sql);
@@ -155,9 +155,9 @@ public class ModeloProducto extends Producto {
 
         String sql;
         sql = "SELECT id_producto, nombre_producto, id_proveedor, descripcion_producto, cantidad_en_bodega, disponibilidad, "
-                + "id_categoria, precio_de_compra, precio_de_venta, codigo_barras FROM producto WHERE codigo_barras = '" + controladorProducto.codigoBuscar + "'";
-        ResultSet rs = cpg.consultaDB(sql);
-        try {
+                + "id_categoria, precio_de_compra, precio_de_venta, codigo_barras FROM producto WHERE codigo_barras = '"+ controladorProducto.codigoBuscar+"'";
+       ResultSet rs = cpg.consultaDB(sql);
+    try{
             while (rs.next()) {
                 Producto Miproducto = new Producto();
                 Miproducto.setId_producto(rs.getString("id_producto"));

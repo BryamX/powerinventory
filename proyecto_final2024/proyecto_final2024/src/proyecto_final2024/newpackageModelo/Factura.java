@@ -16,7 +16,6 @@ public class Factura{
     String idCliente;
     String idAdministrador;
     Date fechaFactura;
-    String numero;
     String estado;
 
     public String getIdFctura() {
@@ -49,14 +48,6 @@ public class Factura{
 
     public void setFechaFactura(Date fechaFactura) {
         this.fechaFactura = fechaFactura;
-    }
-
-    public String getNumero() {
-        return numero;
-    }
-
-    public void setNumero(String numero) {
-        this.numero = numero;
     }
 
     public String getEstado() {

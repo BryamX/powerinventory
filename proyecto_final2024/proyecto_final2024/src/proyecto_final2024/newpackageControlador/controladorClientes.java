@@ -12,21 +12,11 @@ import java.io.FileInputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import net.sf.jasperreports.engine.JRException;
-import net.sf.jasperreports.engine.JasperFillManager;
-import net.sf.jasperreports.engine.JasperPrint;
-import net.sf.jasperreports.engine.JasperReport;
-import net.sf.jasperreports.engine.util.JRLoader;
-import net.sf.jasperreports.view.JasperViewer;
 import proyecto_final2024.newpackageModelo.Cliente;
-import proyecto_final2024.newpackageModelo.Conexion;
 import proyecto_final2024.newpackageModelo.ModeloAdministrador;
 import proyecto_final2024.newpackageModelo.ModeloCliente;
 import proyecto_final2024.newpackageVista.VistaCliente;
@@ -38,7 +28,7 @@ import proyecto_final2024.newpackageVista.VistaCliente;
 public class controladorClientes {
     private VistaCliente vista;
 
-    static public String cedulaC, nombresC, apellidosC, direccionC, generoC, telefonoC, fecha_nacimientoC;
+    static public String id_perC, cedulaCC, nombresCC, apellidosCC, direccionCC, generoCC, telefonoCC, fecha_nacimientoCC;
     static public String id_cliente,frecuencia;
     static public int calificacion;
     static public String idPersonaBuscar;
@@ -51,11 +41,12 @@ public class controladorClientes {
         vista.setVisible(true);
         this.vista.setBorder(null);
         this.vista.setLocation(0, -23);
+        controlKey();
     }
 
     public void iniciaControl() {
         listarAdministrador();
-
+        vista.getTxtidPer().setText(ModeloCliente.generarCodigoPersona());
         vista.getTxtBUSCAR().addKeyListener(new KeyAdapter() {
             @Override
             public void keyReleased(KeyEvent e) {
@@ -65,7 +56,7 @@ public class controladorClientes {
                 mTabla.setRowCount(0);
                 miListaclientes.forEach(admin -> {
                     String[] rowData = {
-                        admin.getId_cliente(), admin.getCedula(), admin.getNombres(), admin.getApellidos(), admin.getDireccion(), admin.getGenero(), admin.getTelefono(), String.valueOf(admin.getFecha_nacimiento()), admin.getFecuencia(), String.valueOf(admin.getCalificacion())
+                        admin.getId_cliente(), admin.getCedula(), admin.getNombres(), admin.getApellidos(), admin.getDireccion(), admin.getGenero(), admin.getTelefono(), String.valueOf(admin.getFecha_nacimiento()), admin.getFecuencia(), String.valueOf(admin.getCalificacion()),admin.getId_person()
                     };
                     mTabla.addRow(rowData);
                 });
@@ -77,15 +68,16 @@ public class controladorClientes {
             public void mouseClicked(MouseEvent e) {
                 int i = vista.getjTableAdmin().getSelectedRow();
                 id_cliente = (vista.getjTableAdmin().getValueAt(i, 0).toString());
-                cedulaC = (vista.getjTableAdmin().getValueAt(i, 1).toString());
-                nombresC = (vista.getjTableAdmin().getValueAt(i, 2).toString());
-                apellidosC = (vista.getjTableAdmin().getValueAt(i, 3).toString());
-                direccionC = (vista.getjTableAdmin().getValueAt(i, 4).toString());
-                generoC = (vista.getjTableAdmin().getValueAt(i, 5).toString());
-                telefonoC = (vista.getjTableAdmin().getValueAt(i, 6).toString());
-                fecha_nacimientoC = (vista.getjTableAdmin().getValueAt(i, 7).toString());
+                cedulaCC = (vista.getjTableAdmin().getValueAt(i, 1).toString());
+                nombresCC = (vista.getjTableAdmin().getValueAt(i, 2).toString());
+                apellidosCC = (vista.getjTableAdmin().getValueAt(i, 3).toString());
+                direccionCC = (vista.getjTableAdmin().getValueAt(i, 4).toString());
+                generoCC = (vista.getjTableAdmin().getValueAt(i, 5).toString());
+                telefonoCC = (vista.getjTableAdmin().getValueAt(i, 6).toString());
+                fecha_nacimientoCC = (vista.getjTableAdmin().getValueAt(i, 7).toString());
                 frecuencia = (vista.getjTableAdmin().getValueAt(i, 8).toString());
                 calificacion = (Integer.valueOf( vista.getjTableAdmin().getValueAt(i, 9).toString()));
+                id_perC =(vista.getjTableAdmin().getValueAt(i, 10).toString());
             }
         });
 
@@ -95,32 +87,8 @@ public class controladorClientes {
         vista.getBtnGuardar().addActionListener(l -> grabarAdministrador());
         vista.getBtnELIMINAR().addActionListener(l -> eliminarAdmin());
         vista.getBtnSalir().addActionListener(l -> salir());
-//        vista.getBtnIMPRIMIRCLIENTE().addActionListener(l -> imprimirClientes());
 
     }
-    
-    public void imprimirClientes(){
-        try {
-            JasperReport reporteCliente = (JasperReport) JRLoader.loadObject(
-                    getClass().getResource("/reportes/reporteCliente.jasper"));
-       
-        Conexion con = new Conexion();
-        Map<String, Object> parametros = new HashMap <String, Object>();
-        parametros.put("titulo", "LISTADO DE CLIENTES" );
-        parametros.put("fecha", "30/01/2024" );
-//        parametros.put("marcar", 250d);
-        JasperPrint jp = JasperFillManager.fillReport(reporteCliente, parametros, con.getCon());
-
-        JasperViewer Jv = new JasperViewer(jp, false);
-        Jv.setVisible(true);
-        
-        } catch (JRException ex) {
-            Logger.getLogger(controladorClientes.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        
-    }
-    
 
     public void listarAdministrador() {
 
@@ -129,7 +97,7 @@ public class controladorClientes {
         mTabla.setRowCount(0);
         miListaclientes.stream().forEach(admin -> {
             String[] rowData = { admin.getId_cliente(), admin.getCedula(), admin.getNombres(), admin.getApellidos(), admin.getDireccion(), admin.getGenero(), admin.getTelefono(), String.valueOf(admin.getFecha_nacimiento()), admin.getFecuencia(), String.valueOf(admin.getCalificacion())
-                    };
+                  ,admin.getId_person()  };
             mTabla.addRow(rowData);
         });
 
@@ -151,18 +119,18 @@ public class controladorClientes {
 
     public void enviarDatos() {
         try {
-            vista.getTxtcedula().setText(cedulaC);
-            vista.getTxtnombres().setText(nombresC);
-            vista.getTxtapellidos().setText(apellidosC);
-            vista.getTxtdireccion().setText(direccionC);
-//            vista.getTxtgenero().setText(generoC);
-            vista.getTxttelefono().setText(telefonoC);
+            vista.getTxtcedula().setText(cedulaCC);
+            vista.getTxtnombres().setText(nombresCC);
+            vista.getTxtapellidos().setText(apellidosCC);
+            vista.getTxtdireccion().setText(direccionCC);
+            vista.getCmbgenero().setSelectedItem(generoCC);
+            vista.getTxttelefono().setText(telefonoCC);
             SimpleDateFormat formatoFecha = new SimpleDateFormat("yyy-MM-dd");
-            Date fechaFormat = formatoFecha.parse(fecha_nacimientoC);
+            Date fechaFormat = formatoFecha.parse(fecha_nacimientoCC);
             vista.getdtfecha().setDate(fechaFormat);
-
             vista.getTxtfrecuencia().setText(frecuencia);
             vista.getSpnCalificacion().setValue(calificacion);
+            vista.getTxtidPer().setText(id_perC);
         } catch (ParseException ex) {
             java.util.logging.Logger.getLogger(controladorAdministrador.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -176,28 +144,31 @@ public class controladorClientes {
             String nombres = vista.getTxtnombres().getText();
             String apellidos = vista.getTxtapellidos().getText();
             String direccion = vista.getTxtdireccion().getText();
-//            String genero = vista.getTxtgenero().getText();
+            String genero = vista.getCmbgenero().getSelectedItem().toString();
             String telefono = vista.getTxttelefono().getText();
             java.util.Date fehca = vista.getdtfecha().getDate();;
             long auxfecha_Nacimiento = fehca.getTime();
             java.sql.Date fecha = new java.sql.Date(auxfecha_Nacimiento);
             String freciencia = vista.getTxtfrecuencia().getText();
-            int calificacion = (int) vista.getSpnCalificacion().getValue();
+            int calificacionC = (int) vista.getSpnCalificacion().getValue();
+            id_perC = vista.getTxtidPer().getText();
 
             ModeloCliente per = new ModeloCliente();
+            per.setId_person(id_perC);
             per.setCedula(cedula);
             per.setNombres(nombres);
             per.setApellidos(apellidos);
             per.setDireccion(direccion);
-//            per.setGenero(genero);
+            per.setGenero(genero);
             per.setTelefono(telefono);
             per.setFecha_nacimiento(fecha);
             per.setFecuencia(freciencia);
-            per.setCalificacion(calificacion);
+            per.setCalificacion(calificacionC);
 
             if (per.grabarcliente()== null) {
                 JOptionPane.showMessageDialog(null, "Cliente creado con exito");
                 listarAdministrador();
+                vista.getjDialog1().dispose();
             } else {
                 JOptionPane.showMessageDialog(null, "No se pudo crear el Cliente");
             }
@@ -207,7 +178,7 @@ public class controladorClientes {
             String nombres = vista.getTxtnombres().getText();
             String apellidos = vista.getTxtapellidos().getText();
             String direccion = vista.getTxtdireccion().getText();
-//            String genero = vista.getTxtgenero().getText();
+            String genero =  vista.getCmbgenero().getSelectedItem().toString();
             String telefono = vista.getTxttelefono().getText();
             java.util.Date fehca = vista.getdtfecha().getDate();;
             long auxfecha_Nacimiento = fehca.getTime();
@@ -220,7 +191,7 @@ public class controladorClientes {
             per.setNombres(nombres);
             per.setApellidos(apellidos);
             per.setDireccion(direccion);
-//            per.setGenero(genero);
+            per.setGenero(genero);
             per.setTelefono(telefono);
             per.setFecha_nacimiento(fecha);
             per.setFecuencia(freciencia);
@@ -229,6 +200,7 @@ public class controladorClientes {
             if (per.modificarCliente()== null) {
                 JOptionPane.showMessageDialog(null, "Cliente modificado con exito");
                 listarAdministrador();
+                vista.getjDialog1().dispose();
             } else {
                 JOptionPane.showMessageDialog(null, "No se pudo modiciar al cliente");
             }
@@ -240,11 +212,12 @@ public class controladorClientes {
             vista.getTxtnombres().setText("");
             vista.getTxtapellidos().setText("");
             vista.getTxtdireccion().setText("");
-//            vista.getTxtgenero().setText("");
+            vista.getCmbgenero().setSelectedIndex(0);
             vista.getTxttelefono().setText("");
             vista.getdtfecha().setDate(null);
             vista.getTxtfrecuencia().setText("");
             vista.getSpnCalificacion().setValue(0);
+             vista.getTxtidPer().setText(ModeloAdministrador.generarCodigoPersonas());
     }
 
     public void eliminarAdmin() {
@@ -260,4 +233,40 @@ public class controladorClientes {
     public void salir(){
         vista.dispose();
     }
+    public void controlKey() {
+        vista.getTxtcedula().addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e){
+                Validar.numero(vista.getTxtcedula(), 10); 
+            }
+        });
+        vista.getTxtnombres().addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e){
+                Validar.letras_espacios(vista.getTxtnombres(), 20); 
+            }
+        });
+        vista.getTxtapellidos().addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e){
+                Validar.letras_espacios(vista.getTxtnombres(), 20); 
+            }
+        });
+        vista.getTxtdireccion().addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e){
+                Validar.letras_espacios(vista.getTxtdireccion(), 80); 
+            }
+        });
+        vista.getTxttelefono().addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e){
+                Validar.numero(vista.getTxttelefono(), 10); 
+            }
+        });
+        
+
+
+    }
+    
 }

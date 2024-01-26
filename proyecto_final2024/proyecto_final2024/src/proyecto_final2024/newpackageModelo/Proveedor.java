@@ -14,7 +14,7 @@ public class Proveedor extends Persona{
     
     private String id_proveedor;
     private String id_empresa;
-    private String cedula;
+    private String id_persona;
 
     
     public Proveedor() {
@@ -25,6 +25,7 @@ public class Proveedor extends Persona{
         super(id_persona, cedula, nombres, apellidos, direccion, genero, telefono, fecha_nacimiento);
         this.id_proveedor = id_proveedor;
         this.id_empresa = id_empresa;
+        this.id_persona = id_persona;
     }
 
     public String getId_proveedor() {
@@ -43,12 +44,12 @@ public class Proveedor extends Persona{
         this.id_empresa = id_empresa;
     }
 
-    public String getCedula() {
-        return cedula;
+    public String getid_persona() {
+        return id_persona;
     }
 
-    public void setCedula(String cedula) {
-        this.cedula = cedula;
+    public void setid_persona(String id_persona) {
+        this.id_persona = id_persona;
     }
 
     

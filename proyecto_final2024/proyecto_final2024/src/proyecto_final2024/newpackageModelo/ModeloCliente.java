@@ -27,11 +27,11 @@ public class ModeloCliente extends Cliente{
         String sql;
         String sql2;
 
-        sql = "INSERT INTO public.cliente (frecuencia, calificacion, cedula)"
-                + " VALUES ('" + getFecuencia()+ "', '" + getCalificacion()+ "', '" + getCedula() + "')";
+        sql = "INSERT INTO public.cliente (frecuencia, calificacion, id_persona)"
+                + " VALUES ('" + getFecuencia()+ "', '" + getCalificacion()+ "', '" + controladorClientes.id_perC + "')";
 
-        sql2 = "INSERT INTO public.persona (cedula, nombres, apellidos, direccion, genero, telefono, fecha_nacimiento)"
-                + " VALUES ('" + getCedula() + "', '" + getNombres() + "', '" + getApellidos() + "', '" + getDireccion() + "', '" + getGenero() + "', '" + getTelefono() + "', '" + getFecha_nacimiento() + "')";
+        sql2 = "INSERT INTO public.persona (id_persona, cedula, nombres, apellidos, direccion, genero, telefono, fecha_nacimiento)"
+                + " VALUES ('"+controladorClientes.id_perC +"', '" + getCedula() + "', '" + getNombres() + "', '" + getApellidos() + "', '" + getDireccion() + "', '" + getGenero() + "', '" + getTelefono() + "', '" + getFecha_nacimiento() + "')";
 
         cpg.accionDB(sql2);
         return cpg.accionDB(sql);
@@ -44,14 +44,14 @@ public class ModeloCliente extends Cliente{
         List<Cliente> listaAdministrador = new ArrayList<>();
 
         String sql;
-        sql = "SELECT a.id_cliente, a.frecuencia, a.calificacion,a.cedula, p.nombres,p.apellidos, p.direccion, p.genero, p.telefono,p.fecha_nacimiento FROM public.cliente a JOIN public.persona p ON a.cedula = p.cedula";
+        sql = "SELECT a.id_cliente, a.frecuencia, a.calificacion,a.id_persona,p.cedula,p.nombres,p.apellidos, p.direccion, p.genero, p.telefono,p.fecha_nacimiento FROM public.cliente a JOIN public.persona p ON a.id_persona = p.id_persona";
         ResultSet rs = cpg.consultaDB(sql);
 
         try {
             while (rs.next()) {
 
                 Cliente admin = new Cliente();
-
+                admin.setId_person(rs.getString("id_persona"));
                 admin.setId_cliente(rs.getString("id_cliente"));
                 admin.setCalificacion(rs.getInt("calificacion"));
                 admin.setFecuencia(rs.getString("frecuencia"));
@@ -81,8 +81,8 @@ public class ModeloCliente extends Cliente{
     public SQLException eliminarclientes() {
         String sql;
         String sql2;
-        sql = "DELETE FROM public.cliente where cedula = '" + controladorClientes.cedulaC + "'";
-        sql2 = "DELETE FROM public.persona where cedula = '" + controladorClientes.cedulaC + "'";
+        sql = "DELETE FROM public.cliente where id_persona = '" + controladorClientes.id_perC + "'";
+        sql2 = "DELETE FROM public.persona where id_persona = '" + controladorClientes.id_perC + "'";
         cpg.accionDB(sql);//DEVUELVO NULL SI ES CORRECTO.
         return cpg.accionDB(sql2);//DEVUELVO NULL SI ES CORRECTO.
     }
@@ -90,10 +90,10 @@ public class ModeloCliente extends Cliente{
     public SQLException modificarCliente() {
         String sql;
         String sql2;
-        sql = "UPDATE public.cliente SET frecuencia='" + getFecuencia()+ "', calificacion='" + getCalificacion()+ "' WHERE cedula ='"+controladorClientes.cedulaC+"' " ;
+        sql = "UPDATE public.cliente SET frecuencia='" + getFecuencia()+ "', calificacion='" + getCalificacion()+ "' WHERE id_persona ='"+controladorClientes.id_perC+"' " ;
         
         sql2 = "UPDATE public.persona\n" +
-"	SET  cedula='" + getCedula() + "', nombres='" + getNombres() + "', apellidos='" + getApellidos() + "', direccion='" + getDireccion() + "', genero= '" + getGenero() + "', telefono= '" + getTelefono() + "', fecha_nacimiento= '" + getFecha_nacimiento() + "' WHERE cedula ='"+controladorClientes.cedulaC+"' ";
+"	SET  cedula='" + getCedula() + "', nombres='" + getNombres() + "', apellidos='" + getApellidos() + "', direccion='" + getDireccion() + "', genero= '" + getGenero() + "', telefono= '" + getTelefono() + "', fecha_nacimiento= '" + getFecha_nacimiento() + "' WHERE id_persona ='"+controladorClientes.id_perC+"' ";
         cpg.accionDB(sql2);
         return cpg.accionDB(sql);//DEVUELVO NULL SI ES CORRECTO.
 
@@ -105,13 +105,13 @@ public class ModeloCliente extends Cliente{
         List<Cliente> listaAdmin = new ArrayList<>();
 
         String sql;
-        sql = "SELECT a.id_cliente, a.frecuencia, a.calificacion,a.cedula, p.nombres,p.apellidos, p.direccion, p.genero, p.telefono,p.fecha_nacimiento FROM public.cliente a JOIN public.persona p ON a.cedula = p.cedula WHERE a.cedula like '"+controladorClientes.cliemnteBuscar+ "%'";
+        sql = "SELECT a.id_cliente, a.frecuencia, a.calificacion,a.id_persona,p.cedula, p.nombres,p.apellidos, p.direccion, p.genero, p.telefono,p.fecha_nacimiento FROM public.cliente a JOIN public.persona p ON a.id_persona = p.id_persona WHERE p.cedula like '"+controladorClientes.cliemnteBuscar+ "%'";
         ResultSet rs = cpg.consultaDB(sql);
 
         try {
             while (rs.next()) {
                 Cliente admin = new Cliente();
-
+                admin.setId_person(rs.getString("id_persona"));
                 admin.setId_cliente(rs.getString("id_cliente"));
                 admin.setCalificacion(rs.getInt("calificacion"));
                 admin.setFecuencia(rs.getString("frecuencia"));
@@ -133,7 +133,29 @@ public class ModeloCliente extends Cliente{
             Logger.getLogger(ModeloAdministrador.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
-
     }
-
+        
+    public static String generarCodigoPersona(){
+         Conexion cpg = new Conexion();
+         
+         String sql;
+         sql = "SELECT max(id_persona)+1 as codigo FROM persona";
+         ResultSet rs = cpg.consultaDB(sql);
+        try {
+            rs.next();
+            String codigo;
+            if (rs.getString("codigo") == null) {
+                codigo = "1";
+                 System.out.println(codigo);
+            }else{
+                codigo = rs.getString("codigo");
+                System.out.println(codigo);
+            }
+            rs.close();
+            return codigo;
+        } catch (SQLException ex) {
+            Logger.getLogger(ModeloFactura.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+     }
 }

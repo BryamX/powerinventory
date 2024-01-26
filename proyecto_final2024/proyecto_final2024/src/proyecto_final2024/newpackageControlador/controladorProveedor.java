@@ -11,20 +11,10 @@ import java.awt.event.MouseEvent;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import net.sf.jasperreports.engine.JRException;
-import net.sf.jasperreports.engine.JasperFillManager;
-import net.sf.jasperreports.engine.JasperPrint;
-import net.sf.jasperreports.engine.JasperReport;
-import net.sf.jasperreports.engine.util.JRLoader;
-import net.sf.jasperreports.view.JasperViewer;
-import proyecto_final2024.newpackageModelo.Conexion;
 import proyecto_final2024.newpackageModelo.Empresa;
 import proyecto_final2024.newpackageModelo.ModeloProveedor;
 import proyecto_final2024.newpackageModelo.Proveedor;
@@ -38,7 +28,7 @@ public class controladorProveedor {
 
     VistaProveedor vista;
 
-    static public String cedulaC, nombresC, apellidosC, direccionC, generoC, telefonoC, fecha_nacimientoC;
+    static public String id_persona, nombresC, apellidosC, direccionC, generoC, telefonoC, fecha_nacimientoC,cedulaC;
     static public String empresa, idProveedor;
     static public String cedulaCienteBuscado;
 
@@ -47,9 +37,11 @@ public class controladorProveedor {
         this.vista.setVisible(true);
         this.vista.setBorder(null);
         this.vista.setLocation(0, -23);
+        controlKey();
     }
 
     public void inicarControladorCliente() {
+        vista.getTxtidPer().setText(ModeloProveedor.generarCodigoPersona());
         listaEmpresas();
         listarProveedores();
         vista.getTxtBUSCAR().addKeyListener(new KeyAdapter() {
@@ -61,7 +53,7 @@ public class controladorProveedor {
                 mTabla.setRowCount(0);
                 miListaPro.forEach(admin -> {
                     String[] rowData = {
-                        admin.getId_proveedor(), admin.getCedula(), admin.getNombres(), admin.getApellidos(), admin.getDireccion(), admin.getGenero(), admin.getTelefono(), String.valueOf(admin.getFecha_nacimiento()), admin.getId_empresa()
+                        admin.getId_proveedor(), admin.getCedula(), admin.getNombres(), admin.getApellidos(), admin.getDireccion(), admin.getGenero(), admin.getTelefono(), String.valueOf(admin.getFecha_nacimiento()), admin.getId_empresa(), admin.getid_persona()
                     };
                     mTabla.addRow(rowData);
                 });
@@ -80,6 +72,7 @@ public class controladorProveedor {
                 telefonoC = (vista.getjTableAdmin().getValueAt(i, 6).toString());
                 fecha_nacimientoC = (vista.getjTableAdmin().getValueAt(i, 7).toString());
                 empresa = (vista.getjTableAdmin().getValueAt(i, 8).toString());
+                id_persona = (vista.getjTableAdmin().getValueAt(i, 9).toString());
             }
         });
         vista.getBtnCREAR().addActionListener(l -> abrirDialogo(true));
@@ -87,33 +80,12 @@ public class controladorProveedor {
         vista.getBtnGuardar().addActionListener(l -> grabarProveedor());
         vista.getBtnELIMINAR().addActionListener(l -> eliminarPro());
         vista.getBtnSalir().addActionListener(l -> salir());
-//        vista.getBtnIMPRIMIR().addActionListener(l -> imprimirProveedor());
-    }
-    
-    public void imprimirProveedor(){
-        try {
-            JasperReport reporteProveedor = (JasperReport) JRLoader.loadObject(
-                    getClass().getResource("/reportes/reporteCliente.jasper"));
-       
-        Conexion con = new Conexion();
-        Map<String, Object> parametros = new HashMap <String, Object>();
-        parametros.put("titulo", "LISTADO DE PROVEEDORES" );
-        parametros.put("fecha", "30/01/2024" );
-//        parametros.put("marcar", 250d);
-        JasperPrint jp = JasperFillManager.fillReport(reporteProveedor, parametros, con.getCon());
-
-        JasperViewer Jv = new JasperViewer(jp, false);
-        Jv.setVisible(true);
-        
-        } catch (JRException ex) {
-            Logger.getLogger(controladorClientes.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }
 
     private void abrirDialogo(boolean nuevo) {
-//        limpiarCampos();
+        limpiar();
         if (nuevo) {
-            vista.getjDialog1().setTitle("CREAR NUEVO ADMINISTRADOR");
+            vista.getjDialog1().setTitle("CREAR NUEVO Proveedor");
         } else if (!nuevo) {
             vista.getjDialog1().setTitle("EDITAR PERSONA");
             enviarDatos();
@@ -126,12 +98,13 @@ public class controladorProveedor {
 
     public void grabarProveedor() {
 
-        if (vista.getjDialog1().getTitle().contentEquals("CREAR NUEVO ADMINISTRADOR")) {
+        if (vista.getjDialog1().getTitle().contentEquals("CREAR NUEVO Proveedor")) {
+            id_persona = vista.getTxtidPer().getText();
             String cedula = vista.getTxtcedula().getText();
             String nombres = vista.getTxtnombres().getText();
             String apellidos = vista.getTxtapellidos().getText();
             String direccion = vista.getTxtdireccion().getText();
-//            String genero = vista.getTxtgenero().getText();
+            String genero = vista.getCmbgenero().getSelectedItem().toString();
             String telefono = vista.getTxttelefono().getText();
             java.util.Date fehca = vista.getdtfecha().getDate();;
             long auxfecha_Nacimiento = fehca.getTime();
@@ -148,11 +121,12 @@ public class controladorProveedor {
             }
 
             ModeloProveedor per = new ModeloProveedor();
+            
             per.setCedula(cedula);
             per.setNombres(nombres);
             per.setApellidos(apellidos);
             per.setDireccion(direccion);
-//            per.setGenero(genero);
+            per.setGenero(genero);
             per.setTelefono(telefono);
             per.setFecha_nacimiento(fecha);
             per.setId_empresa(String.valueOf(codigo));
@@ -160,6 +134,7 @@ public class controladorProveedor {
             if (per.grabarAdministrador() == null) {
                 JOptionPane.showMessageDialog(null, "Proveedor creado con exito");
                 listarProveedores();
+                vista.getjDialog1().dispose();
             } else {
                 JOptionPane.showMessageDialog(null, "No se pudo crear al proveedor");
             }
@@ -169,9 +144,9 @@ public class controladorProveedor {
             String nombres = vista.getTxtnombres().getText();
             String apellidos = vista.getTxtapellidos().getText();
             String direccion = vista.getTxtdireccion().getText();
-//            String genero = vista.getTxtgenero().getText();
+            String genero = vista.getCmbgenero().getSelectedItem().toString();
             String telefono = vista.getTxttelefono().getText();
-            java.util.Date fehca = vista.getdtfecha().getDate();;
+            java.util.Date fehca = vista.getdtfecha().getDate();
             long auxfecha_Nacimiento = fehca.getTime();
             java.sql.Date fecha = new java.sql.Date(auxfecha_Nacimiento);
             String idEmpresa = vista.getCmbIdEmpresa().getSelectedItem().toString();
@@ -190,7 +165,7 @@ public class controladorProveedor {
             per.setNombres(nombres);
             per.setApellidos(apellidos);
             per.setDireccion(direccion);
-//            per.setGenero(genero);
+            per.setGenero(genero);
             per.setTelefono(telefono);
             per.setFecha_nacimiento(fecha);
             per.setId_empresa(String.valueOf(codigo));
@@ -198,6 +173,7 @@ public class controladorProveedor {
             if (per.modificarProveedor() == null) {
                 JOptionPane.showMessageDialog(null, "Proveedor modificado con exito");
                 listarProveedores();
+                vista.getjDialog1().dispose();
             } else {
                 JOptionPane.showMessageDialog(null, "No se pudo modificar al proveedor");
             }
@@ -211,7 +187,7 @@ public class controladorProveedor {
         mTabla = (DefaultTableModel) vista.getjTableAdmin().getModel();
         mTabla.setNumRows(0);
         miListaAdmin.stream().forEach(admin -> {
-            String[] rowData = {admin.getId_proveedor(), admin.getCedula(), admin.getNombres(), admin.getApellidos(), admin.getDireccion(), admin.getGenero(), admin.getTelefono(), String.valueOf(admin.getFecha_nacimiento()), admin.getId_empresa()};
+            String[] rowData = {admin.getId_proveedor(), admin.getCedula(), admin.getNombres(), admin.getApellidos(), admin.getDireccion(), admin.getGenero(), admin.getTelefono(), String.valueOf(admin.getFecha_nacimiento()), admin.getId_empresa(),admin.getid_persona()};
             mTabla.addRow(rowData);
         });
     }
@@ -229,12 +205,13 @@ public class controladorProveedor {
             vista.getTxtnombres().setText(nombresC);
             vista.getTxtapellidos().setText(apellidosC);
             vista.getTxtdireccion().setText(direccionC);
-//            vista.getTxtgenero().setText(generoC);
+            vista.getCmbgenero().setSelectedItem(generoC);
             vista.getTxttelefono().setText(telefonoC);
             SimpleDateFormat formatoFecha = new SimpleDateFormat("yyy-MM-dd");
             Date fechaFormat = formatoFecha.parse(fecha_nacimientoC);
             vista.getdtfecha().setDate(fechaFormat);
             vista.getCmbIdEmpresa().setSelectedItem(empresa);
+            vista.getTxtidPer().setText(id_persona);
         } catch (ParseException ex) {
             java.util.logging.Logger.getLogger(controladorAdministrador.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -244,11 +221,11 @@ public class controladorProveedor {
             vista.getTxtnombres().setText("");
             vista.getTxtapellidos().setText("");
             vista.getTxtdireccion().setText("");
-//            vista.getTxtgenero().setText("");
+            vista.getCmbgenero().setSelectedIndex(0);
             vista.getTxttelefono().setText("");
             vista.getdtfecha().setDate(null);
             vista.getCmbIdEmpresa().setSelectedItem("");
-        
+            vista.getTxtidPer().setText(ModeloProveedor.generarCodigoPersona());
     }
 
     public void eliminarPro() {
@@ -263,5 +240,40 @@ public class controladorProveedor {
     
     public void salir(){
         vista.dispose();
+    }
+     public void controlKey() {
+        vista.getTxtcedula().addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e){
+                Validar.numero(vista.getTxtcedula(), 10); 
+            }
+        });
+        vista.getTxtnombres().addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e){
+                Validar.letras_espacios(vista.getTxtnombres(), 20); 
+            }
+        });
+        vista.getTxtapellidos().addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e){
+                Validar.letras_espacios(vista.getTxtnombres(), 20); 
+            }
+        });
+        vista.getTxtdireccion().addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e){
+                Validar.letras_espacios(vista.getTxtdireccion(), 80); 
+            }
+        });
+        vista.getTxttelefono().addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e){
+                Validar.numero(vista.getTxttelefono(), 10); 
+            }
+        });
+        
+
+
     }
 }
