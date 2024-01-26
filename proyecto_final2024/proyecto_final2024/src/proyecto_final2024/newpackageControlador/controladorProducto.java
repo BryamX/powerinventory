@@ -389,11 +389,11 @@ public class controladorProducto {
     }
     
     public void imprimirProductos() {
-            Map<String, Object> parametros = new HashMap<String, Object>();
+            
             try {
                 Conexion connection = new Conexion();
                 JasperReport reporte = (JasperReport) JRLoader.loadObject(getClass().getResource("/reportes/reporteProductos.jasper"));
-                JasperPrint jp = JasperFillManager.fillReport(reporte, parametros, connection.getCon());
+                JasperPrint jp = JasperFillManager.fillReport(reporte, null, connection.getCon());
                 JasperViewer jv = new JasperViewer(jp, false);
                 jv.setVisible(true);
 
