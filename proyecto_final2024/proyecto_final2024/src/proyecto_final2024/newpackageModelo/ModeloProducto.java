@@ -125,7 +125,7 @@ public class ModeloProducto extends Producto {
 
     public static void cargarBoxes(VistaProducto vista) {
         cargarComboBox(vista.getCbcodigoproveedor(),
-                "SELECT pr.id_proveedor, p.nombres, p.cedula  FROM persona p INNER JOIN proveedor pr ON p.cedula = pr.cedula",
+                "SELECT p.cedula, p.nombres, pr.id_proveedor FROM persona p INNER JOIN proveedor pr ON p.id_persona = pr.id_persona",
                 "Error al cargar proveedores");
         cargarComboBox(vista.getCbcategoria(), "SELECT id_categoria, nombre_categoria FROM categoria_producto",
                 "Error al cargar categorías");
