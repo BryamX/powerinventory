@@ -77,8 +77,9 @@ public class controladorProducto {
     }
 
     private void abrirDialogo(boolean nuevo) {
-//        lipiar();
+        
         if (nuevo) {
+            vaciarFields();
             vista.getjDialog1().setTitle("Crear nuevo producto");
         } else if (!nuevo) {
             vista.getjDialog1().setTitle("Editar producto");
@@ -228,12 +229,41 @@ public class controladorProducto {
             vista.getTxtcodigoproducto().setText(vista.getTblproductos().getValueAt(i, 0).toString());
             vista.getTxtnombre().setText(vista.getTblproductos().getValueAt(i, 1).toString());
             vista.getCbcodigoproveedor().setSelectedItem(vista.getTblproductos().getValueAt(i, 5).toString());
+            String cedula = vista.getTblproductos().getValueAt(i, 5).toString();
+            String cedula10caracteres = cedula.substring(0, Math.min(cedula.length(), 2));
+            for (int j = 1; j < vista.getCbcodigoproveedor().getItemCount(); j++) {
+                String itemComboBox = vista.getCbcodigoproveedor().getItemAt(j).toString();
+
+                
+                String primerosDiezCaracteresComboBox = itemComboBox.substring(0, Math.min(itemComboBox.length(), 2));
+
+                
+                if (cedula10caracteres.equals(primerosDiezCaracteresComboBox)) {
+                    vista.getCbcodigoproveedor().setSelectedItem(itemComboBox);
+                    break;
+                }
+            }
             vista.getTxtdescripcion().setText(vista.getTblproductos().getValueAt(i, 2).toString());
             vista.getTxtcantidadbodega().setText(vista.getTblproductos().getValueAt(i, 3).toString());
             vista.getChbdisponibilidad().setSelected(disp);
-            vista.getCbcategoria().setSelectedItem(vista.getTblproductos().getValueAt(i, 6).toString());
+//            vista.getCbcategoria().setSelectedItem(vista.getTblproductos().getValueAt(i, 6).toString());
+            String categoria = vista.getTblproductos().getValueAt(i, 6).toString();
+            String categoriacodigo = categoria.substring(0, Math.min(categoria.length(), 1));
+            for (int j = 1; j < vista.getCbcodigoproveedor().getItemCount(); j++) {
+                String itemComboBox = vista.getCbcategoria().getItemAt(j).toString();
+
+                
+                String primerosDiezCaracteresComboBox = itemComboBox.substring(0, Math.min(itemComboBox.length(), 1));
+
+                
+                if (categoriacodigo.equals(primerosDiezCaracteresComboBox)) {
+                    vista.getCbcategoria().setSelectedItem(itemComboBox);
+                    break;
+                }
+            }
             vista.getTxtpreciocompra().setText(vista.getTblproductos().getValueAt(i, 7).toString());
             vista.getTxtprecioVenta().setText(vista.getTblproductos().getValueAt(i, 8).toString());
+            vista.getTxtcodigobarras().setText(vista.getTblproductos().getValueAt(i, 9).toString());
         } else {
             JOptionPane.showMessageDialog(null, "Primero elige una fila");
         }
