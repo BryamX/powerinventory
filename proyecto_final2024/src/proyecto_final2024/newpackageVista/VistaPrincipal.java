@@ -59,109 +59,148 @@ public class VistaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jToolBar1 = new javax.swing.JToolBar();
         btnProveedores = new javax.swing.JButton();
-        jSeparator1 = new javax.swing.JToolBar.Separator();
         btnAdmin = new javax.swing.JButton();
-        jSeparator2 = new javax.swing.JToolBar.Separator();
-        btnCliente = new javax.swing.JButton();
-        jSeparator6 = new javax.swing.JToolBar.Separator();
-        btnEmpresa = new javax.swing.JButton();
-        jSeparator3 = new javax.swing.JToolBar.Separator();
         btnProducos = new javax.swing.JButton();
-        jSeparator4 = new javax.swing.JToolBar.Separator();
-        btnCategoria = new javax.swing.JButton();
-        jSeparator5 = new javax.swing.JToolBar.Separator();
+        btnCliente = new javax.swing.JButton();
         btnFactura = new javax.swing.JButton();
+        btnCategoria = new javax.swing.JButton();
+        btnEmpresa = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jToolBar1 = new javax.swing.JToolBar();
         dktPrincipal = new javax.swing.JDesktopPane();
+        jLabel4 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnProveedores.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
+        btnProveedores.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/conexion.png"))); // NOI18N
+        btnProveedores.setText("PROVEEDOR");
+        btnProveedores.setToolTipText("Ventana de proveedores");
+        btnProveedores.setFocusable(false);
+        btnProveedores.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnProveedores.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        getContentPane().add(btnProveedores, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 60, -1, -1));
+
+        btnAdmin.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
+        btnAdmin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/blogger.png"))); // NOI18N
+        btnAdmin.setText("ADMINISTRADOR");
+        btnAdmin.setToolTipText("Ventana de administradores");
+        btnAdmin.setFocusable(false);
+        btnAdmin.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnAdmin.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnAdmin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAdminActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 60, -1, 40));
+
+        btnProducos.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
+        btnProducos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/caja.png"))); // NOI18N
+        btnProducos.setText("PRODUCTOS");
+        btnProducos.setToolTipText("Ventana de componentes de carros");
+        btnProducos.setFocusable(false);
+        btnProducos.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnProducos.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        getContentPane().add(btnProducos, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 60, -1, -1));
+
+        btnCliente.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
+        btnCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/grupo.png"))); // NOI18N
+        btnCliente.setText("CLIENTE");
+        btnCliente.setToolTipText("Ventana cliente");
+        btnCliente.setFocusable(false);
+        btnCliente.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnCliente.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        getContentPane().add(btnCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 150, 40));
+
+        btnFactura.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
+        btnFactura.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/cuenta.png"))); // NOI18N
+        btnFactura.setText("FACTURA");
+        btnFactura.setToolTipText("Crear factura");
+        btnFactura.setFocusable(false);
+        btnFactura.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnFactura.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        getContentPane().add(btnFactura, new org.netbeans.lib.awtextra.AbsoluteConstraints(1120, 60, -1, -1));
+
+        btnCategoria.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
+        btnCategoria.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/carpeta.png"))); // NOI18N
+        btnCategoria.setText("CATEGORIA");
+        btnCategoria.setToolTipText("Ventana de categoria");
+        btnCategoria.setFocusable(false);
+        btnCategoria.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnCategoria.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        getContentPane().add(btnCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 60, 170, 40));
+
+        btnEmpresa.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
+        btnEmpresa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/edificio.png"))); // NOI18N
+        btnEmpresa.setText("EMPRESAS");
+        btnEmpresa.setToolTipText("Ventana de empresas");
+        btnEmpresa.setFocusable(false);
+        btnEmpresa.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnEmpresa.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        getContentPane().add(btnEmpresa, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 60, -1, 40));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/WhatsApp Image 2024-01-21 at 9.48.54 PM.jpeg"))); // NOI18N
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1310, 20, -1, -1));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/fondo2.jpeg"))); // NOI18N
+        jLabel1.setText("jLabel1");
+        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1430, 130));
 
         jToolBar1.setBackground(new java.awt.Color(255, 255, 51));
         jToolBar1.setRollover(true);
+        getContentPane().add(jToolBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1430, 130));
 
-        btnProveedores.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-proveedor-40.png"))); // NOI18N
-        btnProveedores.setToolTipText("Ventana de proveedores");
-        btnProveedores.setFocusable(false);
-        btnProveedores.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnProveedores.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(btnProveedores);
-        jToolBar1.add(jSeparator1);
+        dktPrincipal.setBackground(new java.awt.Color(255, 255, 255));
+        dktPrincipal.setPreferredSize(new java.awt.Dimension(1462, 1462));
 
-        btnAdmin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-administrador-del-hombre-40.png"))); // NOI18N
-        btnAdmin.setToolTipText("Ventana de administradores");
-        btnAdmin.setFocusable(false);
-        btnAdmin.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnAdmin.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(btnAdmin);
-        jToolBar1.add(jSeparator2);
+        jLabel4.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/WhatsApp Image 2024-01-21 at 10.41.50 PM.jpeg"))); // NOI18N
 
-        btnCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-cliente-40.png"))); // NOI18N
-        btnCliente.setToolTipText("Ventana cliente");
-        btnCliente.setFocusable(false);
-        btnCliente.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnCliente.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(btnCliente);
-        jToolBar1.add(jSeparator6);
-
-        btnEmpresa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-empresa-40.png"))); // NOI18N
-        btnEmpresa.setToolTipText("Ventana de empresas");
-        btnEmpresa.setFocusable(false);
-        btnEmpresa.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnEmpresa.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(btnEmpresa);
-        jToolBar1.add(jSeparator3);
-
-        btnProducos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-carros-40.png"))); // NOI18N
-        btnProducos.setToolTipText("Ventana de componentes de carros");
-        btnProducos.setFocusable(false);
-        btnProducos.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnProducos.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(btnProducos);
-        jToolBar1.add(jSeparator4);
-
-        btnCategoria.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-lista-40.png"))); // NOI18N
-        btnCategoria.setToolTipText("Ventana de categoria");
-        btnCategoria.setFocusable(false);
-        btnCategoria.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnCategoria.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(btnCategoria);
-        jToolBar1.add(jSeparator5);
-
-        btnFactura.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-factura-40.png"))); // NOI18N
-        btnFactura.setToolTipText("Crear factura");
-        btnFactura.setFocusable(false);
-        btnFactura.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnFactura.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(btnFactura);
+        dktPrincipal.setLayer(jLabel4, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout dktPrincipalLayout = new javax.swing.GroupLayout(dktPrincipal);
         dktPrincipal.setLayout(dktPrincipalLayout);
         dktPrincipalLayout.setHorizontalGroup(
             dktPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dktPrincipalLayout.createSequentialGroup()
+                .addContainerGap(448, Short.MAX_VALUE)
+                .addComponent(jLabel4)
+                .addGap(454, 454, 454))
         );
         dktPrincipalLayout.setVerticalGroup(
             dktPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 520, Short.MAX_VALUE)
+            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE)
         );
 
+        getContentPane().add(dktPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 1430, 430));
+
         jPanel2.setBackground(new java.awt.Color(255, 255, 51));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/fondo2.jpeg"))); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 1430, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 55, Short.MAX_VALUE)
+            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 53, Short.MAX_VALUE)
         );
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 560, 1430, 50));
 
         jMenu1.setText("File");
         jMenuBar1.add(jMenu1);
@@ -171,26 +210,12 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
         setJMenuBar(jMenuBar1);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jToolBar1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1462, Short.MAX_VALUE)
-            .addComponent(dktPrincipal, javax.swing.GroupLayout.Alignment.TRAILING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(2, 2, 2)
-                .addComponent(dktPrincipal)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdminActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAdminActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -202,16 +227,14 @@ public class VistaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnProducos;
     private javax.swing.JButton btnProveedores;
     private javax.swing.JDesktopPane dktPrincipal;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JToolBar.Separator jSeparator1;
-    private javax.swing.JToolBar.Separator jSeparator2;
-    private javax.swing.JToolBar.Separator jSeparator3;
-    private javax.swing.JToolBar.Separator jSeparator4;
-    private javax.swing.JToolBar.Separator jSeparator5;
-    private javax.swing.JToolBar.Separator jSeparator6;
     private javax.swing.JToolBar jToolBar1;
     // End of variables declaration//GEN-END:variables
 }

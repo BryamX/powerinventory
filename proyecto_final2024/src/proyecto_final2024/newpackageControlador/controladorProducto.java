@@ -23,6 +23,8 @@ import proyecto_final2024.newpackageVista.VistaProducto;
  *///
 public class controladorProducto {
 
+    private volatile boolean isRunning = true;
+
     private VistaProducto vista;
     static public String id_categ;
     static public String codigoBuscar;
@@ -154,7 +156,7 @@ public class controladorProducto {
             producto.setId_categoria(id_categoria);
             producto.setPrecio_de_compra(Float.valueOf(precio_de_compra));
             producto.setPrecio_de_venta(Float.valueOf(precio_de_venta));
-             producto.setCodigo_barras(codigoBarras);
+            producto.setCodigo_barras(codigoBarras);
 
             if (producto.modificarProducto() == null) {
                 JOptionPane.showMessageDialog(vista, "Producto modificado exitosamente");
@@ -258,86 +260,91 @@ public class controladorProducto {
         mTabla.setNumRows(0);//limpio la tabla
         listap.stream().forEach(pro -> {
             String[] rowData = {pro.getId_producto(), pro.getNombre_producto(), pro.getDescripcion_producto(), String.valueOf(pro.getCantidad_en_bodega()), pro.getDisponibilidad(), pro.getId_proveedor(),
-                pro.getId_categoria(), String.valueOf(pro.getPrecio_de_compra()), String.valueOf(pro.getPrecio_de_venta()),pro.getCodigo_barras()};
+                pro.getId_categoria(), String.valueOf(pro.getPrecio_de_compra()), String.valueOf(pro.getPrecio_de_venta()), pro.getCodigo_barras()};
             mTabla.addRow(rowData);
         });
     }
-    
-    public void leercodigodeBarras(Boolean activo) {
-        if (activo == true) {
-            vaciarFields();
-            new Thread(() -> {
-            try {
-                System.out.println("entro");
-                ssk = new ServerSocket(8000);
 
-                while (true) {
-                    s = ssk.accept();
-                    isr = new InputStreamReader(s.getInputStream());
-                    br = new BufferedReader(isr);
-                    mensaje = br.readLine();
-
-                    System.out.println(mensaje);
-                    if (vista.getTxtBUSCAR().getText().equals("")) {
-                        vista.getTxtBUSCAR().setText(mensaje);
-                        codigoBuscar = vista.getTxtBUSCAR().getText();
-                    } else if(!vista.getTxtBUSCAR().getText().equals("")){
-                        vista.getTxtBUSCAR().setText("");
-                        vista.getTxtBUSCAR().setText(mensaje);
-                        codigoBuscar = vista.getTxtBUSCAR().getText();
-                    }
-                    if(vista.getjDialog1().getTitle().contentEquals("Editar producto")) {
-                         vista.getTxtcodigobarras().setText(mensaje);
-                    }else if (vista.getjDialog1().getTitle().contentEquals("Crear nuevo producto")) {
-                        vista.getTxtcodigobarras().setText(mensaje);
-                    }
-                    System.out.println("salio");
-                }
-
-            } catch (IOException e) {
-                Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, e);
-            }
-        }).start();
+    public void salir() {
+        try {
+            ssk.close();
+        } catch (IOException ex) {
+            ex.toString();
         }
-    }
-    
-    public void salir(){
         leercodigodeBarras(false);
         vista.dispose();
     }
-     public void controlKey() {
+
+    public void controlKey() {
         vista.getTxtnombre().addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                Validar.letras(vista.getTxtnombre(), 15); 
+            public void keyPressed(KeyEvent e) {
+                Validar.letras(vista.getTxtnombre(), 15);
             }
         });
-//         vista.getTxtdescripcion().addKeyListener(new KeyAdapter() {
+//        vista.getTxtdescripcion().addKeyListener(new KeyAdapter() {
 //            @Override
-//            public void keyPressed(KeyEvent e){
-//                Validar.letras(vista.getTxtdescripcion(), 15); 
+//            public void keyPressed(KeyEvent e) {
+//                Validar.letras(vista.getTxtdescripcion(), 15);
 //            }
 //        });
-          vista.getTxtpreciocompra().addKeyListener(new KeyAdapter() {
+        vista.getTxtpreciocompra().addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                Validar.dinero(vista.getTxtpreciocompra(), 15); 
+            public void keyPressed(KeyEvent e) {
+                Validar.dinero(vista.getTxtpreciocompra(), 15);
             }
         });
-           vista.getTxtprecioVenta().addKeyListener(new KeyAdapter() {
+        vista.getTxtprecioVenta().addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                Validar.dinero(vista.getTxtprecioVenta(), 15); 
+            public void keyPressed(KeyEvent e) {
+                Validar.dinero(vista.getTxtprecioVenta(), 15);
             }
         });
-            vista.getTxtcantidadbodega().addKeyListener(new KeyAdapter() {
+        vista.getTxtcantidadbodega().addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                Validar.numero(vista.getTxtcantidadbodega(), 15); 
+            public void keyPressed(KeyEvent e) {
+                Validar.numero(vista.getTxtcantidadbodega(), 15);
             }
         });
-
-
-
     }
+
+    public void leercodigodeBarras(Boolean activo) {
+        if (activo == true) {
+//            vaciarFields();
+            new Thread(() -> {
+                try {
+                    System.out.println("entro");
+                    ssk = new ServerSocket(8000);
+
+                    while (isRunning) {
+                        System.out.println("Hilo corriendo");
+                        s = ssk.accept();
+                        isr = new InputStreamReader(s.getInputStream());
+                        br = new BufferedReader(isr);
+                        mensaje = br.readLine();
+
+                        System.out.println(mensaje);
+                        if (vista.getTxtBUSCAR().getText().equals("")) {
+                            vista.getTxtBUSCAR().setText(mensaje);
+                            codigoBuscar = vista.getTxtBUSCAR().getText();
+                        } else if (!vista.getTxtBUSCAR().getText().equals("")) {
+                            vista.getTxtBUSCAR().setText("");
+                            vista.getTxtBUSCAR().setText(mensaje);
+                            codigoBuscar = vista.getTxtBUSCAR().getText();
+                        }
+                        if (vista.getjDialog1().getTitle().contentEquals("Editar producto")) {
+                            vista.getTxtcodigobarras().setText(mensaje);
+                        } else if (vista.getjDialog1().getTitle().contentEquals("Crear nuevo producto")) {
+                            vista.getTxtcodigobarras().setText(mensaje);
+                        }
+                        System.out.println("salio");
+                    }
+
+                } catch (IOException e) {
+                    Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, e);
+                }
+            }).start();
+        }
+    }
+
 }

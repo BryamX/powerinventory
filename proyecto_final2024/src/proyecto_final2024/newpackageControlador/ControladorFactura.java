@@ -514,6 +514,11 @@ public class ControladorFactura {
     }
 
     public void salir() {
+        try {
+            ssk.close();
+        } catch (IOException ex) {
+            Logger.getLogger(ControladorFactura.class.getName()).log(Level.SEVERE, null, ex);
+        }
         vista.dispose();
     }
 }
