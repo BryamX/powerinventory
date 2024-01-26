@@ -333,5 +333,6 @@ public class controladorProducto {
     public void salir(){
         leercodigodeBarras(false);
         vista.dispose();
+        System.out.println("");
     }
 }
