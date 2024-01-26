@@ -389,18 +389,10 @@ public class controladorProducto {
     }
     
     public void imprimirProductos() {
-        String titulo = JOptionPane.showInputDialog("Ingresa el título:");
-
-        // Verificar si el usuario ingresó algo
-        if (titulo != null) {
             Map<String, Object> parametros = new HashMap<String, Object>();
             try {
                 Conexion connection = new Conexion();
                 JasperReport reporte = (JasperReport) JRLoader.loadObject(getClass().getResource("/reportes/reporteProductos.jasper"));
-
-                /// condicionales
-                parametros.put("titulo", titulo); ///// NO PUEDE ESTAR QUEMADO EL TITULO
-
                 JasperPrint jp = JasperFillManager.fillReport(reporte, parametros, connection.getCon());
                 JasperViewer jv = new JasperViewer(jp, false);
                 jv.setVisible(true);
@@ -408,8 +400,6 @@ public class controladorProducto {
             } catch (JRException ex) {
                 Logger.getLogger(controladorProducto.class.getName()).log(Level.SEVERE, null, ex);
             }
-        } else {
-        }
     }
 
 }
