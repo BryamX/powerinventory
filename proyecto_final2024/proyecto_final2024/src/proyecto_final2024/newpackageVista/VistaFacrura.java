@@ -378,7 +378,7 @@ public class VistaFacrura extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "Codigo", "Numero", "Fecha", "Estado", "Codigo cliente", "nombre", "apellido", "cedula"
+                "Codigo", "Fecha", "Estado", "Codigo cliente", "nombre", "apellido", "cedula"
             }
         ));
         jScrollPane4.setViewportView(tbFacturabuscada);

@@ -143,6 +143,8 @@ public class VistaProveedor extends javax.swing.JInternalFrame {
 
         jLabel14.setText("CEDULA:");
         jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 110, -1));
+
+        txtidPer.setEnabled(false);
         jPanel1.add(txtidPer, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 10, 220, -1));
 
         cmbgenero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "Masculino", "Femenino" }));

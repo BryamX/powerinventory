@@ -281,7 +281,7 @@ public class ModeloFactura extends Factura {
        String sql="";
          Integer cantidadProductos = ControladorFactura.cantidadProductos;
          for (int i = 0; i < cantidadProductos; i++) {
-             sql = "UPDATE public.producto SET  cantidad_en_bodega= cantidad_en_bodega -'" + ControladorFactura.cantidadProductosV+ "' where codigo_barras = '" + ControladorFactura.idproductoV + "'";
+             sql = "UPDATE public.producto SET  cantidad_en_bodega= cantidad_en_bodega +'" + ControladorFactura.cantidadProductosV+ "' where codigo_barras = '" + ControladorFactura.idproductoV + "'";
          }
         return cpg.accionDB(sql);
      }
@@ -377,4 +377,11 @@ public class ModeloFactura extends Factura {
             return null;
         }
     }
+     
+      public SQLException anularfac() {
+        String sql;
+        sql = "UPDATE public.factura SET fac_estado='Anulado' WHERE idfactura ='" + ControladorFactura.idFactura + "' ";
+        return cpg.accionDB(sql);//DEVUELVO NULL SI ES CORRECTO.
+    }
+     
 }

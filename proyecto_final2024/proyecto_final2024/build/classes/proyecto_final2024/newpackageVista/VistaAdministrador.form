@@ -306,6 +306,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtid_persona">
+              <Properties>
+                <Property name="enabled" type="boolean" value="false"/>
+              </Properties>
             </Component>
           </SubComponents>
         </Container>
