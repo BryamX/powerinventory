@@ -589,7 +589,7 @@ public class VistaFacrura extends javax.swing.JInternalFrame {
         jPanel3.add(btnanadir, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 20, -1, -1));
 
         quitar.setText("-");
-        jPanel3.add(quitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 20, -1, -1));
+        jPanel3.add(quitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 20, -1, -1));
 
         tbdetallefactura.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

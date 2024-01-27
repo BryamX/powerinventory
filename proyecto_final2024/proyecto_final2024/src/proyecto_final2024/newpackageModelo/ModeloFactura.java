@@ -11,12 +11,13 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import static proyecto_final2024.newpackageControlador.ControladorFactura.cedigo;
 import proyecto_final2024.newpackageControlador.controladorClientes;
 
 public class ModeloFactura extends Factura {
 
     Conexion cpg = new Conexion();
-    
+
     static public String nombre, codigobarras;
     static public String idAdminMandar, usuarioAdminMandar;
     static public float precio;
@@ -45,7 +46,6 @@ public class ModeloFactura extends Factura {
                 admin.setGenero(rs.getString("genero"));
                 admin.setTelefono(rs.getString("telefono"));
                 admin.setFecha_nacimiento(rs.getDate("fecha_nacimiento"));
-                
 
                 listaAdministrador.add(admin);
 
@@ -60,14 +60,14 @@ public class ModeloFactura extends Factura {
         }
 
     }
-    
-   public static List<Cliente> clienteBuscado() {
+
+    public static List<Cliente> clienteBuscado() {
 
         Conexion cpg = new Conexion();
         List<Cliente> listaAdmin = new ArrayList<>();
 
         String sql;
-        sql = "SELECT a.id_cliente, a.frecuencia, a.calificacion,a.id_persona,p.cedula, p.nombres,p.apellidos, p.direccion, p.genero, p.telefono,p.fecha_nacimiento FROM public.cliente a JOIN public.persona p ON a.id_persona = p.id_persona WHERE p.cedula like '"+controladorClientes.cliemnteBuscar+ "%'";
+        sql = "SELECT a.id_cliente, a.frecuencia, a.calificacion,a.id_persona,p.cedula, p.nombres,p.apellidos, p.direccion, p.genero, p.telefono,p.fecha_nacimiento FROM public.cliente a JOIN public.persona p ON a.id_persona = p.id_persona WHERE p.cedula like '" + controladorClientes.cliemnteBuscar + "%'";
         ResultSet rs = cpg.consultaDB(sql);
 
         try {
@@ -84,7 +84,7 @@ public class ModeloFactura extends Factura {
                 admin.setGenero(rs.getString("genero"));
                 admin.setTelefono(rs.getString("telefono"));
                 admin.setFecha_nacimiento(rs.getDate("fecha_nacimiento"));
-                
+
                 listaAdmin.add(admin);
 
             }
@@ -236,26 +236,26 @@ public class ModeloFactura extends Factura {
         String sql;
         sql = "INSERT INTO public.factura(\n"
                 + "idfactura, id_administrador, fecha_factura, fac_estado,id_cliente)\n"
-                + "	VALUES ( '" + getIdFctura()+ "', '" + getIdAdministrador()+ "', '" + getFechaFactura()+ "', '" + getEstado()+ "','" + getIdCliente()+ "')";
+                + "	VALUES ( '" + getIdFctura() + "', '" + getIdAdministrador() + "', '" + getFechaFactura() + "', '" + getEstado() + "','" + getIdCliente() + "')";
         return cpg.accionDB(sql);
     }
-    
-     public SQLException grabarDetalleFacura() {
+
+    public SQLException grabarDetalleFacura() {
         String sql = "";
-        
+
         Integer cantidadProductos = ControladorFactura.cantidadProductos;
-         for (int i = 0; i < cantidadProductos; i++) {
-             sql = "INSERT INTO public.detallefactura(id_productos, cantidad, precio,id_factura) VALUES ('" + ControladorFactura.idproductoV+ "', '" + ControladorFactura.cantidadProductosV+ "','" + ControladorFactura.precioproductosV+ "', '" + ControladorFactura.idFactura+ "')";
-         }
+        for (int i = 0; i < cantidadProductos; i++) {
+            sql = "INSERT INTO public.detallefactura(id_productos, cantidad, precio,id_factura) VALUES ('" + ControladorFactura.idproductoV + "', '" + ControladorFactura.cantidadProductosV + "','" + ControladorFactura.precioproductosV + "', '" + ControladorFactura.idFactura + "')";
+        }
         return cpg.accionDB(sql);
     }
-     
-     public static String generarCodigoFacrura(){
-         Conexion cpg = new Conexion();
-         
-         String sql;
-         sql = "SELECT max(idfactura)+1 as codigo FROM factura";
-         ResultSet rs = cpg.consultaDB(sql);
+
+    public static String generarCodigoFacrura() {
+        Conexion cpg = new Conexion();
+
+        String sql;
+        sql = "SELECT max(idfactura)+1 as codigo FROM factura";
+        ResultSet rs = cpg.consultaDB(sql);
         try {
             rs.next();
             String codigoFactura = rs.getString("codigo");
@@ -266,36 +266,36 @@ public class ModeloFactura extends Factura {
             Logger.getLogger(ModeloFactura.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
-     }
-     
-     public SQLException decontarStock(){
-       String sql="";
-         Integer cantidadProductos = ControladorFactura.cantidadProductos;
-         for (int i = 0; i < cantidadProductos; i++) {
-             sql = "UPDATE public.producto SET  cantidad_en_bodega= cantidad_en_bodega -'" + ControladorFactura.cantidadProductosV+ "' where codigo_barras = '" + ControladorFactura.idproductoV + "'";
-         }
+    }
+
+    public SQLException decontarStock() {
+        String sql = "";
+        Integer cantidadProductos = ControladorFactura.cantidadProductos;
+        for (int i = 0; i < cantidadProductos; i++) {
+            sql = "UPDATE public.producto SET  cantidad_en_bodega= cantidad_en_bodega -'" + ControladorFactura.cantidadProductosV + "' where codigo_barras = '" + ControladorFactura.idproductoV + "'";
+        }
         return cpg.accionDB(sql);
-     }
-     
-     public SQLException aumentarStock(){
-       String sql="";
-         Integer cantidadProductos = ControladorFactura.cantidadProductos;
-         for (int i = 0; i < cantidadProductos; i++) {
-             sql = "UPDATE public.producto SET  cantidad_en_bodega= cantidad_en_bodega +'" + ControladorFactura.cantidadProductosV+ "' where codigo_barras = '" + ControladorFactura.idproductoV + "'";
-         }
+    }
+
+    public SQLException aumentarStock() {
+        String sql = "";
+        Integer cantidadProductos = ControladorFactura.cantidadProductos;
+        for (int i = 0; i < cantidadProductos; i++) {
+            sql = "UPDATE public.producto SET  cantidad_en_bodega= cantidad_en_bodega +'" + ControladorFactura.cantidadProductosV + "' where codigo_barras = '" + ControladorFactura.idproductoV + "'";
+        }
         return cpg.accionDB(sql);
-     }
-     
-     public static List<buscadorFacturas> Buscarfacturas() {
+    }
+
+    public static List<buscadorFacturas> Buscarfacturas() {
         Conexion cpg = new Conexion();
         List<buscadorFacturas> listaFacturas = new ArrayList<>();
 
         String sql;
-        sql = "SELECT f.idfactura, f.fecha_factura, f.fac_estado, c.id_cliente, p.nombres, p.apellidos, p.cedula\n" +
-               "FROM cliente c\n" +
-               "JOIN persona p ON c.id_persona = p.id_persona\n" +
-               "JOIN factura f ON c.id_cliente = f.id_cliente\n" +
-               "WHERE f.fecha_factura BETWEEN '"+ControladorFactura.fechadesdeEnviar+"' and '"+ControladorFactura.fechahastaEnviar+"'";
+        sql = "SELECT f.idfactura, f.fecha_factura, f.fac_estado, c.id_cliente, p.nombres, p.apellidos, p.cedula\n"
+                + "FROM cliente c\n"
+                + "JOIN persona p ON c.id_persona = p.id_persona\n"
+                + "JOIN factura f ON c.id_cliente = f.id_cliente\n"
+                + "WHERE f.fecha_factura BETWEEN '" + ControladorFactura.fechadesdeEnviar + "' and '" + ControladorFactura.fechahastaEnviar + "'";
         ResultSet rs = cpg.consultaDB(sql);
         try {
             while (rs.next()) {
@@ -315,16 +315,16 @@ public class ModeloFactura extends Factura {
             return null;
         }
     }
-     
-      public static List<buscadorFacturas> listafacturas() {
+
+    public static List<buscadorFacturas> listafacturas() {
         Conexion cpg = new Conexion();
         List<buscadorFacturas> listaFacturas = new ArrayList<>();
 
         String sql;
-        sql = "SELECT f.idfactura, f.fecha_factura, f.fac_estado, c.id_cliente, p.nombres, p.apellidos, p.cedula\n" +
-               "FROM cliente c\n" +
-               "JOIN persona p ON c.id_persona = p.id_persona\n" +
-               "JOIN factura f ON c.id_cliente = f.id_cliente";
+        sql = "SELECT f.idfactura, f.fecha_factura, f.fac_estado, c.id_cliente, p.nombres, p.apellidos, p.cedula\n"
+                + "FROM cliente c\n"
+                + "JOIN persona p ON c.id_persona = p.id_persona\n"
+                + "JOIN factura f ON c.id_cliente = f.id_cliente";
         ResultSet rs = cpg.consultaDB(sql);
         try {
             while (rs.next()) {
@@ -344,18 +344,18 @@ public class ModeloFactura extends Factura {
             return null;
         }
     }
-     
-     public static List<cargarDetalledeFactura> cargarDetalle() {
+
+    public static List<cargarDetalledeFactura> cargarDetalle() {
         Conexion cpg = new Conexion();
         List<cargarDetalledeFactura> listadetalle = new ArrayList<>();
 
         String sql;
-        sql = "SELECT DISTINCT p.codigo_barras, p.nombre_producto, d.precio, d.cantidad, f.id_administrador, a.usuario\n" +
-              "FROM detallefactura d\n" +
-              "JOIN factura f on d.id_factura = d.id_factura\n" +
-              "JOIN administrador a on a.id_administrador = f.id_administrador\n" +
-              "JOIN producto p ON p.codigo_barras = CAST(d.id_productos AS VARCHAR)\n" +
-              "WHERE d.id_factura = '"+ControladorFactura.id_factutaBuscada+"'";
+        sql = "SELECT DISTINCT p.codigo_barras, p.nombre_producto, d.precio, d.cantidad, f.id_administrador, a.usuario\n"
+                + "FROM detallefactura d\n"
+                + "JOIN factura f on d.id_factura = d.id_factura\n"
+                + "JOIN administrador a on a.id_administrador = f.id_administrador\n"
+                + "JOIN producto p ON p.codigo_barras = CAST(d.id_productos AS VARCHAR)\n"
+                + "WHERE d.id_factura = '" + ControladorFactura.id_factutaBuscada + "'";
         ResultSet rs = cpg.consultaDB(sql);
 
         try {
@@ -377,19 +377,19 @@ public class ModeloFactura extends Factura {
             return null;
         }
     }
-     
-      public SQLException anularfac() {
+
+    public SQLException anularfac() {
         String sql;
         sql = "UPDATE public.factura SET fac_estado='Anulado' WHERE idfactura ='" + ControladorFactura.idFactura + "' ";
         return cpg.accionDB(sql);//DEVUELVO NULL SI ES CORRECTO.
     }
-     
-      public static int obtenercantidad(){
-         Conexion cpg = new Conexion();
-         
-         String sql;
-         sql = "SELECT cantidad_en_bodega FROM producto where codigo_barras = '"+ControladorFactura.cantidadBuscadaPorCodigoBarras+"'";
-         ResultSet rs = cpg.consultaDB(sql);
+
+    public static int obtenercantidad() {
+        Conexion cpg = new Conexion();
+
+        String sql;
+        sql = "SELECT cantidad_en_bodega FROM producto where codigo_barras = '" + ControladorFactura.cantidadBuscadaPorCodigoBarras + "'";
+        ResultSet rs = cpg.consultaDB(sql);
         try {
             rs.next();
             int codigoFactura = Integer.parseInt(rs.getString("cantidad_en_bodega"));
@@ -400,5 +400,35 @@ public class ModeloFactura extends Factura {
             Logger.getLogger(ModeloFactura.class.getName()).log(Level.SEVERE, null, ex);
         }
         return -1;
-     }
+    }
+
+    public SQLException aumentarCalificacion() {
+        String sql = "";
+        sql = "UPDATE public.cliente SET  calificacion= calificacion +'1' where id_cliente = '" + ControladorFactura.cedigo + "'";
+        return cpg.accionDB(sql);
+    }
+    
+    public static int obtenerCalificacion() {
+        Conexion cpg = new Conexion();
+
+        String sql;
+        sql = "SELECT calificacion FROM cliente where id_cliente = '" + ControladorFactura.cedigo + "'";
+        ResultSet rs = cpg.consultaDB(sql);
+        try {
+            rs.next();
+            int codigoFactura = Integer.parseInt(rs.getString("calificacion"));
+            System.out.println(codigoFactura);
+            rs.close();
+            return codigoFactura;
+        } catch (SQLException ex) {
+            Logger.getLogger(ModeloFactura.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return -1;
+    }
+    
+    public SQLException aumentarFrecuencia() {
+        String sql = "";
+        sql = "UPDATE public.cliente SET  frecuencia= '"+ControladorFactura.subirFrecuencia()+"'where id_cliente = '" + ControladorFactura.cedigo + "'";
+        return cpg.accionDB(sql);
+    }
 }

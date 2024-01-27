@@ -111,6 +111,12 @@ public class ControladorFactura {
         vista.getBtnanular().setEnabled(true);
         vista.getBtnguardar().setEnabled(true);
         vista.getBtnbuscarcliente().setEnabled(true);
+        vista.getBtnAbrirProductos().setEnabled(true);
+        vista.getDtFecha().setEnabled(true);
+        vista.getTxtcodigoproducto().setEnabled(true);
+        vista.getTxtcantidadproducto().setEnabled(true);
+        vista.getBtnanadir().setEnabled(true);
+        vista.getQuitar().setEnabled(true);
         vista.getTxtcodigoFactura().setText(ModeloFactura.generarCodigoFacrura());
         vista.getTxtnombreAdmin().setText(ControladorLogin.usuariosaux);
         vista.getTxtcodigoAdmin().setText(ControladorLogin.id);
@@ -130,6 +136,13 @@ public class ControladorFactura {
         vista.getBtnNuevo().setEnabled(true);
         vista.getBtnguardar().setEnabled(false);
         vista.getBtnbuscarcliente().setEnabled(false);
+        vista.getBtnAbrirProductos().setEnabled(false);
+        vista.getDtFecha().setEnabled(false);
+        vista.getTxtcodigoproducto().setEnabled(false);
+        vista.getTxtcantidadproducto().setEnabled(false);
+        vista.getBtnanadir().setEnabled(false);
+        vista.getQuitar().setEnabled(false);
+
         vista.getjDialogFacturas().setSize(877, 400);
         vista.getjDialogFacturas().setVisible(true);
         vista.getjDialogFacturas().setLocationRelativeTo(null);
@@ -341,7 +354,7 @@ public class ControladorFactura {
     //Añade los productos a la tabla del detalle de la factura
     public void añadirProductos() {
         cantidadBuscadaPorCodigoBarras = vista.getTxtcodigoproducto().getText();
-        
+
         if (ModeloFactura.obtenercantidad() < Integer.parseInt(vista.getTxtcantidadproducto().getText())) {
             JOptionPane.showMessageDialog(null, "Productos insuficiente en stock");
             System.out.println("normal");
@@ -403,6 +416,12 @@ public class ControladorFactura {
                 || vista.getDtFecha().getDate() == null || vista.getLblEstado().getText().equals("") || vista.getTbdetallefactura().getRowCount() == 0) {
             JOptionPane.showMessageDialog(null, "Ingrese todos los campos de la factura");
         } else {
+            vista.getBtnAbrirProductos().setEnabled(false);
+            vista.getDtFecha().setEnabled(false);
+            vista.getTxtcodigoproducto().setEnabled(false);
+            vista.getTxtcantidadproducto().setEnabled(false);
+            vista.getBtnanadir().setEnabled(false);
+            vista.getQuitar().setEnabled(false);
             vista.getBtnanular().setEnabled(true);
             vista.getLblEstado().setText("ACTIVA");
             vista.getBtnguardar().setEnabled(false);
@@ -426,6 +445,7 @@ public class ControladorFactura {
                 JOptionPane.showMessageDialog(null, "Cabezera creada con exito");
                 guardarDetalleFactura();
                 descontarSto();
+                aumentarCalificacion();
             } else {
                 JOptionPane.showMessageDialog(null, "No se pudo crear la cabezera");
             }
@@ -577,6 +597,27 @@ public class ControladorFactura {
             } else {
                 System.out.println("Error, el stock no se ha anumentado");
             }
+        }
+    }
+
+    public void aumentarCalificacion() {
+        ModeloFactura fac = new ModeloFactura();
+        if (fac.aumentarCalificacion() == null) {
+            System.out.println("La calificacion ha aumentado");
+            if (fac.aumentarFrecuencia() == null) {
+                System.out.println("Frecuencia actualizada");
+            }
+        }
+    }
+
+    public static String subirFrecuencia() {
+
+        if (ModeloFactura.obtenerCalificacion() <= 5) {
+            return "baja";
+        } else if (ModeloFactura.obtenerCalificacion() <= 10) {
+            return "media";
+        } else {
+            return "alta";
         }
     }
 }
