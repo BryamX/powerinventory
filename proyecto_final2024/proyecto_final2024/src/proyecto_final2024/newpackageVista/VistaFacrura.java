@@ -119,6 +119,10 @@ public class VistaFacrura extends javax.swing.JInternalFrame {
         return btnNuevo;
     }
 
+    public JTextField getTxtsubtotal() {
+        return txtsubtotal;
+    }
+
     public JDateChooser getFechaDesde() {
         return fechaDesde;
     }
@@ -258,6 +262,8 @@ public class VistaFacrura extends javax.swing.JInternalFrame {
         btnAbrirProductos = new javax.swing.JButton();
         btncancelar = new javax.swing.JButton();
         btnNuevo = new javax.swing.JButton();
+        txtsubtotal = new javax.swing.JTextField();
+        jLabel18 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -610,17 +616,17 @@ public class VistaFacrura extends javax.swing.JInternalFrame {
 
         jLabel14.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         jLabel14.setText("Iva 12%");
-        jPanel3.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 70, 30));
+        jPanel3.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 210, 70, 30));
 
         txtiva.setEnabled(false);
-        jPanel3.add(txtiva, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 210, 80, 30));
+        jPanel3.add(txtiva, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 210, 80, 30));
 
         jLabel15.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jLabel15.setText("TOTAL :");
-        jPanel3.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 210, 60, 30));
+        jPanel3.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 210, 60, 30));
 
         txtTotal.setEnabled(false);
-        jPanel3.add(txtTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 210, 170, 30));
+        jPanel3.add(txtTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 210, 170, 30));
 
         btnguardar.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         btnguardar.setText("Guardar");
@@ -647,6 +653,13 @@ public class VistaFacrura extends javax.swing.JInternalFrame {
         btnNuevo.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         btnNuevo.setText("Nuevo");
         jPanel3.add(btnNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 260, -1, 30));
+
+        txtsubtotal.setEnabled(false);
+        jPanel3.add(txtsubtotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 210, 170, 30));
+
+        jLabel18.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jLabel18.setText("Sub total:");
+        jPanel3.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 210, 60, 30));
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 1410, 300));
 
@@ -686,6 +699,7 @@ public class VistaFacrura extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -722,5 +736,6 @@ public class VistaFacrura extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtiva;
     private javax.swing.JLabel txtnombreAdmin;
     private javax.swing.JTextField txtnombrecliente;
+    private javax.swing.JTextField txtsubtotal;
     // End of variables declaration//GEN-END:variables
 }

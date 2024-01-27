@@ -5,6 +5,7 @@
  */
 package proyecto_final2024.newpackageControlador;
 
+import com.sun.org.apache.xerces.internal.impl.xpath.regex.Match;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
@@ -369,6 +370,8 @@ public class ControladorFactura {
         int canfilas = vista.getTbdetallefactura().getRowCount();
         if (canfilas == 0) {
             vista.getTxtTotal().setText("");
+            vista.getTxtiva().setText("");
+            vista.getTxtsubtotal().setText("");
         }
     }
 
@@ -379,8 +382,11 @@ public class ControladorFactura {
         for (int i = 0; i < canfilas; i++) {
             if (!vista.getTbdetallefactura().getValueAt(i, 2).equals("")) {
                 sumatotal += Double.parseDouble(vista.getTbdetallefactura().getValueAt(i, 2).toString());
-                System.out.println(sumatotal);
             }
+            double sub = Math.ceil(sumatotal / 1.12* 100) / 100;
+            double iva = sumatotal - sub;
+            vista.getTxtiva().setText(String.valueOf(iva));
+            vista.getTxtsubtotal().setText(String.valueOf(sub));
             vista.getTxtTotal().setText(String.valueOf(sumatotal));
         }
     }
