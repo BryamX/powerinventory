@@ -54,6 +54,9 @@ public class ControladorFactura {
     public static String idproductoV;
     public static int cantidadProductosV;
 
+    //Sirve para la consulta cuando buscamos con el codigo de barras
+    public static String cantidadBuscadaPorCodigoBarras;
+
     public static Integer cantidadProductos;
 
     public static float precioproductosV;
@@ -337,10 +340,13 @@ public class ControladorFactura {
 
     //Añade los productos a la tabla del detalle de la factura
     public void añadirProductos() {
-
-        if (Integer.parseInt(cantidad) < Integer.parseInt(vista.getTxtcantidadproducto().getText())) {
+        cantidadBuscadaPorCodigoBarras = vista.getTxtcodigoproducto().getText();
+        
+        if (ModeloFactura.obtenercantidad() < Integer.parseInt(vista.getTxtcantidadproducto().getText())) {
             JOptionPane.showMessageDialog(null, "Productos insuficiente en stock");
+            System.out.println("normal");
         } else {
+
             ModeloFactura.MandarProducto(vista.getTxtcodigoproducto().getText());
             DefaultTableModel mTabla = (DefaultTableModel) vista.getTbdetallefactura().getModel();
             mTabla.addRow(new Object[]{
@@ -378,13 +384,13 @@ public class ControladorFactura {
     //Calcula el total de la factura
     public void totales() {
         int canfilas = vista.getTbdetallefactura().getRowCount();
-        int sumatotal = 0;
+        double sumatotal = 0;
         for (int i = 0; i < canfilas; i++) {
             if (!vista.getTbdetallefactura().getValueAt(i, 2).equals("")) {
                 sumatotal += Double.parseDouble(vista.getTbdetallefactura().getValueAt(i, 2).toString());
             }
-            double sub = Math.ceil(sumatotal / 1.12* 100) / 100;
-            double iva = sumatotal - sub;
+            double sub = Math.ceil(sumatotal / 1.12 * 100) / 100;
+            double iva = Math.ceil((sumatotal - sub) * 100) / 100;
             vista.getTxtiva().setText(String.valueOf(iva));
             vista.getTxtsubtotal().setText(String.valueOf(sub));
             vista.getTxtTotal().setText(String.valueOf(sumatotal));

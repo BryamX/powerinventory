@@ -384,4 +384,21 @@ public class ModeloFactura extends Factura {
         return cpg.accionDB(sql);//DEVUELVO NULL SI ES CORRECTO.
     }
      
+      public static int obtenercantidad(){
+         Conexion cpg = new Conexion();
+         
+         String sql;
+         sql = "SELECT cantidad_en_bodega FROM producto where codigo_barras = '"+ControladorFactura.cantidadBuscadaPorCodigoBarras+"'";
+         ResultSet rs = cpg.consultaDB(sql);
+        try {
+            rs.next();
+            int codigoFactura = Integer.parseInt(rs.getString("cantidad_en_bodega"));
+            System.out.println(codigoFactura);
+            rs.close();
+            return codigoFactura;
+        } catch (SQLException ex) {
+            Logger.getLogger(ModeloFactura.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return -1;
+     }
 }
