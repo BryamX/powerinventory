@@ -187,36 +187,36 @@ public class VistaProveedor extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(jTableAdmin);
 
-        jPanel4.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 1405, 100));
+        jPanel4.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 1405, 160));
 
         btnEDITAR.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
         btnEDITAR.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/editar (1).png"))); // NOI18N
         btnEDITAR.setText("EDITAR");
-        jPanel4.add(btnEDITAR, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 190, -1, -1));
+        jPanel4.add(btnEDITAR, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 90, -1, -1));
 
         btnCREAR.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
         btnCREAR.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/alineacion-central (1).png"))); // NOI18N
         btnCREAR.setText("CREAR");
-        jPanel4.add(btnCREAR, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 190, -1, -1));
+        jPanel4.add(btnCREAR, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 90, -1, -1));
 
         btnELIMINAR.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
         btnELIMINAR.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/papelera-de-reciclaje (2).png"))); // NOI18N
         btnELIMINAR.setText("ELIMINAR");
-        jPanel4.add(btnELIMINAR, new org.netbeans.lib.awtextra.AbsoluteConstraints(1270, 190, -1, -1));
+        jPanel4.add(btnELIMINAR, new org.netbeans.lib.awtextra.AbsoluteConstraints(1270, 90, -1, -1));
 
         btnACTUALIZAR.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
         btnACTUALIZAR.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/estado (1).png"))); // NOI18N
         btnACTUALIZAR.setText("ACTUALIZAR");
-        jPanel4.add(btnACTUALIZAR, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 190, -1, -1));
+        jPanel4.add(btnACTUALIZAR, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 90, -1, -1));
 
         btnBUSCAR.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
         btnBUSCAR.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/buscar (6).png"))); // NOI18N
         btnBUSCAR.setText("BUSCAR");
-        jPanel4.add(btnBUSCAR, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 190, -1, -1));
+        jPanel4.add(btnBUSCAR, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 90, -1, -1));
 
         txtBUSCAR.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
         txtBUSCAR.setBorder(null);
-        jPanel4.add(txtBUSCAR, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 197, 240, 20));
+        jPanel4.add(txtBUSCAR, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 240, 20));
 
         btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/cerrar-sesion (2).png"))); // NOI18N
         btnSalir.setBorder(null);
@@ -229,7 +229,7 @@ public class VistaProveedor extends javax.swing.JInternalFrame {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/WhatsApp Image 2024-01-21 at 10.41.50 PM.jpeg"))); // NOI18N
         jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 0, 540, 420));
-        jPanel4.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 240, -1));
+        jPanel4.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 240, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

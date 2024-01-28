@@ -161,7 +161,7 @@ public class VistaEmpresa extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(jTableAdmin);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 1380, 100));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 1380, 240));
 
         jLabel10.setBackground(new java.awt.Color(51, 51, 0));
         jLabel10.setFont(new java.awt.Font("Times New Roman", 2, 48)); // NOI18N

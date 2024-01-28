@@ -265,7 +265,7 @@ public class VistaAdministrador extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(jTableAdmin);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 1390, 96));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 1390, 280));
 
         jLabel11.setFont(new java.awt.Font("Times New Roman", 2, 48)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(51, 51, 51));
