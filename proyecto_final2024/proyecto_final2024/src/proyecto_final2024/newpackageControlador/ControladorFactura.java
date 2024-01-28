@@ -247,7 +247,7 @@ public class ControladorFactura {
     public void buscarClientes() {
         listarProveedores();
         vista.getjDialogClientes().setLocationRelativeTo(vista);
-        vista.getjDialogClientes().setSize(798, 523);
+        vista.getjDialogClientes().setSize(798, 600);
         vista.getjDialogClientes().setVisible(true);
         vista.getjDialogClientes().setLocationRelativeTo(null);
         vista.getTbClientes().addMouseListener(new MouseAdapter() {

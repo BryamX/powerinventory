@@ -5,7 +5,9 @@
 package proyecto_final2024;
 
 import proyecto_final2024.newpackageControlador.ControladorLogin;
+import proyecto_final2024.newpackageControlador.ControladorPaginaPrincipal;
 import proyecto_final2024.newpackageVista.VentanaLogin;
+import proyecto_final2024.newpackageVista.VistaPrincipal;
 
 /**
  *
@@ -18,13 +20,13 @@ public class Proyecto_final2024 {
      */
     public static void main(String[] args) {
   
-         VentanaLogin vista = new VentanaLogin();
-       ControladorLogin control = new ControladorLogin(vista);
-       control.inicarControladorLogin();
+//         VentanaLogin vista = new VentanaLogin();
+//       ControladorLogin control = new ControladorLogin(vista);
+//       control.inicarControladorLogin();
 //
-//        VistaPrincipal vista = new VistaPrincipal();
-//       ControladorPaginaPrincipal control = new ControladorPaginaPrincipal(vista);
-//       control.inicarControladorPrincipal();
+        VistaPrincipal vista = new VistaPrincipal();
+       ControladorPaginaPrincipal control = new ControladorPaginaPrincipal(vista);
+       control.inicarControladorPrincipal();
  
     }
     

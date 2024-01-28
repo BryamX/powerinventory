@@ -13,6 +13,7 @@ import proyecto_final2024.newpackageVista.VistaFacrura;
 import proyecto_final2024.newpackageVista.VistaPrincipal;
 import proyecto_final2024.newpackageVista.VistaProducto;
 import proyecto_final2024.newpackageVista.VistaProveedor;
+import proyecto_final2024.newpackageVista.VistaReporte;
 
 /**
  *
@@ -37,6 +38,7 @@ public class ControladorPaginaPrincipal {
         vista.getBtnCategoria().addActionListener(l->abrirCategoria());
         vista.getBtnFactura().addActionListener(l->abrirFatura());
         vista.getBtnCliente().addActionListener(l->abrirCloente());
+        vista.getMnReporte().addActionListener(l->abrirReportes());
     }
     
     public void abrirProveedor(){
@@ -92,5 +94,11 @@ public class ControladorPaginaPrincipal {
         controPro.iniciaControl();
     }
     
-    
+     public void abrirReportes(){
+        VistaReporte reporte = new VistaReporte();
+//        vista.getDktPrincipal().add(proveedor);
+//        proveedor.setSize(vista.getDktPrincipal().getSize().width, vista.getDktPrincipal().getSize().height);
+        ControladorReportes controPro = new ControladorReportes(reporte);
+        controPro.inicarControladorReportes();
+    }
 }

@@ -7,6 +7,7 @@ package proyecto_final2024.newpackageVista;
 
 import javax.swing.JButton;
 import javax.swing.JDesktopPane;
+import javax.swing.JMenuItem;
 
 /**
  *
@@ -53,6 +54,9 @@ public class VistaPrincipal extends javax.swing.JFrame {
         return btnCliente;
     }
 
+    public JMenuItem getMnReporte() {
+        return mnReporte;
+    }
     
     
     @SuppressWarnings("unchecked")
@@ -74,8 +78,8 @@ public class VistaPrincipal extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
+        mnReporte = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -97,11 +101,6 @@ public class VistaPrincipal extends javax.swing.JFrame {
         btnAdmin.setFocusable(false);
         btnAdmin.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btnAdmin.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnAdmin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAdminActionPerformed(evt);
-            }
-        });
         getContentPane().add(btnAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 60, -1, 40));
 
         btnProducos.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
@@ -202,20 +201,17 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 560, 1430, 50));
 
-        jMenu1.setText("File");
-        jMenuBar1.add(jMenu1);
+        jMenu2.setText("Opciones extra");
 
-        jMenu2.setText("Edit");
+        mnReporte.setText("Reporte productos mas vendidos");
+        jMenu2.add(mnReporte);
+
         jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdminActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnAdminActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -231,10 +227,10 @@ public class VistaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JToolBar jToolBar1;
+    private javax.swing.JMenuItem mnReporte;
     // End of variables declaration//GEN-END:variables
 }
