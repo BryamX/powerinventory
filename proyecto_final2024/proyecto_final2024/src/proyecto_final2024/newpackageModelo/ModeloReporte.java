@@ -123,4 +123,56 @@ public class ModeloReporte {
             return null;
         }
     }
+
+    public static ArrayList<ReporteTresUltimosDias> ventasTresultimosdias() {
+
+        Conexion cpg = new Conexion();
+        ArrayList<ReporteTresUltimosDias> tresUltimosDias = new ArrayList<>();
+
+        String sql;
+        sql = "SELECT \n"
+                + "CASE \n"
+                + "WHEN EXTRACT(DOW FROM f.fecha_factura) = 1 THEN 'Lunes'\n"
+                + "WHEN EXTRACT(DOW FROM f.fecha_factura) = 2 THEN 'Martes'\n"
+                + "WHEN EXTRACT(DOW FROM f.fecha_factura) = 3 THEN 'Miércoles'\n"
+                + "WHEN EXTRACT(DOW FROM f.fecha_factura) = 4 THEN 'Jueves'\n"
+                + "WHEN EXTRACT(DOW FROM f.fecha_factura) = 5 THEN 'Viernes'\n"
+                + "WHEN EXTRACT(DOW FROM f.fecha_factura) = 6 THEN 'Sábado'\n"
+                + "WHEN EXTRACT(DOW FROM f.fecha_factura) = 0 THEN 'Domingo'\n"
+                + "END AS dia,\n"
+                + "CAST(SUM(d.precio * d.cantidad) AS NUMERIC(10, 2)) AS total_precio_cantidad_redondeado\n"
+                + "FROM factura f\n"
+                + "JOIN detallefactura d ON f.idfactura = d.id_factura\n"
+                + "WHERE f.fecha_factura >= DATE_TRUNC('day', CURRENT_DATE) - INTERVAL '2 days' -- Incluye el día actual y los dos días anteriores\n"
+                + "AND f.fecha_factura < DATE_TRUNC('day', CURRENT_DATE) + INTERVAL '1 day' -- Excluye el día siguiente\n"
+                + "GROUP BY EXTRACT(DOW FROM f.fecha_factura)\n"
+                + "ORDER BY \n"
+                + "CASE \n"
+                + "WHEN EXTRACT(DOW FROM f.fecha_factura) = 1 THEN 1\n"
+                + "WHEN EXTRACT(DOW FROM f.fecha_factura) = 2 THEN 2\n"
+                + "WHEN EXTRACT(DOW FROM f.fecha_factura) = 3 THEN 3\n"
+                + "WHEN EXTRACT(DOW FROM f.fecha_factura) = 4 THEN 4\n"
+                + "WHEN EXTRACT(DOW FROM f.fecha_factura) = 5 THEN 5\n"
+                + "WHEN EXTRACT(DOW FROM f.fecha_factura) = 6 THEN 6\n"
+                + "WHEN EXTRACT(DOW FROM f.fecha_factura) = 0 THEN 7\n"
+                + "END;";
+        ResultSet rs = cpg.consultaDB(sql);
+
+        try {
+            while (rs.next()) {
+                ReporteTresUltimosDias reporte = new ReporteTresUltimosDias();
+                reporte.setDia(rs.getString("dia"));
+                reporte.setSuma(rs.getDouble("total_precio_cantidad_redondeado"));
+
+                tresUltimosDias.add(reporte);
+            }
+
+            rs.close();
+            return tresUltimosDias;
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ModeloAdministrador.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
 }

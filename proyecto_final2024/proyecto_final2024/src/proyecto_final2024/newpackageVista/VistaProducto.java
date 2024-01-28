@@ -10,6 +10,7 @@ import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JTable;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 /**
@@ -69,9 +70,11 @@ public class VistaProducto extends javax.swing.JInternalFrame {
         return txtcantidadbodega;
     }
 
-    public JTextField getTxtdescripcion() {
+    public JTextArea getTxtdescripcion() {
         return txtdescripcion;
     }
+
+    
 
     public JTextField getTxtnombre() {
         return txtnombre;
@@ -132,7 +135,6 @@ public class VistaProducto extends javax.swing.JInternalFrame {
         chbdisponibilidad = new javax.swing.JCheckBox();
         txtpreciocompra = new javax.swing.JTextField();
         txtcantidadbodega = new javax.swing.JTextField();
-        txtdescripcion = new javax.swing.JTextField();
         txtprecioVenta = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
         btnGuardar = new javax.swing.JButton();
@@ -144,6 +146,8 @@ public class VistaProducto extends javax.swing.JInternalFrame {
         jLabel13 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         cbcategoria = new javax.swing.JComboBox<>();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        txtdescripcion = new javax.swing.JTextArea();
         jLabel5 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
@@ -198,9 +202,6 @@ public class VistaProducto extends javax.swing.JInternalFrame {
         txtcantidadbodega.setToolTipText("");
         jPanel2.add(txtcantidadbodega, new org.netbeans.lib.awtextra.AbsoluteConstraints(149, 296, 275, 29));
 
-        txtdescripcion.setToolTipText("");
-        jPanel2.add(txtdescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(171, 143, 253, 29));
-
         txtprecioVenta.setToolTipText("");
         jPanel2.add(txtprecioVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(171, 246, 168, 31));
 
@@ -240,6 +241,12 @@ public class VistaProducto extends javax.swing.JInternalFrame {
 
         cbcategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "" }));
         jPanel2.add(cbcategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 150, 130, 29));
+
+        txtdescripcion.setColumns(20);
+        txtdescripcion.setRows(5);
+        jScrollPane2.setViewportView(txtdescripcion);
+
+        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, 220, 60));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/WhatsApp Image 2024-01-21 at 10.41.50 PM.jpeg"))); // NOI18N
         jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 0, 600, 390));
@@ -390,13 +397,14 @@ public class VistaProducto extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable tblproductos;
     private static javax.swing.JTextField txtBUSCAR;
     private javax.swing.JTextField txtcantidadbodega;
     private javax.swing.JTextField txtcodigobarras;
     private javax.swing.JTextField txtcodigoproducto;
-    private javax.swing.JTextField txtdescripcion;
+    private javax.swing.JTextArea txtdescripcion;
     private javax.swing.JLabel txtindicador;
     private javax.swing.JTextField txtnombre;
     private javax.swing.JTextField txtprecioVenta;

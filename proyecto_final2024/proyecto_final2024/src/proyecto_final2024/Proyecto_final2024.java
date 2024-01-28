@@ -20,13 +20,13 @@ public class Proyecto_final2024 {
      */
     public static void main(String[] args) {
   
-//         VentanaLogin vista = new VentanaLogin();
-//       ControladorLogin control = new ControladorLogin(vista);
-//       control.inicarControladorLogin();
-//
-        VistaPrincipal vista = new VistaPrincipal();
-       ControladorPaginaPrincipal control = new ControladorPaginaPrincipal(vista);
-       control.inicarControladorPrincipal();
+         VentanaLogin vista = new VentanaLogin();
+       ControladorLogin control = new ControladorLogin(vista);
+       control.inicarControladorLogin();
+
+//        VistaPrincipal vista = new VistaPrincipal();
+//       ControladorPaginaPrincipal control = new ControladorPaginaPrincipal(vista);
+//       control.inicarControladorPrincipal();
  
     }
     

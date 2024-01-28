@@ -203,7 +203,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
         jMenu2.setText("Opciones extra");
 
-        mnReporte.setText("Reporte productos mas vendidos");
+        mnReporte.setText("Reportes");
         jMenu2.add(mnReporte);
 
         jMenuBar1.add(jMenu2);

@@ -6,6 +6,7 @@
 package proyecto_final2024.newpackageControlador;
 
 import proyecto_final2024.newpackageVista.VistaAdministrador;
+import proyecto_final2024.newpackageVista.VistaBarradecarga;
 import proyecto_final2024.newpackageVista.VistaCategoria;
 import proyecto_final2024.newpackageVista.VistaCliente;
 import proyecto_final2024.newpackageVista.VistaEmpresa;
@@ -38,7 +39,7 @@ public class ControladorPaginaPrincipal {
         vista.getBtnCategoria().addActionListener(l->abrirCategoria());
         vista.getBtnFactura().addActionListener(l->abrirFatura());
         vista.getBtnCliente().addActionListener(l->abrirCloente());
-        vista.getMnReporte().addActionListener(l->abrirReportes());
+        vista.getMnReporte().addActionListener(l->cerrarBarra());
     }
     
     public void abrirProveedor(){
@@ -101,4 +102,28 @@ public class ControladorPaginaPrincipal {
         ControladorReportes controPro = new ControladorReportes(reporte);
         controPro.inicarControladorReportes();
     }
+     
+     public void cerrarBarra(){
+         VistaReporte reporte = new VistaReporte();
+         Runnable mRun = () -> {
+             VistaBarradecarga vista = new VistaBarradecarga();
+             ControladorCarga control = new ControladorCarga(vista);
+             try {
+                 Thread.sleep(1000);
+                 
+        ControladorReportes controPro = new ControladorReportes(reporte);
+        controPro.inicarControladorReportes();
+             } catch (Exception e) {
+                 System.out.println("Error en la barra");
+             }
+             vista.dispose();
+             reporte.setVisible(true);
+         };
+         
+        Thread mibarra = new Thread(mRun);
+        mibarra.start();
+        
+        
+     }
+     
 }

@@ -11,7 +11,7 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="mnReporte">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Reporte productos mas vendidos"/>
+                <Property name="text" type="java.lang.String" value="Reportes"/>
               </Properties>
             </MenuItem>
           </SubComponents>

@@ -5,23 +5,24 @@
  */
 package proyecto_final2024.newpackageControlador;
 
+import java.awt.BasicStroke;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.table.DefaultTableModel;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.CategoryPlot;
 import org.jfree.chart.plot.PlotOrientation;
-import org.jfree.chart.renderer.category.BarRenderer;
-import org.jfree.data.category.CategoryDataset;
+import org.jfree.chart.renderer.category.CategoryItemRenderer;
+import org.jfree.chart.renderer.category.LineAndShapeRenderer;
 import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.data.general.DefaultPieDataset;
 import proyecto_final2024.newpackageModelo.ModeloReporte;
-import proyecto_final2024.newpackageModelo.reporteVentasDelMes;
+import proyecto_final2024.newpackageModelo.ReporteTresUltimosDias;
 import proyecto_final2024.newpackageModelo.reportebarras;
+import proyecto_final2024.newpackageVista.VistaBarradecarga;
 import proyecto_final2024.newpackageVista.VistaReporte;
 
 /**
@@ -34,35 +35,18 @@ public class ControladorReportes {
 
     public ControladorReportes(VistaReporte vista) {
         this.vista = vista;
-        this.vista.setVisible(true);
         this.vista.setLocationRelativeTo(null);
-
     }
 
     public void inicarControladorReportes() {
+
 //        listarFacturas();
         reporteProductosMasVendidos();
         reporteVentasPorMeses();
+        reporteTresUltimosDias();
+        vista.getMnsalir().addActionListener(l->salir());
     }
 
-//    public void listarFacturas() {
-//
-//        List<reporteVentasDelMes> miListaAdmin = ModeloReporte.listarReporte();
-//        DefaultTableModel mTabla;
-//        mTabla = (DefaultTableModel) vista.getTbReporte().getModel();
-//        mTabla.setNumRows(0);
-//        miListaAdmin.stream().forEach(admin -> {
-//            String[] rowData = {String.valueOf(admin.getFechaFactura()), String.valueOf(admin.getPrecio()), String.valueOf(admin.getCantidad())};
-//            mTabla.addRow(rowData);
-//        });
-//
-//        double sumaparcial = 0;
-//        
-//        for (int i = 0; i < miListaAdmin.size(); i++) {
-//           sumaparcial += miListaAdmin.get(i).getCantidad() *  miListaAdmin.get(i).getPrecio();
-//        }
-//        System.out.println(sumaparcial);
-//    }
     public void reporteProductosMasVendidos() {
         ArrayList<String> masvendidos = ModeloReporte.productosMasVendidos();
         DefaultPieDataset datos = new DefaultPieDataset();
@@ -73,7 +57,7 @@ public class ControladorReportes {
         datos.setValue(masvendidos.get(8), Integer.parseInt(masvendidos.get(9)));
 
         JFreeChart grafico_circular = ChartFactory.createPieChart(
-                "Top 5 productos mas vendidos",
+                "Top 5 productos mas vendidos del mes",
                 datos,
                 true,
                 true,
@@ -90,26 +74,33 @@ public class ControladorReportes {
 
     public void reporteVentasPorMeses() {
         List<reportebarras> masvendidos = ModeloReporte.ventasDeLosMeses();
-        System.out.println(masvendidos.get(1));
+
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
         for (int i = 0; i < ModeloReporte.ventasDeLosMeses().size(); i++) {
             dataset.addValue(masvendidos.get(i).getVentasTotales(), "Ventas", masvendidos.get(i).getMes());
-
         }
 
-        JFreeChart grafico_barras = ChartFactory.createBarChart(
-                "Ventas por mes",
-                "Ventas",
-                "Cantidad vendida",
-                dataset,
-                PlotOrientation.VERTICAL,
-                true,
-                true,
-                false
+// Crear el gráfico de líneas
+        JFreeChart grafico_lineas = ChartFactory.createLineChart(
+                "Ventas por mes", // Título del gráfico
+                "Mes", // Etiqueta del eje X
+                "Ventas", // Etiqueta del eje Y
+                dataset, // Conjunto de datos
+                PlotOrientation.VERTICAL, // Orientación del gráfico
+                true, // Mostrar leyenda
+                true, // Usar tooltips
+                false // Usar URLs
         );
-        
+        CategoryPlot plot = (CategoryPlot) grafico_lineas.getPlot();
+        CategoryItemRenderer renderer = plot.getRenderer();
 
-        ChartPanel panel = new ChartPanel(grafico_barras);
+// Configurar el grosor de la línea para todas las series
+        if (renderer instanceof LineAndShapeRenderer) {
+            LineAndShapeRenderer lineRenderer = (LineAndShapeRenderer) renderer;
+            lineRenderer.setSeriesStroke(0, new BasicStroke(3.0f)); // Grosor de la línea: 2.0
+        }
+
+        ChartPanel panel = new ChartPanel(grafico_lineas);
         panel.setMouseWheelEnabled(true);
         panel.setPreferredSize(new Dimension(1414, 390));
 
@@ -117,4 +108,37 @@ public class ControladorReportes {
         vista.getPnlVentaspormeses().add(panel, BorderLayout.NORTH);
     }
 
+    public void reporteTresUltimosDias() {
+        List<ReporteTresUltimosDias> masvendidos = ModeloReporte.ventasTresultimosdias();
+
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+        for (int i = 0; i < ModeloReporte.ventasTresultimosdias().size(); i++) {
+            dataset.addValue(masvendidos.get(i).getSuma(), "Ventas", masvendidos.get(i).getDia());
+        }
+
+// Crear el gráfico de barras
+        JFreeChart grafico_barras = ChartFactory.createBarChart(
+                "Ventas de los ultimos tres dias", // Título del gráfico
+                "Día", // Etiqueta del eje X
+                "Ventas", // Etiqueta del eje Y
+                dataset, // Conjunto de datos
+                PlotOrientation.VERTICAL, // Orientación del gráfico
+                true, // Mostrar leyenda
+                true, // Usar tooltips
+                false // Usar URLs
+        );
+
+        ChartPanel panel = new ChartPanel(grafico_barras);
+        panel.setMouseWheelEnabled(true);
+        panel.setPreferredSize(new Dimension(538, 270));
+
+        vista.getPnlVentasMes().setLayout(new BorderLayout());
+        vista.getPnlVentasMes().add(panel, BorderLayout.NORTH);
+    }
+    
+    public void salir(){
+        vista.dispose();
+    }
+    
+    
 }
