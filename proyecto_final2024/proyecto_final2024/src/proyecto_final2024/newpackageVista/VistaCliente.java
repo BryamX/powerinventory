@@ -145,10 +145,14 @@ public class VistaCliente extends javax.swing.JInternalFrame {
 
         jLabel9.setText("Frecuencia");
         jDialog1.getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(89, 423, 100, -1));
+
+        txtfrecuencia.setEnabled(false);
         jDialog1.getContentPane().add(txtfrecuencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(244, 420, 220, -1));
 
         jLabel10.setText("Calificacion");
         jDialog1.getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(89, 466, 100, -1));
+
+        spnCalificacion.setEnabled(false);
         jDialog1.getContentPane().add(spnCalificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(244, 460, 43, 29));
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
@@ -228,13 +232,13 @@ public class VistaCliente extends javax.swing.JInternalFrame {
         jTableAdmin.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
         jTableAdmin.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Id cliente", "Cedual", "Nombres", "Apellidos", "Direccion", "Genero", "Telefono", "Fecha de nacimiento", "Frecuencia", "Calificacion"
+                "Id cliente", "Cedual", "Nombres", "Apellidos", "Direccion", "Genero", "Telefono", "Fecha de nacimiento", "Frecuencia", "Calificacion", "Id persona"
             }
         ));
         jScrollPane1.setViewportView(jTableAdmin);

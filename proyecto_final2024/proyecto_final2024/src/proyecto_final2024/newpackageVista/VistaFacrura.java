@@ -25,6 +25,10 @@ public class VistaFacrura extends javax.swing.JInternalFrame {
         initComponents();
     }
 
+    public JButton getBtnCrearCliente() {
+        return btnCrearCliente;
+    }
+
     public JButton getBtnanadir() {
         return btnanadir;
     }
@@ -55,6 +59,14 @@ public class VistaFacrura extends javax.swing.JInternalFrame {
 
     public JButton getBtncancelar() {
         return btncancelar;
+    }
+
+    public JButton getBtnquitarCliente() {
+        return btnquitarCliente;
+    }
+
+    public JButton getBtnenviar() {
+        return btnenviar;
     }
 
     public JButton getBtnguardar() {
@@ -241,6 +253,9 @@ public class VistaFacrura extends javax.swing.JInternalFrame {
         txtapellidocliente = new javax.swing.JTextField();
         txtcedulacliente = new javax.swing.JTextField();
         btnbuscarcliente = new javax.swing.JButton();
+        btnCrearCliente = new javax.swing.JButton();
+        btnenviar = new javax.swing.JButton();
+        btnquitarCliente = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         txtcodigoproducto = new javax.swing.JTextField();
@@ -563,7 +578,16 @@ public class VistaFacrura extends javax.swing.JInternalFrame {
 
         btnbuscarcliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/buscar (6).png"))); // NOI18N
         btnbuscarcliente.setBorder(null);
-        jPanel2.add(btnbuscarcliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 10, -1, -1));
+        jPanel2.add(btnbuscarcliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 10, 70, 40));
+
+        btnCrearCliente.setText("Crear cliente");
+        jPanel2.add(btnCrearCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 10, 100, 30));
+
+        btnenviar.setText("Enviar cliente creado");
+        jPanel2.add(btnenviar, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 60, -1, 30));
+
+        btnquitarCliente.setText("Eliminar cliente");
+        jPanel2.add(btnquitarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 60, -1, 30));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 0, 880, 110));
 
@@ -675,6 +699,7 @@ public class VistaFacrura extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnAceptarFacturaBuscada;
     private javax.swing.JButton btnAceptarbCLIENTE;
     private javax.swing.JButton btnBuscarFactura;
+    private javax.swing.JButton btnCrearCliente;
     private javax.swing.JButton btnListacompleta;
     private javax.swing.JButton btnNuevo;
     private javax.swing.JButton btnaceptarProductos;
@@ -683,8 +708,10 @@ public class VistaFacrura extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnbuscarFactura;
     private javax.swing.JButton btnbuscarcliente;
     private javax.swing.JButton btncancelar;
+    private javax.swing.JButton btnenviar;
     private javax.swing.JButton btnguardar;
     private javax.swing.JButton btnimprimir;
+    private javax.swing.JButton btnquitarCliente;
     private com.toedter.calendar.JDateChooser dtFecha;
     private com.toedter.calendar.JDateChooser fechaDesde;
     private com.toedter.calendar.JDateChooser fechahasta;

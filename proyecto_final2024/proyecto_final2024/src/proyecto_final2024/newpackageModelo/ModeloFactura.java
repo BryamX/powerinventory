@@ -67,7 +67,7 @@ public class ModeloFactura extends Factura {
         List<Cliente> listaAdmin = new ArrayList<>();
 
         String sql;
-        sql = "SELECT a.id_cliente, a.frecuencia, a.calificacion,a.id_persona,p.cedula, p.nombres,p.apellidos, p.direccion, p.genero, p.telefono,p.fecha_nacimiento FROM public.cliente a JOIN public.persona p ON a.id_persona = p.id_persona WHERE p.cedula like '" + controladorClientes.cliemnteBuscar + "%'";
+        sql = "SELECT a.id_cliente, a.frecuencia, a.calificacion,a.id_persona,p.cedula, p.nombres,p.apellidos, p.direccion, p.genero, p.telefono,p.fecha_nacimiento FROM public.cliente a JOIN public.persona p ON a.id_persona = p.id_persona WHERE p.cedula like '" + ControladorFactura.cedulaCienteBuscadofac + "%'";
         ResultSet rs = cpg.consultaDB(sql);
 
         try {
@@ -430,5 +430,23 @@ public class ModeloFactura extends Factura {
         String sql = "";
         sql = "UPDATE public.cliente SET  frecuencia= '"+ControladorFactura.subirFrecuencia()+"'where id_cliente = '" + ControladorFactura.cedigo + "'";
         return cpg.accionDB(sql);
+    }
+    
+    public static String obtenerIdClienteCreado() {
+        Conexion cpg = new Conexion();
+
+        String sql;
+        sql = "SELECT id_cliente FROM cliente where id_persona = '"+controladorClientes.id_perC+"'";
+        ResultSet rs = cpg.consultaDB(sql);
+        try {
+            rs.next();
+            String codigoCliente = rs.getString("id_cliente");
+            System.out.println(codigoCliente);
+            rs.close();
+            return codigoCliente;
+        } catch (SQLException ex) {
+            Logger.getLogger(ModeloFactura.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
 }

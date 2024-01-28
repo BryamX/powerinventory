@@ -176,13 +176,13 @@ public class VistaProveedor extends javax.swing.JInternalFrame {
         jTableAdmin.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
         jTableAdmin.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Id proveedor", "Cedula", "Nombre", "Apellido", "Dirección", "Genero", "Telefono", "Fecha de nacimiento", "Empresa del proveedor"
+                "Id proveedor", "Cedula", "Nombre", "Apellido", "Dirección", "Genero", "Telefono", "Fecha de nacimiento", "Empresa del proveedor", "Id persona"
             }
         ));
         jScrollPane1.setViewportView(jTableAdmin);

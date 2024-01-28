@@ -254,13 +254,13 @@ public class VistaAdministrador extends javax.swing.JInternalFrame {
         jTableAdmin.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
         jTableAdmin.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "ID ADMIN", "CEDULA", "NOMBRES", "APELLIDOS", "DIRECCION", "GENERO", "TELEFONO", "FECHA NACIMIENTO", "USUARIO", "CONTRASEÑA"
+                "ID ADMIN", "CEDULA", "NOMBRES", "APELLIDOS", "DIRECCION", "GENERO", "TELEFONO", "FECHA NACIMIENTO", "USUARIO", "CONTRASEÑA", "Id persona"
             }
         ));
         jScrollPane1.setViewportView(jTableAdmin);
