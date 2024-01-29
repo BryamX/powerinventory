@@ -537,6 +537,10 @@ public class ControladorFactura {
     }
 
     public void imprimirFactura() {
+        if (vista.getTxtcodigoFactura().getText().equals("") || vista.getTxtcodigocliente().getText().equals("") || vista.getTxtcodigoAdmin().getText().equals("")
+                || vista.getDtFecha().getDate() == null || vista.getLblEstado().getText().equals("") || vista.getTbdetallefactura().getRowCount() == 0) {
+            JOptionPane.showMessageDialog(null, "Ingrese todos los campos de la factura");
+        } else {
         Conexion conexion = new Conexion();
         Date fecha = vista.getDtFecha().getDate();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -564,6 +568,7 @@ public class ControladorFactura {
             jv.setVisible(true);
         } catch (JRException ex) {
             Logger.getLogger(ControladorFactura.class.getName()).log(Level.SEVERE, null, ex);
+        }
         }
     }
 
