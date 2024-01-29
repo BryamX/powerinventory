@@ -70,6 +70,9 @@ public class ControladorFactura {
     public InputStreamReader isr;
     public BufferedReader br;
     public String mensaje;
+    
+    //Ruta de la imagen
+    public String ruta = "/logo/logo.jpeg";
 
     public static java.sql.Date fechadesdeEnviar, fechahastaEnviar;
 
@@ -541,6 +544,7 @@ public class ControladorFactura {
                 || vista.getDtFecha().getDate() == null || vista.getLblEstado().getText().equals("") || vista.getTbdetallefactura().getRowCount() == 0) {
             JOptionPane.showMessageDialog(null, "Ingrese todos los campos de la factura");
         } else {
+          
         Conexion conexion = new Conexion();
         Date fecha = vista.getDtFecha().getDate();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -549,8 +553,12 @@ public class ControladorFactura {
         try {
             JasperReport reporte = (JasperReport) JRLoader.loadObject(
                     getClass().getResource("/proyecto_final2024/newpackagevista/reportes/factura.jasper"));
-
+            
             Map<String, Object> parametros = new HashMap<>();
+            
+            parametros.put("logo", this.getClass().getResourceAsStream(ruta));
+            parametros.put("subtotal", Double.parseDouble(vista.getTxtsubtotal().getText()));
+            parametros.put("iva", Double.parseDouble(vista.getTxtiva().getText()));
             parametros.put("idFactutra", Integer.parseInt(vista.getTxtcodigoFactura().getText()));
             parametros.put("nombreoperario", vista.getTxtnombreAdmin().getText());
             parametros.put("idOperario", vista.getTxtcodigoAdmin().getText());
