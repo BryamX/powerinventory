@@ -148,7 +148,7 @@ public class ControladorFactura {
         vista.getBtnanadir().setEnabled(false);
         vista.getQuitar().setEnabled(false);
 
-        vista.getjDialogFacturas().setSize(877, 400);
+        vista.getjDialogFacturas().setSize(900, 400);
         vista.getjDialogFacturas().setVisible(true);
         vista.getjDialogFacturas().setLocationRelativeTo(null);
         vista.getTbFacturabuscada().addMouseListener(new MouseAdapter() {

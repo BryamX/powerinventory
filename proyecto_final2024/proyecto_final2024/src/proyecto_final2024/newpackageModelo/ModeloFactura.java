@@ -352,7 +352,7 @@ public class ModeloFactura extends Factura {
         String sql;
         sql = "SELECT DISTINCT p.codigo_barras, p.nombre_producto, d.precio, d.cantidad, f.id_administrador, a.usuario\n"
                 + "FROM detallefactura d\n"
-                + "JOIN factura f on d.id_factura = d.id_factura\n"
+                + "JOIN factura f on f.idfactura = d.id_factura\n"
                 + "JOIN administrador a on a.id_administrador = f.id_administrador\n"
                 + "JOIN producto p ON p.codigo_barras = CAST(d.id_productos AS VARCHAR)\n"
                 + "WHERE d.id_factura = '" + ControladorFactura.id_factutaBuscada + "'";
