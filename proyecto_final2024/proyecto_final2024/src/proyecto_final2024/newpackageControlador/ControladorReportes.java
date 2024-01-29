@@ -82,7 +82,7 @@ public class ControladorReportes {
 
 // Crear el gráfico de líneas
         JFreeChart grafico_lineas = ChartFactory.createLineChart(
-                "Ventas por mes", // Título del gráfico
+                "Volumen de ventas", // Título del gráfico
                 "Mes", // Etiqueta del eje X
                 "Ventas", // Etiqueta del eje Y
                 dataset, // Conjunto de datos
