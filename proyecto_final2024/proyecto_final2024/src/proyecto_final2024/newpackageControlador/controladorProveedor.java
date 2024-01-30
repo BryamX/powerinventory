@@ -11,10 +11,20 @@ import java.awt.event.MouseEvent;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
+import proyecto_final2024.newpackageModelo.Conexion;
 import proyecto_final2024.newpackageModelo.Empresa;
 import proyecto_final2024.newpackageModelo.ModeloProveedor;
 import proyecto_final2024.newpackageModelo.Proveedor;
@@ -80,6 +90,29 @@ public class controladorProveedor {
         vista.getBtnGuardar().addActionListener(l -> grabarProveedor());
         vista.getBtnELIMINAR().addActionListener(l -> eliminarPro());
         vista.getBtnSalir().addActionListener(l -> salir());
+        vista.getBtnIMPRIMIR().addActionListener(l -> imprimirProveedor());
+    }
+    
+    
+    public void imprimirProveedor(){
+        try {
+            JasperReport proveedor = (JasperReport) JRLoader.loadObject(
+                    getClass().getResource("/proyecto_final2024/newpackagevista/reportes/proveedor.jasper"));
+       
+        Conexion con = new Conexion();
+        Map<String, Object> parametros = new HashMap <String, Object>();
+        parametros.put("titulo", "LISTADO DE PROVEEDORES" );
+        parametros.put("fecha", "29/01/2024" );
+        
+//        parametros.put("marcar", 250d);
+        JasperPrint jp = JasperFillManager.fillReport(proveedor, parametros, con.getCon());
+
+        JasperViewer Jv = new JasperViewer(jp, false);
+        Jv.setVisible(true);
+        
+        } catch (JRException ex) {
+            Logger.getLogger(controladorAdministrador.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     private void abrirDialogo(boolean nuevo) {
