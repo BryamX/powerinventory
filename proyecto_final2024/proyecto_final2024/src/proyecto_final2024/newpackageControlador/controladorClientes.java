@@ -12,11 +12,21 @@ import java.io.FileInputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
 import proyecto_final2024.newpackageModelo.Cliente;
+import proyecto_final2024.newpackageModelo.Conexion;
 import proyecto_final2024.newpackageModelo.ModeloAdministrador;
 import proyecto_final2024.newpackageModelo.ModeloCliente;
 import proyecto_final2024.newpackageModelo.ModeloFactura;
@@ -95,7 +105,28 @@ public class controladorClientes {
         vista.getBtnGuardar().addActionListener(l -> grabarCliente());
         vista.getBtnELIMINAR().addActionListener(l -> eliminarAdmin());
         vista.getBtnSalir().addActionListener(l -> salir());
+        vista.getBtnIMPRIMIR().addActionListener(l -> imprimirClientes());
 
+    }
+    
+    public void imprimirClientes(){
+        try {
+            JasperReport clientes = (JasperReport) JRLoader.loadObject(
+                    getClass().getResource("/proyecto_final2024/newpackagevista/reportes/clientes.jasper"));
+       
+        Conexion con = new Conexion();
+        Map<String, Object> parametros = new HashMap <String, Object>();
+        parametros.put("fecha", "29/01/2024" );
+        parametros.put("titulo", "LISTADO DE CLIENTES" );
+//        parametros.put("marcar", 250d);
+        JasperPrint jp = JasperFillManager.fillReport(clientes, parametros, con.getCon());
+
+        JasperViewer Jv = new JasperViewer(jp, false);
+        Jv.setVisible(true);
+        
+        } catch (JRException ex) {
+            Logger.getLogger(controladorAdministrador.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     public void iniciarControl2() {

@@ -59,6 +59,7 @@ public class VistaEmpresa extends javax.swing.JInternalFrame {
         btnSalir = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
+        btnIMPRIMIR = new javax.swing.JButton();
 
         jDialog1.setMinimumSize(new java.awt.Dimension(532, 320));
         jDialog1.setModal(true);
@@ -136,7 +137,7 @@ public class VistaEmpresa extends javax.swing.JInternalFrame {
         btnACTUALIZAR.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
         btnACTUALIZAR.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/estado (1).png"))); // NOI18N
         btnACTUALIZAR.setText("ACTUALIZAR");
-        jPanel1.add(btnACTUALIZAR, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 130, -1, -1));
+        jPanel1.add(btnACTUALIZAR, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 130, -1, -1));
 
         txtBUSCAR.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
         txtBUSCAR.setBorder(null);
@@ -177,6 +178,11 @@ public class VistaEmpresa extends javax.swing.JInternalFrame {
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 0, 510, 420));
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 220, 10));
 
+        btnIMPRIMIR.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
+        btnIMPRIMIR.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/estado (1).png"))); // NOI18N
+        btnIMPRIMIR.setText("IMPRIMIR");
+        jPanel1.add(btnIMPRIMIR, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 130, 180, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -195,6 +201,10 @@ public class VistaEmpresa extends javax.swing.JInternalFrame {
 
     public JButton getBtnACTUALIZAR() {
         return btnACTUALIZAR;
+    }
+
+    public JButton getBtnIMPRIMIR() {
+        return btnIMPRIMIR;
     }
 
     public JButton getBtnBUSCAR() {
@@ -251,6 +261,7 @@ public class VistaEmpresa extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnEDITAR;
     private javax.swing.JButton btnELIMINAR;
     private javax.swing.JButton btnGuardar;
+    private javax.swing.JButton btnIMPRIMIR;
     private javax.swing.JButton btnSalir;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabel1;

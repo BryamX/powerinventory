@@ -14,11 +14,21 @@ import java.io.FileInputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
 import proyecto_final2024.newpackageModelo.Administrador;
+import proyecto_final2024.newpackageModelo.Conexion;
 
 /**
  *
@@ -86,6 +96,30 @@ public class controladorAdministrador {
         vista.getBtnGuardar().addActionListener(l -> grabarAdministrador());
         vista.getBtnELIMINAR().addActionListener(l -> eliminarAdmin());
         vista.getBtnSalir().addActionListener(l -> salir());
+        vista.getBtnIMPRIMIR().addActionListener(l -> imprimirAdmin());
+    }
+    
+    
+    public void imprimirAdmin(){
+        try {
+            JasperReport administrador = (JasperReport) JRLoader.loadObject(
+                    getClass().getResource("/proyecto_final2024/newpackagevista/reportes/administrador.jasper"));
+       
+        Conexion con = new Conexion();
+        Map<String, Object> parametros = new HashMap <String, Object>();
+        parametros.put("fecha", "29/01/2024" );
+        parametros.put("titulo", "LISTADO DE ADMINISTRADORES" );
+//        parametros.put("marcar", 250d);
+        JasperPrint jp = JasperFillManager.fillReport(administrador, parametros, con.getCon());
+
+        JasperViewer Jv = new JasperViewer(jp, false);
+        Jv.setVisible(true);
+        
+        
+        
+        } catch (JRException ex) {
+            Logger.getLogger(controladorAdministrador.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     public void listarAdministrador() {

@@ -21,7 +21,7 @@ public class VistaProveedor extends javax.swing.JInternalFrame {
      * Creates new form VistaAdministrador
      */
     public VistaProveedor() {
-        initComponents();
+        initComponents(); 
     }
 
     /**
@@ -71,6 +71,7 @@ public class VistaProveedor extends javax.swing.JInternalFrame {
         jLabel10 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
+        btnIMPRIMIR = new javax.swing.JButton();
 
         jPanel2.setBackground(new java.awt.Color(255, 0, 0));
 
@@ -207,7 +208,11 @@ public class VistaProveedor extends javax.swing.JInternalFrame {
         btnACTUALIZAR.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
         btnACTUALIZAR.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/estado (1).png"))); // NOI18N
         btnACTUALIZAR.setText("ACTUALIZAR");
+<<<<<<< Updated upstream
         jPanel4.add(btnACTUALIZAR, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 90, -1, -1));
+=======
+        jPanel4.add(btnACTUALIZAR, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 190, -1, -1));
+>>>>>>> Stashed changes
 
         btnBUSCAR.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
         btnBUSCAR.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/buscar (6).png"))); // NOI18N
@@ -231,6 +236,11 @@ public class VistaProveedor extends javax.swing.JInternalFrame {
         jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 0, 540, 420));
         jPanel4.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 240, -1));
 
+        btnIMPRIMIR.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
+        btnIMPRIMIR.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/estado (1).png"))); // NOI18N
+        btnIMPRIMIR.setText("IMPRIMIR");
+        jPanel4.add(btnIMPRIMIR, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 190, 170, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -247,6 +257,10 @@ public class VistaProveedor extends javax.swing.JInternalFrame {
 
     public JButton getBtnACTUALIZAR() {
         return btnACTUALIZAR;
+    }
+
+    public JButton getBtnIMPRIMIR() {
+        return btnIMPRIMIR;
     }
 
     public JButton getBtnBUSCAR() {
@@ -331,6 +345,7 @@ public class VistaProveedor extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnEDITAR;
     private javax.swing.JButton btnELIMINAR;
     private javax.swing.JButton btnGuardar;
+    private javax.swing.JButton btnIMPRIMIR;
     private javax.swing.JButton btnSalir;
     private javax.swing.JComboBox<String> cmbIdEmpresa;
     private javax.swing.JComboBox<String> cmbgenero;

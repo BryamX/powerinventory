@@ -105,7 +105,7 @@ public class ModeloCliente extends Cliente{
         List<Cliente> listaAdmin = new ArrayList<>();
 
         String sql;
-        sql = "SELECT a.id_cliente, a.frecuencia, a.calificacion,a.id_persona,p.cedula, p.nombres,p.apellidos, p.direccion, p.genero, p.telefono,p.fecha_nacimiento FROM public.cliente a JOIN public.persona p ON a.id_persona = p.id_persona WHERE p.cedula like '"+controladorClientes.cliemnteBuscar+ "%'";
+        sql = "SELECT p.id_cliente, a.frecuencia, a.calificacion,a.id_persona,p.cedula, p.nombres,p.apellidos, p.direccion, p.genero, p.telefono,p.fecha_nacimiento FROM public.cliente a JOIN public.persona p ON a.id_persona = p.id_persona WHERE p.cedula like '"+controladorClientes.cliemnteBuscar+ "%'";
         ResultSet rs = cpg.consultaDB(sql);
 
         try {
