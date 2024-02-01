@@ -57,7 +57,7 @@ public class ControladorReportes {
         datos.setValue(masvendidos.get(8), Integer.parseInt(masvendidos.get(9)));
 
         JFreeChart grafico_circular = ChartFactory.createPieChart(
-                "Top 5 productos mas vendidos del mes",
+                "Top 5 productos más vendidos",
                 datos,
                 true,
                 true,
