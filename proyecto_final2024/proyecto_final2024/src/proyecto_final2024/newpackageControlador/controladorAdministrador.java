@@ -192,8 +192,9 @@ public class controladorAdministrador {
             long auxfecha_Nacimiento = fehca.getTime();
             java.sql.Date fecha = new java.sql.Date(auxfecha_Nacimiento);
             String usuario = vista.getTxtusuario().getText();
-            String contrasena = vista.getpwContrasena().getText();
+            String contrasena = String.valueOf(vista.getpwContrasena().getPassword());
 
+            
             ModeloAdministrador per = new ModeloAdministrador();
             per.setCedula(cedula);
             per.setNombres(nombres);
@@ -203,7 +204,7 @@ public class controladorAdministrador {
             per.setTelefono(telefono);
             per.setFecha_nacimiento(fecha);
             per.setUsuario(usuario);
-            per.setContraseña(contrasena);
+            per.setContraseña(hash.sha1(contrasena));
 
             if (per.grabarAdministrador() == null) {
                 JOptionPane.showMessageDialog(null, "Cliente creado con exito");
@@ -235,7 +236,7 @@ public class controladorAdministrador {
             per.setTelefono(telefono);
             per.setFecha_nacimiento(fecha);
             per.setUsuario(usuario);
-            per.setContraseña(contrasena);
+            per.setContraseña(hash.sha1(contrasena));
 
             if (per.modificarPersona() == null) {
                 JOptionPane.showMessageDialog(null, "Administrador modificado con exito");
