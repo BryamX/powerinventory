@@ -4,6 +4,7 @@
  */
 package proyecto_final2024.newpackageControlador;
 
+import proyecto_final2024.newpackageControlador.controladorAdministrador;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
@@ -24,6 +25,7 @@ import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.view.JasperViewer;
+import proyecto_final2024.newpackageControlador.Validar;
 import proyecto_final2024.newpackageModelo.Conexion;
 import proyecto_final2024.newpackageModelo.Empresa;
 import proyecto_final2024.newpackageModelo.ModeloProveedor;
@@ -47,10 +49,17 @@ public class controladorProveedor {
         this.vista.setVisible(true);
         this.vista.setBorder(null);
         this.vista.setLocation(0, -23);
-        controlKey();
+        controlKey();desactivar();
     }
 
     public void inicarControladorCliente() {
+         vista.getjTableAdmin().addMouseListener(new MouseAdapter() {
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        // Actualizar el estado del botón de editar
+        actualizarEstadoBotonEditar();
+    }
+});
         vista.getTxtidPer().setText(ModeloProveedor.generarCodigoPersona());
         listaEmpresas();
         listarProveedores();
@@ -309,4 +318,16 @@ public class controladorProveedor {
 
 
     }
+      private void activar() {
+           vista.getBtnEDITAR().setEnabled(true);
+        
+    }
+        private void desactivar() {
+           vista.getBtnEDITAR().setEnabled(false);
+        
+    }
+        private void actualizarEstadoBotonEditar() {
+        
+            activar();
+        }
 }

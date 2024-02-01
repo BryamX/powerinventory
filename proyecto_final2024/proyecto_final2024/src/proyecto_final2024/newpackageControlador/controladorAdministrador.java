@@ -27,6 +27,7 @@ import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.view.JasperViewer;
+import proyecto_final2024.newpackageControlador.Validar;
 import proyecto_final2024.newpackageModelo.Administrador;
 import proyecto_final2024.newpackageModelo.Conexion;
 
@@ -51,9 +52,17 @@ public class controladorAdministrador {
         this.vista.setBorder(null);
         this.vista.setLocation(0, -23);
         controlKey();
+         desactivar();
     }
 
     public void iniciaControl() {
+        vista.getjTableAdmin().addMouseListener(new MouseAdapter() {
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        // Actualizar el estado del botón de editar
+        actualizarEstadoBotonEditar();
+    }
+});
         vista.getTxtid_persona().setText(ModeloAdministrador.generarCodigoPersonas());
         listarAdministrador();
         vista.getTxtBUSCAR().addKeyListener(new KeyAdapter() {
@@ -311,4 +320,16 @@ public class controladorAdministrador {
 
 
     }
+      private void activar() {
+           vista.getBtnEDITAR().setEnabled(true);
+        
+    }
+        private void desactivar() {
+           vista.getBtnEDITAR().setEnabled(false);
+        
+    }
+        private void actualizarEstadoBotonEditar() {
+        
+            activar();
+        }
 }

@@ -1,9 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package proyecto_final2024.newpackageControlador;
+
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -22,6 +19,7 @@ import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.view.JasperViewer;
+import proyecto_final2024.newpackageControlador.Validar;
 import proyecto_final2024.newpackageModelo.Conexion;
 import proyecto_final2024.newpackageModelo.Empresa;
 import proyecto_final2024.newpackageModelo.ModeloEmpresa;
@@ -43,7 +41,11 @@ public class ControladorEmpresas {
         this.vista.setVisible(true);
         this.vista.setBorder(null);
         this.vista.setLocation(0, -23);
-           controlKey();
+         desactivar();
+           controlKey(); 
+           
+          
+        
     }
     
     public void inicarControlador(){
@@ -61,7 +63,16 @@ public class ControladorEmpresas {
                     mTabla.addRow(rowData);
                 });
             }
+            
         });
+        vista.getjTableAdmin().addMouseListener(new MouseAdapter() {
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        // Actualizar el estado del botón de editar
+        actualizarEstadoBotonEditar();
+    }
+});
+
         
         vista.getjTableAdmin().addMouseListener(new MouseAdapter() {
             @Override
@@ -72,6 +83,7 @@ public class ControladorEmpresas {
                 desc_empresa = (vista.getjTableAdmin().getValueAt(i, 2).toString());
             }
         });
+       
         vista.getBtnCREAR().addActionListener(l -> abrirDialogo(true));
         vista.getBtnEDITAR().addActionListener(l -> abrirDialogo(false));
         vista.getBtnGuardar().addActionListener(l -> grabareditarEmpresa());
@@ -198,4 +210,20 @@ public class ControladorEmpresas {
 
 
     }
+       
+       private void activar() {
+           vista.getBtnEDITAR().setEnabled(true);
+        
+    }
+        private void desactivar() {
+           vista.getBtnEDITAR().setEnabled(false);
+        
+    }
+        private void actualizarEstadoBotonEditar() {
+        
+            activar();
+        }
+    
+        
+    
 }

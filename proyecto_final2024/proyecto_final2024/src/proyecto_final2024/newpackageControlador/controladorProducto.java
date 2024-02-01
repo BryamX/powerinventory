@@ -2,6 +2,8 @@ package proyecto_final2024.newpackageControlador;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -20,6 +22,7 @@ import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.view.JasperViewer;
+import proyecto_final2024.newpackageControlador.Validar;
 import proyecto_final2024.newpackageModelo.Conexion;
 import proyecto_final2024.newpackageModelo.ModeloProducto;
 import proyecto_final2024.newpackageModelo.Producto;
@@ -50,9 +53,18 @@ public class controladorProducto {
         this.vista.setLocation(0, -23);
         ModeloProducto.cargarBoxes(vista);
         controlKey();
+        desactivar();
     }
 
     public void iniciarControl() {
+           vista.getTblproductos().addMouseListener(new MouseAdapter() {
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        // Actualizar el estado del botón de editar
+        actualizarEstadoBotonEditar();
+    }
+});
+        
         listaProductos();
         vista.getTxtcodigoproducto().setEditable(false);
         vista.getBtnCREAR().addActionListener(l -> abrirDialogo(true));
@@ -401,5 +413,17 @@ public class controladorProducto {
                 Logger.getLogger(controladorProducto.class.getName()).log(Level.SEVERE, null, ex);
             }
     }
+     private void activar() {
+           vista.getBtnMODIFICAR().setEnabled(true);
+        
+    }
+        private void desactivar() {
+           vista.getBtnMODIFICAR().setEnabled(false);
+        
+    }
+        private void actualizarEstadoBotonEditar() {
+        
+            activar();
+        }
 
 }
