@@ -49,7 +49,9 @@ public class controladorProveedor {
         this.vista.setVisible(true);
         this.vista.setBorder(null);
         this.vista.setLocation(0, -23);
-        controlKey();desactivar();
+        controlKey();
+        desactivar();
+            vista.getjTableAdmin().setDefaultEditor(Object.class, null);
     }
 
     public void inicarControladorCliente() {

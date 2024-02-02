@@ -43,6 +43,7 @@ public class controladorCategoria {
         this.vista.setLocation(0, -23);
         controlKey();
          desactivar();
+             vista.getTblcategorias().setDefaultEditor(Object.class, null);
     }
     
     

@@ -54,6 +54,7 @@ public class controladorProducto {
         ModeloProducto.cargarBoxes(vista);
         controlKey();
         desactivar();
+            vista.getTblproductos().setDefaultEditor(Object.class, null);
     }
 
     public void iniciarControl() {

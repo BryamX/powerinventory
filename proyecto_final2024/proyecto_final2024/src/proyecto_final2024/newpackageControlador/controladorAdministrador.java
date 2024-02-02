@@ -53,6 +53,7 @@ public class controladorAdministrador {
         this.vista.setLocation(0, -23);
         controlKey();
          desactivar();
+             vista.getjTableAdmin().setDefaultEditor(Object.class, null);
     }
 
     public void iniciaControl() {

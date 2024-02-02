@@ -42,13 +42,16 @@ public class ControladorEmpresas {
         this.vista.setBorder(null);
         this.vista.setLocation(0, -23);
          desactivar();
-           controlKey(); 
+           controlKey();
+           vista.getjTableAdmin().setDefaultEditor(Object.class, null);
+          
            
           
         
     }
     
     public void inicarControlador(){
+        
         listaEmpresas();
         vista.getTxtBUSCAR().addKeyListener(new KeyAdapter() {
             @Override
