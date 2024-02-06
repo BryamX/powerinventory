@@ -94,13 +94,13 @@ public class controladorCategoria {
     private void abrirDialogo(boolean nuevo) {
         limpiar();
         if (nuevo) {
-            vista.getjDialog1().setTitle("CREAR NUEVA CATEGORIA");
+            vista.getjDialog1().setTitle("CREAR CATEGORIA");
         } else if (!nuevo) {
             vista.getjDialog1().setTitle("EDITAR CATEGORIA");
             enviarDatos();
         }
         vista.getjDialog1().setLocationRelativeTo(vista);
-        vista.getjDialog1().setSize(600, 600);
+        vista.getjDialog1().setSize(543, 542);
         vista.getjDialog1().setVisible(true);
         vista.getjDialog1().setLocationRelativeTo(null);
     }

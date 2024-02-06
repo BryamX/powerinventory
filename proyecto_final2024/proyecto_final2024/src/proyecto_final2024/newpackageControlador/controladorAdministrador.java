@@ -100,7 +100,7 @@ public class controladorAdministrador {
             }
         });
 
-        vista.getBtnACTUALIZAR().addActionListener(l -> listarAdministrador());
+       
         vista.getBtnCREAR().addActionListener(l -> abrirDialogo(true));
         vista.getBtnEDITAR().addActionListener(l -> abrirDialogo(false));
         vista.getBtnGuardar().addActionListener(l -> grabarAdministrador());
@@ -148,13 +148,13 @@ public class controladorAdministrador {
     private void abrirDialogo(boolean nuevo) {
         limpiarCampos();
         if (nuevo) {
-            vista.getjDialog1().setTitle("CREAR NUEVO ADMINISTRADOR");
+            vista.getjDialog1().setTitle("CREAR ADMINISTRADOR");
         } else if (!nuevo) {
-            vista.getjDialog1().setTitle("EDITAR PERSONA");
+            vista.getjDialog1().setTitle("EDITAR ADMINISTRADOR");
             enviarDatos();
         }
         vista.getjDialog1().setLocationRelativeTo(vista);
-        vista.getjDialog1().setSize(600, 600);
+        vista.getjDialog1().setSize(600, 570);
         vista.getjDialog1().setVisible(true);
         vista.getjDialog1().setLocationRelativeTo(null);
     }

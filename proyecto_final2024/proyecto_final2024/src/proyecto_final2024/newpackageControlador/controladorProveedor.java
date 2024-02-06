@@ -135,7 +135,7 @@ public class controladorProveedor {
             enviarDatos();
         }
         vista.getjDialog1().setLocationRelativeTo(vista);
-        vista.getjDialog1().setSize(600, 600);
+        vista.getjDialog1().setSize(537, 580);
         vista.getjDialog1().setVisible(true);
         vista.getjDialog1().setLocationRelativeTo(null);
     }

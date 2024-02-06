@@ -35,37 +35,35 @@ public class VistaCliente extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jDialog1 = new javax.swing.JDialog();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        txtcedula = new javax.swing.JTextField();
-        txtnombres = new javax.swing.JTextField();
-        txtapellidos = new javax.swing.JTextField();
-        txtdireccion = new javax.swing.JTextField();
-        txttelefono = new javax.swing.JTextField();
-        dtFecha = new com.toedter.calendar.JDateChooser();
-        btnGuardar = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel12 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        txtfrecuencia = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
-        spnCalificacion = new javax.swing.JSpinner();
         jPanel4 = new javax.swing.JPanel();
         cmbgenero = new javax.swing.JComboBox<>();
         jLabel14 = new javax.swing.JLabel();
         txtidPer = new javax.swing.JTextField();
+        txtdireccion = new javax.swing.JTextField();
+        txtcedula = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        txtnombres = new javax.swing.JTextField();
+        dtFecha = new com.toedter.calendar.JDateChooser();
+        txttelefono = new javax.swing.JTextField();
+        txtapellidos = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        txtfrecuencia = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        spnCalificacion = new javax.swing.JSpinner();
+        btnGuardar = new javax.swing.JButton();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         btnCREAR = new javax.swing.JButton();
         btnEDITAR = new javax.swing.JButton();
         btnELIMINAR = new javax.swing.JButton();
-        btnACTUALIZAR = new javax.swing.JButton();
         txtBUSCAR = new javax.swing.JTextField();
         btnBUSCAR = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -78,121 +76,94 @@ public class VistaCliente extends javax.swing.JInternalFrame {
 
         jDialog1.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setText("CEDULA:");
-        jDialog1.getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(89, 92, 110, -1));
-
-        jLabel3.setText("NOMBRES:");
-        jDialog1.getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(89, 137, 100, -1));
-
-        jLabel4.setText("APELLIDOS:");
-        jDialog1.getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(89, 182, 100, -1));
-
-        jLabel5.setText("DIRECCION:");
+        jLabel5.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
+        jLabel5.setText("Direccion:");
         jDialog1.getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(89, 232, 100, -1));
 
-        jLabel6.setText("GENERO:");
-        jDialog1.getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(89, 281, 100, -1));
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel7.setText("TELEFONO:");
-        jDialog1.getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(89, 330, 100, -1));
+        cmbgenero.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
+        cmbgenero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "Masculino", "Femenino" }));
+        jPanel4.add(cmbgenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 270, 220, -1));
 
-        jLabel8.setText("FECHA NACIMIENTO:");
-        jDialog1.getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(89, 376, 140, -1));
-        jDialog1.getContentPane().add(txtcedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(244, 89, 220, -1));
-        jDialog1.getContentPane().add(txtnombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(244, 129, 220, -1));
-        jDialog1.getContentPane().add(txtapellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(244, 171, 220, -1));
-        jDialog1.getContentPane().add(txtdireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(244, 224, 220, -1));
-        jDialog1.getContentPane().add(txttelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(244, 320, 220, -1));
-        jDialog1.getContentPane().add(dtFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(244, 373, 310, -1));
+        jLabel14.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
+        jLabel14.setText("Codigo:");
+        jPanel4.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 70, 110, -1));
 
-        btnGuardar.setText("Guardar");
-        jDialog1.getContentPane().add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(482, 463, -1, -1));
+        txtidPer.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
+        txtidPer.setEnabled(false);
+        jPanel4.add(txtidPer, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 70, 220, -1));
 
-        jPanel2.setBackground(new java.awt.Color(255, 0, 0));
+        txtdireccion.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
+        jPanel4.add(txtdireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 230, 220, -1));
 
-        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/fondo2.jpeg"))); // NOI18N
+        txtcedula.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
+        jPanel4.add(txtcedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 110, 220, -1));
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        jLabel2.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
+        jLabel2.setText("Cedula:");
+        jPanel4.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 110, 110, -1));
 
-        jDialog1.getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 593, 50));
+        jLabel3.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
+        jLabel3.setText("Nombres:");
+        jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 150, 100, -1));
 
-        jPanel3.setBackground(new java.awt.Color(255, 0, 0));
+        txtnombres.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
+        jPanel4.add(txtnombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 150, 220, -1));
+        jPanel4.add(dtFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 350, 220, 30));
 
-        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/fondo2.jpeg"))); // NOI18N
+        txttelefono.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
+        jPanel4.add(txttelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 310, 220, -1));
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
+        txtapellidos.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
+        jPanel4.add(txtapellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 190, 220, -1));
 
-        jDialog1.getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 511, 593, 40));
+        jLabel4.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
+        jLabel4.setText("Apellidos:");
+        jPanel4.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 190, 100, -1));
 
-        jLabel9.setText("Frecuencia");
-        jDialog1.getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(89, 423, 100, -1));
+        jLabel6.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
+        jLabel6.setText("Genero:");
+        jPanel4.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 270, 100, -1));
 
+        jLabel7.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
+        jLabel7.setText("Telefono:");
+        jPanel4.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 310, 100, -1));
+
+        jLabel8.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
+        jLabel8.setText("Fecha de nacimiento:");
+        jPanel4.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 350, 170, -1));
+
+        jLabel9.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
+        jLabel9.setText("Frecuencia:");
+        jPanel4.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 390, 100, -1));
+
+        txtfrecuencia.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
         txtfrecuencia.setEnabled(false);
-        jDialog1.getContentPane().add(txtfrecuencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(244, 420, 220, -1));
+        jPanel4.add(txtfrecuencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 390, 220, -1));
 
-        jLabel10.setText("Calificacion");
-        jDialog1.getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(89, 466, 100, -1));
+        jLabel10.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
+        jLabel10.setText("Calificacion:");
+        jPanel4.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 430, 100, -1));
 
         spnCalificacion.setEnabled(false);
-        jDialog1.getContentPane().add(spnCalificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(244, 460, 43, 29));
+        jPanel4.add(spnCalificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 430, 43, 29));
 
-        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+        btnGuardar.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
+        btnGuardar.setText("Guardar");
+        jPanel4.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 460, -1, -1));
 
-        cmbgenero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "Masculino", "Femenino" }));
+        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/fondo2.jpeg"))); // NOI18N
+        jPanel4.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 590, 60));
 
-        jLabel14.setText("Codigo:");
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/WhatsApp Image 2024-01-21 at 10.41.50 PM.jpeg"))); // NOI18N
+        jPanel4.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 510, 420));
 
-        txtidPer.setEnabled(false);
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/fondo2.jpeg"))); // NOI18N
+        jPanel4.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(-2, 500, 590, 40));
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(87, 87, 87)
-                        .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txtidPer, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addContainerGap(246, Short.MAX_VALUE)
-                        .addComponent(cmbgenero, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(124, 124, 124))
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel14)
-                    .addComponent(txtidPer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(201, 201, 201)
-                .addComponent(cmbgenero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(211, Short.MAX_VALUE))
-        );
-
-        jDialog1.getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 590, 460));
+        jDialog1.getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 590, 540));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1460, 472));
@@ -203,23 +174,18 @@ public class VistaCliente extends javax.swing.JInternalFrame {
 
         btnCREAR.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
         btnCREAR.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/alineacion-central (1).png"))); // NOI18N
-        btnCREAR.setText("CREAR");
-        jPanel1.add(btnCREAR, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 130, -1, -1));
+        btnCREAR.setText("Crear");
+        jPanel1.add(btnCREAR, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 130, -1, -1));
 
         btnEDITAR.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
         btnEDITAR.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/editar (1).png"))); // NOI18N
-        btnEDITAR.setText("EDITAR");
-        jPanel1.add(btnEDITAR, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 130, -1, -1));
+        btnEDITAR.setText("Editar");
+        jPanel1.add(btnEDITAR, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 130, -1, -1));
 
         btnELIMINAR.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
         btnELIMINAR.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/papelera-de-reciclaje (2).png"))); // NOI18N
-        btnELIMINAR.setText("ELIMINAR");
+        btnELIMINAR.setText("Eliminar");
         jPanel1.add(btnELIMINAR, new org.netbeans.lib.awtextra.AbsoluteConstraints(1260, 130, -1, -1));
-
-        btnACTUALIZAR.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
-        btnACTUALIZAR.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/estado (1).png"))); // NOI18N
-        btnACTUALIZAR.setText("ACTUALIZAR");
-        jPanel1.add(btnACTUALIZAR, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 130, -1, -1));
 
         txtBUSCAR.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
         txtBUSCAR.setBorder(null);
@@ -227,7 +193,7 @@ public class VistaCliente extends javax.swing.JInternalFrame {
 
         btnBUSCAR.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
         btnBUSCAR.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/buscar (6).png"))); // NOI18N
-        btnBUSCAR.setText("BUSCAR");
+        btnBUSCAR.setText("Buscar");
         jPanel1.add(btnBUSCAR, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 130, -1, -1));
 
         jTableAdmin.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
@@ -244,10 +210,10 @@ public class VistaCliente extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(jTableAdmin);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 1390, 220));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 1390, 90));
 
         btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/cerrar-sesion (2).png"))); // NOI18N
-        btnSalir.setBorder(null);
+        btnSalir.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel1.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(1370, 10, -1, -1));
 
         jLabel11.setFont(new java.awt.Font("Times New Roman", 2, 48)); // NOI18N
@@ -260,9 +226,9 @@ public class VistaCliente extends javax.swing.JInternalFrame {
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 210, 10));
 
         btnIMPRIMIR.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
-        btnIMPRIMIR.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/estado (1).png"))); // NOI18N
-        btnIMPRIMIR.setText("IMPRIMIR");
-        jPanel1.add(btnIMPRIMIR, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 130, 200, -1));
+        btnIMPRIMIR.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/impresora (2).png"))); // NOI18N
+        btnIMPRIMIR.setText("Imprimir");
+        jPanel1.add(btnIMPRIMIR, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 130, 150, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -278,9 +244,7 @@ public class VistaCliente extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public JButton getBtnACTUALIZAR() {
-        return btnACTUALIZAR;
-    }
+    
 
     public JButton getBtnBUSCAR() {
         return btnBUSCAR;
@@ -372,7 +336,6 @@ public class VistaCliente extends javax.swing.JInternalFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnACTUALIZAR;
     private javax.swing.JButton btnBUSCAR;
     private javax.swing.JButton btnCREAR;
     private javax.swing.JButton btnEDITAR;
@@ -389,6 +352,7 @@ public class VistaCliente extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -398,8 +362,6 @@ public class VistaCliente extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;

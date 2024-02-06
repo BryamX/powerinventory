@@ -5,6 +5,8 @@
  */
 package proyecto_final2024.newpackageVista;
 
+import java.awt.Image;
+import java.awt.Toolkit;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
@@ -20,6 +22,19 @@ public class VistaReporte extends javax.swing.JFrame {
      */
     public VistaReporte() {
         initComponents();
+        
+        
+        
+      //codigo para el icono    
+        setIconImage(getIconImage());
+    }
+    
+    @Override
+    public Image getIconImage() {
+        
+    Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("logo/lg.png"));
+    
+    return retValue;
     }
 
 //    public JTable getTbReporte() {

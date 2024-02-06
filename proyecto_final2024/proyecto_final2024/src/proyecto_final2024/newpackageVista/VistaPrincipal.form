@@ -53,7 +53,7 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/icons/conexion.png"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="PROVEEDOR"/>
+        <Property name="text" type="java.lang.String" value="Proveedor"/>
         <Property name="toolTipText" type="java.lang.String" value="Ventana de proveedores"/>
         <Property name="focusable" type="boolean" value="false"/>
         <Property name="horizontalTextPosition" type="int" value="4"/>
@@ -61,7 +61,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="560" y="60" width="-1" height="-1"/>
+          <AbsoluteConstraints x="520" y="60" width="-1" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -73,7 +73,7 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/icons/blogger.png"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="ADMINISTRADOR"/>
+        <Property name="text" type="java.lang.String" value="Administrador"/>
         <Property name="toolTipText" type="java.lang.String" value="Ventana de administradores"/>
         <Property name="focusable" type="boolean" value="false"/>
         <Property name="horizontalTextPosition" type="int" value="4"/>
@@ -81,7 +81,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="170" y="60" width="-1" height="40"/>
+          <AbsoluteConstraints x="160" y="60" width="180" height="40"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -93,7 +93,7 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/icons/caja.png"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="PRODUCTOS"/>
+        <Property name="text" type="java.lang.String" value="Productos"/>
         <Property name="toolTipText" type="java.lang.String" value="Ventana de componentes de carros"/>
         <Property name="focusable" type="boolean" value="false"/>
         <Property name="horizontalTextPosition" type="int" value="4"/>
@@ -101,7 +101,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="750" y="60" width="-1" height="-1"/>
+          <AbsoluteConstraints x="690" y="60" width="-1" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -113,7 +113,7 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/icons/grupo.png"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="CLIENTE"/>
+        <Property name="text" type="java.lang.String" value="Cliente"/>
         <Property name="toolTipText" type="java.lang.String" value="Ventana cliente"/>
         <Property name="focusable" type="boolean" value="false"/>
         <Property name="horizontalTextPosition" type="int" value="4"/>
@@ -121,7 +121,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="10" y="60" width="150" height="40"/>
+          <AbsoluteConstraints x="10" y="60" width="130" height="40"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -133,7 +133,7 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/icons/cuenta.png"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="FACTURA"/>
+        <Property name="text" type="java.lang.String" value="Factura"/>
         <Property name="toolTipText" type="java.lang.String" value="Crear factura"/>
         <Property name="focusable" type="boolean" value="false"/>
         <Property name="horizontalTextPosition" type="int" value="4"/>
@@ -141,7 +141,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="1120" y="60" width="-1" height="-1"/>
+          <AbsoluteConstraints x="1060" y="60" width="-1" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -153,7 +153,7 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/icons/carpeta.png"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="CATEGORIA"/>
+        <Property name="text" type="java.lang.String" value="Categoria"/>
         <Property name="toolTipText" type="java.lang.String" value="Ventana de categoria"/>
         <Property name="focusable" type="boolean" value="false"/>
         <Property name="horizontalTextPosition" type="int" value="4"/>
@@ -161,7 +161,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="940" y="60" width="170" height="40"/>
+          <AbsoluteConstraints x="860" y="60" width="170" height="40"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -173,7 +173,7 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/icons/edificio.png"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="EMPRESAS"/>
+        <Property name="text" type="java.lang.String" value="Empresas"/>
         <Property name="toolTipText" type="java.lang.String" value="Ventana de empresas"/>
         <Property name="focusable" type="boolean" value="false"/>
         <Property name="horizontalTextPosition" type="int" value="4"/>
@@ -181,7 +181,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="390" y="60" width="-1" height="40"/>
+          <AbsoluteConstraints x="360" y="60" width="-1" height="40"/>
         </Constraint>
       </Constraints>
     </Component>

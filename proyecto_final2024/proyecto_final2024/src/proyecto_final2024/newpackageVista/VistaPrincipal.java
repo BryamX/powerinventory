@@ -5,6 +5,8 @@
  */
 package proyecto_final2024.newpackageVista;
 
+import java.awt.Image;
+import java.awt.Toolkit;
 import javax.swing.JButton;
 import javax.swing.JDesktopPane;
 import javax.swing.JMenuItem;
@@ -20,6 +22,18 @@ public class VistaPrincipal extends javax.swing.JFrame {
      */
     public VistaPrincipal() {
         initComponents();
+        
+        
+      //codigo para el icono    
+        setIconImage(getIconImage());
+    }
+    
+    @Override
+    public Image getIconImage() {
+        
+    Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("logo/lg.png"));
+    
+    return retValue;
     }
 
     public JButton getBtnProveedores() {
@@ -87,66 +101,66 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
         btnProveedores.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
         btnProveedores.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/conexion.png"))); // NOI18N
-        btnProveedores.setText("PROVEEDOR");
+        btnProveedores.setText("Proveedor");
         btnProveedores.setToolTipText("Ventana de proveedores");
         btnProveedores.setFocusable(false);
         btnProveedores.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btnProveedores.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        getContentPane().add(btnProveedores, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 60, -1, -1));
+        getContentPane().add(btnProveedores, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 60, -1, -1));
 
         btnAdmin.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
         btnAdmin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/blogger.png"))); // NOI18N
-        btnAdmin.setText("ADMINISTRADOR");
+        btnAdmin.setText("Administrador");
         btnAdmin.setToolTipText("Ventana de administradores");
         btnAdmin.setFocusable(false);
         btnAdmin.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btnAdmin.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        getContentPane().add(btnAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 60, -1, 40));
+        getContentPane().add(btnAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 60, 180, 40));
 
         btnProducos.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
         btnProducos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/caja.png"))); // NOI18N
-        btnProducos.setText("PRODUCTOS");
+        btnProducos.setText("Productos");
         btnProducos.setToolTipText("Ventana de componentes de carros");
         btnProducos.setFocusable(false);
         btnProducos.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btnProducos.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        getContentPane().add(btnProducos, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 60, -1, -1));
+        getContentPane().add(btnProducos, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 60, -1, -1));
 
         btnCliente.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
         btnCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/grupo.png"))); // NOI18N
-        btnCliente.setText("CLIENTE");
+        btnCliente.setText("Cliente");
         btnCliente.setToolTipText("Ventana cliente");
         btnCliente.setFocusable(false);
         btnCliente.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btnCliente.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        getContentPane().add(btnCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 150, 40));
+        getContentPane().add(btnCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 130, 40));
 
         btnFactura.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
         btnFactura.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/cuenta.png"))); // NOI18N
-        btnFactura.setText("FACTURA");
+        btnFactura.setText("Factura");
         btnFactura.setToolTipText("Crear factura");
         btnFactura.setFocusable(false);
         btnFactura.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btnFactura.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        getContentPane().add(btnFactura, new org.netbeans.lib.awtextra.AbsoluteConstraints(1120, 60, -1, -1));
+        getContentPane().add(btnFactura, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 60, -1, -1));
 
         btnCategoria.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
         btnCategoria.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/carpeta.png"))); // NOI18N
-        btnCategoria.setText("CATEGORIA");
+        btnCategoria.setText("Categoria");
         btnCategoria.setToolTipText("Ventana de categoria");
         btnCategoria.setFocusable(false);
         btnCategoria.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btnCategoria.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        getContentPane().add(btnCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 60, 170, 40));
+        getContentPane().add(btnCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 60, 170, 40));
 
         btnEmpresa.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
         btnEmpresa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/edificio.png"))); // NOI18N
-        btnEmpresa.setText("EMPRESAS");
+        btnEmpresa.setText("Empresas");
         btnEmpresa.setToolTipText("Ventana de empresas");
         btnEmpresa.setFocusable(false);
         btnEmpresa.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btnEmpresa.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        getContentPane().add(btnEmpresa, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 60, -1, 40));
+        getContentPane().add(btnEmpresa, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 60, -1, 40));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/WhatsApp Image 2024-01-21 at 9.48.54 PM.jpeg"))); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1310, 20, -1, -1));

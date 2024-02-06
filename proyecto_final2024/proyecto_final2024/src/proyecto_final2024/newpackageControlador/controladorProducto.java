@@ -51,7 +51,7 @@ public class controladorProducto {
         vista.setVisible(true);
         this.vista.setBorder(null);
         this.vista.setLocation(0, -23);
-        ModeloProducto.cargarBoxes(vista);
+//        ModeloProducto.cargarBoxes(vista);
         controlKey();
         desactivar();
             vista.getTblproductos().setDefaultEditor(Object.class, null);
@@ -110,7 +110,7 @@ public class controladorProducto {
             llenarCampos();
         }
         vista.getjDialog1().setLocationRelativeTo(vista);
-        vista.getjDialog1().setSize(600, 600);
+        vista.getjDialog1().setSize(670, 550);
         vista.getjDialog1().setVisible(true);
         vista.getjDialog1().setLocationRelativeTo(null);
     }

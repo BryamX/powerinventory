@@ -118,13 +118,13 @@ public class ControladorEmpresas {
     private void abrirDialogo(boolean nuevo) {
         lipiar();
         if (nuevo) {
-            vista.getjDialog1().setTitle("Crear nueva empresa");
+            vista.getjDialog1().setTitle("CREAR EMPRESA");
         } else if (!nuevo) {
-            vista.getjDialog1().setTitle("Editar empresa");
+            vista.getjDialog1().setTitle("EDITAR EMPRESA");
             enviarDatos();
         }
         vista.getjDialog1().setLocationRelativeTo(vista);
-        vista.getjDialog1().setSize(600, 600);
+        vista.getjDialog1().setSize(530, 550);
         vista.getjDialog1().setVisible(true);
         vista.getjDialog1().setLocationRelativeTo(null);
     }

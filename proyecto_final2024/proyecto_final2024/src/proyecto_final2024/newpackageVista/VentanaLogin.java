@@ -5,6 +5,8 @@
  */
 package proyecto_final2024.newpackageVista;
 
+import java.awt.Image;
+import java.awt.Toolkit;
 import javax.swing.JButton;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
@@ -20,6 +22,19 @@ public class VentanaLogin extends javax.swing.JFrame {
      */
     public VentanaLogin() {
         initComponents();
+        
+        
+        
+      //codigo para el icono    
+        setIconImage(getIconImage());
+    }
+    
+    @Override
+    public Image getIconImage() {
+        
+    Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("logo/lg.png"));
+    
+    return retValue;
     }
 
     public JPasswordField getPswContrasena() {
@@ -91,7 +106,7 @@ public class VentanaLogin extends javax.swing.JFrame {
         jPanel1.add(btnInicarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 420, 120, 40));
 
         jLabel5.setFont(new java.awt.Font("Times New Roman", 3, 36)); // NOI18N
-        jLabel5.setText("Iniciar sesion");
+        jLabel5.setText("Iniciar sesiòn");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 90, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 810, 490));
