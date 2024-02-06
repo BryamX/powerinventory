@@ -277,6 +277,7 @@ public class controladorProveedor {
         if (pro.eliminarPro()== null) {
             JOptionPane.showMessageDialog(null, "Proveedor eliminada con exito");
             listarProveedores();
+            desactivar();
         } else {
             JOptionPane.showMessageDialog(null, "Proveedor no eliminada");
         }

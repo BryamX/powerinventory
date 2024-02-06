@@ -267,6 +267,7 @@ public class controladorAdministrador {
         if (admin.eliminarAdministrador()== null) {
             JOptionPane.showMessageDialog(null, "administrador eliminada con exito");
             listarAdministrador();
+            desactivar();
         } else {
             JOptionPane.showMessageDialog(null, "administrador no eliminada");
         }

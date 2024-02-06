@@ -17,7 +17,9 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -47,6 +49,9 @@ import proyecto_final2024.newpackageVista.VistaFacrura;
 public class ControladorFactura {
 
     VistaFacrura vista;
+    Calendar calendario= new GregorianCalendar();
+    Date fecha_actual=calendario.getTime();
+    
 
     static public String cedigo, nombre, apellido, cedula;
     static public String codigobarras, nombreProducto, precio, cantidad;
@@ -81,9 +86,29 @@ public class ControladorFactura {
         this.vista.setVisible(true);
         this.vista.setBorder(null);
         this.vista.setLocation(0, -23);
+        fecha();
+       
+          vista.getTbFacturabuscada().setDefaultEditor(Object.class, null);
+           vista.getTbClientes().setDefaultEditor(Object.class, null);
+           vista.getTbProductos().setDefaultEditor(Object.class, null);
+           vista.getTbdetallefactura().setDefaultEditor(Object.class, null);
+           
     }
 
     public void inicarControl() {
+       vista.getFechaDesde().addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+    public void propertyChange(java.beans.PropertyChangeEvent evt) {
+        if ("date".equals(evt.getPropertyName())) {
+       
+            Date fechaSeleccionada = (Date) evt.getNewValue();
+            
+            vista.getFechahasta().setMinSelectableDate(fechaSeleccionada);
+        }
+    }
+});
+
+
+        
         listarProveedores();
         leercodigodeBarras();
         vista.getTxtcodigoFactura().setText(ModeloFactura.generarCodigoFacrura());
@@ -392,6 +417,7 @@ public class ControladorFactura {
             JOptionPane.showMessageDialog(null, "Selecione un producto para eliminar");
         } else {
             mTabla.removeRow(fila);
+            
         }
         totales();
         int canfilas = vista.getTbdetallefactura().getRowCount();
@@ -670,4 +696,22 @@ public class ControladorFactura {
         vista.getTxtcedulacliente().setText("");
         }
     }
+    
+     public void controlKey() {
+        vista.getTxtcantidadproducto().addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e){
+                Validar.numero(vista.getTxtcantidadproducto(), 1000); 
+            }
+        });
+     
+
+    }
+     public void fecha(){
+         vista.getDtFecha().setMinSelectableDate(fecha_actual);
+         
+         
+     }
+     
+    
 }

@@ -199,6 +199,7 @@ public class controladorCategoria {
                 if (categoria.eliminarCategoria()== null) {
                     JOptionPane.showMessageDialog(vista, "Categoria eliminada exitosamente");
                     listarCategoria();
+                    desactivar();
                 } else {
                     JOptionPane.showMessageDialog(vista, "Error al eliminar producto");
                 }

@@ -10,6 +10,7 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JTable;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 /**
@@ -765,4 +766,8 @@ public class VistaFacrura extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtnombrecliente;
     private javax.swing.JTextField txtsubtotal;
     // End of variables declaration//GEN-END:variables
+
+    public JTextArea getTxtDs() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

@@ -281,6 +281,7 @@ public class controladorClientes {
         if (admin.eliminarclientes() == null) {
             JOptionPane.showMessageDialog(null, "Cliente eliminada con exito");
             listarAdministrador();
+            desactivar();
         } else {
             JOptionPane.showMessageDialog(null, "Cliente no eliminada");
         }

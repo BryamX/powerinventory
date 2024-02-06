@@ -180,6 +180,7 @@ public class ControladorEmpresas {
         if (pro.eliminarEmpre()== null ) {
             JOptionPane.showMessageDialog(null, "Empresa eliminada con exito");
             listaEmpresas();
+             desactivar();
         } else {
             JOptionPane.showMessageDialog(null, "Empresa no eliminada");
         }

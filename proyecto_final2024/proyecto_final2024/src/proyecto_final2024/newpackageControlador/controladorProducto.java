@@ -209,6 +209,7 @@ public class controladorProducto {
                 if (producto.eliminarProducto() == null) {
                     JOptionPane.showMessageDialog(vista, "Producto eliminado exitosamente");
                     listaProductos();
+                    desactivar();
                 } else {
                     JOptionPane.showMessageDialog(vista, "Error al eliminar producto");
                 }
