@@ -12,6 +12,7 @@ import java.awt.event.MouseEvent;
 import java.io.FileInputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -127,7 +128,9 @@ public class controladorClientes {
        
         Conexion con = new Conexion();
         Map<String, Object> parametros = new HashMap <String, Object>();
-        parametros.put("fecha", "29/01/2024" );
+//        LocalDate fechaActual = LocalDate.now();
+        
+//        parametros.put("fecha", fechaActual );
         parametros.put("titulo", "LISTADO DE CLIENTES" );
 //        parametros.put("marcar", 250d);
         JasperPrint jp = JasperFillManager.fillReport(clientes, parametros, con.getCon());
