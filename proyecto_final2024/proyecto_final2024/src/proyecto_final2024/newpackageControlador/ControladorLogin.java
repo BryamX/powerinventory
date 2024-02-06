@@ -37,7 +37,7 @@ public class ControladorLogin {
     public void iniciarSesion(){
             
         usuarios = login.getTxtUsuario().getText();
-        contrasena = hash.sha1(String.valueOf(login.getPswContrasena().getText()));
+        contrasena = hash.sha1(String.valueOf(login.getPswContrasena().getPassword()));
         
         ModeloLogin logins = new ModeloLogin();
         
