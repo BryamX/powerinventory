@@ -102,6 +102,8 @@ public class VistaReporte extends javax.swing.JFrame {
         jMenuItem2.setText("jMenuItem2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
+        setResizable(false);
 
         pnlVentasMes.setBackground(new java.awt.Color(255, 255, 255));
 
