@@ -33,6 +33,9 @@ import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.view.JasperViewer;
+import proyecto_final2024.newpackageControlador.ControladorLogin;
+import proyecto_final2024.newpackageControlador.Validar;
+import proyecto_final2024.newpackageControlador.controladorClientes;
 import proyecto_final2024.newpackageModelo.ModeloFactura;
 import proyecto_final2024.newpackageModelo.Producto;
 import proyecto_final2024.newpackageModelo.Cliente;
@@ -87,6 +90,7 @@ public class ControladorFactura {
         this.vista.setBorder(null);
         this.vista.setLocation(0, -23);
         fecha();
+        controlKey();
        
           vista.getTbFacturabuscada().setDefaultEditor(Object.class, null);
            vista.getTbClientes().setDefaultEditor(Object.class, null);
@@ -708,7 +712,8 @@ public class ControladorFactura {
 
     }
      public void fecha(){
-         vista.getDtFecha().setMinSelectableDate(fecha_actual);
+         vista.getDtFecha().setDate(fecha_actual);
+         vista.getDtFecha().setEnabled(false);
          
          
      }
