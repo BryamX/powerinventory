@@ -279,16 +279,23 @@ public class controladorClientes {
         vista.getTxtidPer().setText(ModeloAdministrador.generarCodigoPersonas());
     }
 
-    public void eliminarAdmin() {
-        ModeloCliente admin = new ModeloCliente();
-        if (admin.eliminarclientes() == null) {
-            JOptionPane.showMessageDialog(null, "Cliente eliminada con exito");
+   
+public void eliminarAdmin() {
+    int confirmacion = JOptionPane.showConfirmDialog(null, "¿Estás seguro de que quieres eliminar este cliente?", "Confirmación de eliminación", JOptionPane.YES_NO_OPTION);
+    
+    if (confirmacion == JOptionPane.YES_OPTION) {
+        ModeloCliente cliente = new ModeloCliente();
+        if (cliente.eliminarclientes() == null) {
+            JOptionPane.showMessageDialog(null, "Cliente eliminado con éxito");
             listarAdministrador();
             desactivar();
         } else {
-            JOptionPane.showMessageDialog(null, "Cliente no eliminada");
+            JOptionPane.showMessageDialog(null, "No se pudo eliminar el cliente");
         }
+    } else {
+        JOptionPane.showMessageDialog(null, "Operación de eliminación cancelada");
     }
+}
 
     public void salir() {
         vista.dispose();

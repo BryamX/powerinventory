@@ -176,15 +176,21 @@ public class ControladorEmpresas {
     }
     
     public void eliminarEmpre() {
-        ModeloEmpresa pro= new ModeloEmpresa();
-        if (pro.eliminarEmpre()== null ) {
-            JOptionPane.showMessageDialog(null, "Empresa eliminada con exito");
+    int confirmacion = JOptionPane.showConfirmDialog(null, "¿Estás seguro de que quieres eliminar esta empresa?", "Confirmación de eliminación", JOptionPane.YES_NO_OPTION);
+    
+    if (confirmacion == JOptionPane.YES_OPTION) {
+        ModeloEmpresa empresa = new ModeloEmpresa();
+        if (empresa.eliminarEmpre() == null) {
+            JOptionPane.showMessageDialog(null, "Empresa eliminada con éxito");
             listaEmpresas();
-             desactivar();
+            desactivar();
         } else {
-            JOptionPane.showMessageDialog(null, "Empresa no eliminada");
+            JOptionPane.showMessageDialog(null, "No se pudo eliminar la empresa");
         }
+    } else {
+        JOptionPane.showMessageDialog(null, "Operación de eliminación cancelada");
     }
+}
     
     public void enviarDatos() {
             vista.getTxtNombreEm().setText(nombre_empresa);

@@ -263,15 +263,21 @@ public class controladorAdministrador {
    }
 
     public void eliminarAdmin() {
+    int confirmacion = JOptionPane.showConfirmDialog(null, "¿Estás seguro de que quieres eliminar este administrador?", "Confirmación de eliminación", JOptionPane.YES_NO_OPTION);
+    
+    if (confirmacion == JOptionPane.YES_OPTION) {
         ModeloAdministrador admin = new ModeloAdministrador();
-        if (admin.eliminarAdministrador()== null) {
-            JOptionPane.showMessageDialog(null, "administrador eliminada con exito");
+        if (admin.eliminarAdministrador() == null) {
+            JOptionPane.showMessageDialog(null, "Administrador eliminado con éxito");
             listarAdministrador();
             desactivar();
         } else {
-            JOptionPane.showMessageDialog(null, "administrador no eliminada");
+            JOptionPane.showMessageDialog(null, "No se pudo eliminar el administrador");
         }
+    } else {
+        JOptionPane.showMessageDialog(null, "Operación de eliminación cancelada");
     }
+}
     
     public void salir(){
         vista.dispose();

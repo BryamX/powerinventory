@@ -272,16 +272,22 @@ public class controladorProveedor {
             vista.getTxtidPer().setText(ModeloProveedor.generarCodigoPersona());
     }
 
-    public void eliminarPro() {
-        ModeloProveedor pro= new ModeloProveedor();
-        if (pro.eliminarPro()== null) {
-            JOptionPane.showMessageDialog(null, "Proveedor eliminada con exito");
+  public void eliminarPro() {
+    int confirmacion = JOptionPane.showConfirmDialog(null, "¿Estás seguro de que quieres eliminar este proveedor?", "Confirmación de eliminación", JOptionPane.YES_NO_OPTION);
+    
+    if (confirmacion == JOptionPane.YES_OPTION) {
+        ModeloProveedor proveedor = new ModeloProveedor();
+        if (proveedor.eliminarPro() == null) {
+            JOptionPane.showMessageDialog(null, "Proveedor eliminado con éxito");
             listarProveedores();
             desactivar();
         } else {
-            JOptionPane.showMessageDialog(null, "Proveedor no eliminada");
+            JOptionPane.showMessageDialog(null, "No se pudo eliminar el proveedor");
         }
+    } else {
+        JOptionPane.showMessageDialog(null, "Operación de eliminación cancelada");
     }
+}
     
     public void salir(){
         vista.dispose();
