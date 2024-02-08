@@ -57,12 +57,6 @@ public class VistaReporte extends javax.swing.JFrame {
         return mnsalir;
     }
 
-    public JMenuItem getMnImprimir() {
-        return mnImprimir;
-    }
-
-    
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -71,9 +65,9 @@ public class VistaReporte extends javax.swing.JFrame {
         pnlVentasMes = new javax.swing.JPanel();
         pnlRpastel = new javax.swing.JPanel();
         pnlVentaspormeses = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        mnImprimir = new javax.swing.JMenuItem();
         mnsalir = new javax.swing.JMenuItem();
 
         jMenuItem2.setText("jMenuItem2");
@@ -81,10 +75,13 @@ public class VistaReporte extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         pnlVentasMes.setBackground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(pnlVentasMes, new org.netbeans.lib.awtextra.AbsoluteConstraints(798, 10, 645, 270));
 
         pnlRpastel.setBackground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(pnlRpastel, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 10, 645, 270));
 
         pnlVentaspormeses.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -99,10 +96,24 @@ public class VistaReporte extends javax.swing.JFrame {
             .addGap(0, 390, Short.MAX_VALUE)
         );
 
-        jMenu1.setText("Opciones");
+        getContentPane().add(pnlVentaspormeses, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 298, 1414, -1));
 
-        mnImprimir.setText("Imprimir");
-        jMenu1.add(mnImprimir);
+        jPanel1.setBackground(new java.awt.Color(204, 255, 255));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1510, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 700, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-40, 0, 1510, 700));
+
+        jMenu1.setText("Opciones");
 
         mnsalir.setText("Volver");
         jMenu1.add(mnsalir);
@@ -110,32 +121,6 @@ public class VistaReporte extends javax.swing.JFrame {
         jMenuBar1.add(jMenu1);
 
         setJMenuBar(jMenuBar1);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(pnlVentaspormeses, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(pnlRpastel, javax.swing.GroupLayout.PREFERRED_SIZE, 645, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 124, Short.MAX_VALUE)
-                        .addComponent(pnlVentasMes, javax.swing.GroupLayout.PREFERRED_SIZE, 645, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(29, 29, 29))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(pnlVentasMes, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE)
-                    .addComponent(pnlRpastel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addComponent(pnlVentaspormeses, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -146,7 +131,7 @@ public class VistaReporte extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem mnImprimir;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JMenuItem mnsalir;
     private javax.swing.JPanel pnlRpastel;
     private javax.swing.JPanel pnlVentasMes;

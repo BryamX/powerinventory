@@ -4,8 +4,7 @@
  * and open the template in the editor.
  */
 package proyecto_final2024.newpackageControlador;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -49,12 +48,11 @@ import proyecto_final2024.newpackageVista.VistaPrincipal;
  * @author USER
  */
 public class ControladorFactura {
-
-    VistaFacrura vista;
-    Calendar calendario= new GregorianCalendar();
-    Date fecha_actual=calendario.getTime();
     
-
+    VistaFacrura vista;
+    Calendar calendario = new GregorianCalendar();
+    Date fecha_actual = calendario.getTime();
+    
     static public String cedigo, nombre, apellido, cedula;
     static public String codigobarras, nombreProducto, precio, cantidad;
     static public String codigoBuscar, idFactura;
@@ -63,9 +61,9 @@ public class ControladorFactura {
 
     //Sirve para la consulta cuando buscamos con el codigo de barras
     public static String cantidadBuscadaPorCodigoBarras;
-
+    
     public static Integer cantidadProductos;
-
+    
     public static float precioproductosV;
 
     //variables para el buscador de las facturas
@@ -77,12 +75,12 @@ public class ControladorFactura {
     public InputStreamReader isr;
     public BufferedReader br;
     public String mensaje;
-    
+
     //Ruta de la imagen
     public String ruta = "/logo/logo.jpeg";
-
+    
     public static java.sql.Date fechadesdeEnviar, fechahastaEnviar;
-
+    
     public ControladorFactura(VistaFacrura vista) {
         this.vista = vista;
         this.vista.setVisible(true);
@@ -92,47 +90,44 @@ public class ControladorFactura {
         controlKey();
         vista.getBtnanadir().setEnabled(false);
         vista.getQuitar().setEnabled(false);
-       
-          vista.getTbFacturabuscada().setDefaultEditor(Object.class, null);
-           vista.getTbClientes().setDefaultEditor(Object.class, null);
-           vista.getTbProductos().setDefaultEditor(Object.class, null);
-           vista.getTbdetallefactura().setDefaultEditor(Object.class, null);
-           
+        
+        vista.getTbFacturabuscada().setDefaultEditor(Object.class, null);
+        vista.getTbClientes().setDefaultEditor(Object.class, null);
+        vista.getTbProductos().setDefaultEditor(Object.class, null);
+        vista.getTbdetallefactura().setDefaultEditor(Object.class, null);
+        
     }
-
+    
     public void inicarControl() {
         leercodigodeBarras();
-         this.vista.getTxtcantidadproducto().addKeyListener(new KeyListener() {
+        this.vista.getTxtcantidadproducto().addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {
-               vista.getBtnanadir().setEnabled(true);
-        vista.getQuitar().setEnabled(true);
-            } 
-
-             @Override
-             public void keyPressed(KeyEvent e) {
-               
-             }
-
-             @Override
-             public void keyReleased(KeyEvent e) {
-                      }
-         });
-          
-
-          
-       vista.getFechaDesde().addPropertyChangeListener(new java.beans.PropertyChangeListener() {
-    public void propertyChange(java.beans.PropertyChangeEvent evt) {
-        if ("date".equals(evt.getPropertyName())) {
-       
-            Date fechaSeleccionada = (Date) evt.getNewValue();
+                vista.getBtnanadir().setEnabled(true);
+                vista.getQuitar().setEnabled(true);
+            }
             
-            vista.getFechahasta().setMinSelectableDate(fechaSeleccionada);
-        }
-    }
-});
-       
-       
+            @Override
+            public void keyPressed(KeyEvent e) {
+                
+            }
+            
+            @Override
+            public void keyReleased(KeyEvent e) {
+            }
+        });
+        
+        vista.getFechaDesde().addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                if ("date".equals(evt.getPropertyName())) {
+                    
+                    Date fechaSeleccionada = (Date) evt.getNewValue();
+                    
+                    vista.getFechahasta().setMinSelectableDate(fechaSeleccionada);
+                }
+            }
+        });
+        
         listarProveedores();
         
         vista.getTxtcodigoFactura().setText(ModeloFactura.generarCodigoFacrura());
@@ -141,7 +136,7 @@ public class ControladorFactura {
         vista.getBtnNuevo().setEnabled(false);
         vista.getBtnanular().setEnabled(false);
         vista.getBtnenviar().setEnabled(false);
-
+        
         vista.getTxtcodigoproducto().addActionListener(l -> obtenerProduto());
         vista.getBtnAbrirProductos().addActionListener(l -> buscarProductos());
         vista.getBtnbuscarcliente().addActionListener(l -> buscarClientes());
@@ -161,9 +156,9 @@ public class ControladorFactura {
         vista.getBtnCrearCliente().addActionListener(l -> crearCliente());
         vista.getBtnenviar().addActionListener(l -> enviarDatosCreados());
         vista.getBtnquitarCliente().addActionListener(l -> quitarCliente());
-
+        
     }
-
+    
     public void nuevaFactura() {
         vista.getBtnanular().setEnabled(true);
         vista.getBtnguardar().setEnabled(true);
@@ -182,14 +177,14 @@ public class ControladorFactura {
         vista.getTxtapellidocliente().setText("");
         vista.getTxtcedulacliente().setText("");
         vista.getTxtTotal().setText("");
-       
+        
         vista.getLblEstado().setText("PENDIENTE");
         DefaultTableModel model = (DefaultTableModel) vista.getTbdetallefactura().getModel();
         model.setRowCount(0);
         fecha();
-
+        
     }
-
+    
     public void AbrirBuscadorfactura() {
         vista.getBtnNuevo().setEnabled(true);
         vista.getBtnguardar().setEnabled(false);
@@ -200,7 +195,7 @@ public class ControladorFactura {
         vista.getTxtcantidadproducto().setEnabled(false);
         vista.getBtnanadir().setEnabled(false);
         vista.getQuitar().setEnabled(false);
-
+        
         vista.getjDialogFacturas().setSize(900, 400);
         vista.getjDialogFacturas().setVisible(true);
         vista.getjDialogFacturas().setLocationRelativeTo(null);
@@ -218,9 +213,9 @@ public class ControladorFactura {
             }
         });
         listaFacturas();
-
+        
     }
-
+    
     public void listaFacturas() {
         List<buscadorFacturas> miListaPro = ModeloFactura.listafacturas();
         DefaultTableModel mTabla = (DefaultTableModel) vista.getTbFacturabuscada().getModel();
@@ -232,16 +227,16 @@ public class ControladorFactura {
             mTabla.addRow(rowData);
         });
     }
-
+    
     public void botonbuscarFactura() {
-
+        
         if (vista.getFechaDesde().getDate() == null || vista.getFechahasta().getDate() == null) {
             JOptionPane.showMessageDialog(null, "Porfavor no deje campos vacios");
         } else {
             java.util.Date fehca = vista.getFechaDesde().getDate();
             long auxfecha = fehca.getTime();
             fechadesdeEnviar = new java.sql.Date(auxfecha);
-
+            
             java.util.Date fechahasta = vista.getFechahasta().getDate();
             long auxfecha_hasta = fechahasta.getTime();
             fechahastaEnviar = new java.sql.Date(auxfecha_hasta);
@@ -282,9 +277,9 @@ public class ControladorFactura {
                 Logger.getLogger(ControladorFactura.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-
+        
     }
-
+    
     public void cargarDetalle() {
         List<cargarDetalledeFactura> miListaPro = ModeloFactura.cargarDetalle();
         DefaultTableModel mTabla = (DefaultTableModel) vista.getTbdetallefactura().getModel();
@@ -296,7 +291,7 @@ public class ControladorFactura {
             mTabla.addRow(rowData);
         });
     }
-
+    
     public void buscarClientes() {
         listarProveedores();
         vista.getjDialogClientes().setLocationRelativeTo(vista);
@@ -329,7 +324,7 @@ public class ControladorFactura {
             }
         });
     }
-
+    
     public void buscarProductos() {
         listarProductos();
         vista.getjDialogProductos().setLocationRelativeTo(vista);
@@ -360,9 +355,9 @@ public class ControladorFactura {
             }
         });
     }
-
+    
     public void listarProveedores() {
-
+        
         List<Cliente> miListaPro = ModeloFactura.listarClientes();
         DefaultTableModel mTabla = (DefaultTableModel) vista.getTbClientes().getModel();
         mTabla.setRowCount(0);
@@ -371,9 +366,9 @@ public class ControladorFactura {
             mTabla.addRow(rowData);
         });
     }
-
+    
     public void listarProductos() {
-
+        
         List<Producto> miListaPro = ModeloFactura.listaProductos();
         DefaultTableModel mTabla = (DefaultTableModel) vista.getTbProductos().getModel();
         mTabla.setRowCount(0);
@@ -382,9 +377,9 @@ public class ControladorFactura {
             mTabla.addRow(rowData);
         });
     }
-
+    
     public void enviarDatosCliente() {
-
+        
         if (vista.getTbClientes().getSelectedRow() == -1) {
             JOptionPane.showMessageDialog(null, "Selecione un cliente");
         } else {
@@ -412,26 +407,30 @@ public class ControladorFactura {
     //Añade los productos a la tabla del detalle de la factura
     public void añadirProductos() {
         cantidadBuscadaPorCodigoBarras = vista.getTxtcodigoproducto().getText();
-
-        if (ModeloFactura.obtenercantidad() < Integer.parseInt(vista.getTxtcantidadproducto().getText())) {
-            JOptionPane.showMessageDialog(null, "Productos insuficiente en stock");
-            System.out.println("normal");
-        } else {
-
-            ModeloFactura.MandarProducto(vista.getTxtcodigoproducto().getText());
-            DefaultTableModel mTabla = (DefaultTableModel) vista.getTbdetallefactura().getModel();
-            mTabla.addRow(new Object[]{
-                ModeloFactura.codigobarras,
-                ModeloFactura.nombre,
-                ModeloFactura.precio * Integer.parseInt(vista.getTxtcantidadproducto().getText()),
-                vista.getTxtcantidadproducto().getText()
-            });
-            vista.getTbdetallefactura().setModel(mTabla);
-            totales();
-            vista.getTxtcantidadproducto().setText("");
-            vista.getTxtcodigoproducto().setText("");
+        
+        if (vista.getBtnanadir().equals("")) {
+            JOptionPane.showMessageDialog(null,"Ingrese la cantidad");
+        }else{
+            if (ModeloFactura.obtenercantidad() < Integer.parseInt(vista.getTxtcantidadproducto().getText())) {
+                JOptionPane.showMessageDialog(null, "Productos insuficiente en stock");
+                System.out.println("normal");
+            } else {
+                
+                ModeloFactura.MandarProducto(vista.getTxtcodigoproducto().getText());
+                DefaultTableModel mTabla = (DefaultTableModel) vista.getTbdetallefactura().getModel();
+                mTabla.addRow(new Object[]{
+                    ModeloFactura.codigobarras,
+                    ModeloFactura.nombre,
+                    ModeloFactura.precio * Integer.parseInt(vista.getTxtcantidadproducto().getText()),
+                    vista.getTxtcantidadproducto().getText()
+                });
+                vista.getTbdetallefactura().setModel(mTabla);
+                totales();
+                vista.getTxtcantidadproducto().setText("");
+                vista.getTxtcodigoproducto().setText("");
+            }
         }
-
+        
     }
 
     //Elimina los productos del detalle de la factutura
@@ -468,9 +467,9 @@ public class ControladorFactura {
             vista.getTxtTotal().setText(String.valueOf(sumatotal));
         }
     }
-
+    
     public void crearEncabeszado() {
-
+        
         if (vista.getTxtcodigoFactura().getText().equals("") || vista.getTxtcodigocliente().getText().equals("") || vista.getTxtcodigoAdmin().getText().equals("")
                 || vista.getDtFecha().getDate() == null || vista.getLblEstado().getText().equals("") || vista.getTbdetallefactura().getRowCount() == 0) {
             JOptionPane.showMessageDialog(null, "Ingrese todos los campos de la factura");
@@ -492,14 +491,14 @@ public class ControladorFactura {
             long auxFecha = fecha.getTime();
             java.sql.Date fechaFinal = new java.sql.Date(auxFecha);
             String estado = vista.getLblEstado().getText();
-
+            
             ModeloFactura fac = new ModeloFactura();
             fac.setIdFctura(idFactura);
             fac.setIdCliente(idCliente);
             fac.setIdAdministrador(idadmin);
             fac.setFechaFactura(fechaFinal);
             fac.setEstado(estado);
-
+            
             if (fac.grabarEncabezadoFacura() == null) {
                 JOptionPane.showMessageDialog(null, "Cabezera creada con exito");
                 guardarDetalleFactura();
@@ -510,7 +509,7 @@ public class ControladorFactura {
             }
         }
     }
-
+    
     public void guardarDetalleFactura() {
         ModeloFactura fac = new ModeloFactura();
         cantidadProductos = vista.getTbdetallefactura().getRowCount();
@@ -518,17 +517,17 @@ public class ControladorFactura {
             idproductoV = vista.getTbdetallefactura().getValueAt(i, 0).toString();
             cantidadProductosV = Integer.parseInt(vista.getTbdetallefactura().getValueAt(i, 3).toString());
             precioproductosV = Float.valueOf(vista.getTbdetallefactura().getValueAt(i, 2).toString());
-
+            
             if (fac.grabarDetalleFacura() == null) {
                 JOptionPane.showMessageDialog(null, "Detalle creado con exito");
-
+                
             } else {
                 JOptionPane.showMessageDialog(null, "No se pudo crear el detalle");
             }
-
+            
         }
     }
-
+    
     public void descontarSto() {
         ModeloFactura fac = new ModeloFactura();
         if (fac.decontarStock() == null) {
@@ -537,7 +536,7 @@ public class ControladorFactura {
             System.out.println("Error, el stock no se ha descontado");
         }
     }
-
+    
     public void leercodigodeBarras() {
         // Crear un nuevo hilo utilizando una expresión lambda
         new Thread(() -> {
@@ -581,7 +580,7 @@ public class ControladorFactura {
                     // Imprimir un mensaje indicando que se ha procesado el mensaje recibido
                     System.out.println("salio");
                 }
-
+                
             } catch (IOException e) {
                 // Capturar cualquier excepción de tipo IOException que pueda ocurrir durante la ejecución del servidor
                 Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, e);
@@ -589,52 +588,52 @@ public class ControladorFactura {
         }).start(); // Iniciar el hilo
 
     }
-
+    
     public void imprimirFactura() {
         if (vista.getTxtcodigoFactura().getText().equals("") || vista.getTxtcodigocliente().getText().equals("") || vista.getTxtcodigoAdmin().getText().equals("")
                 || vista.getDtFecha().getDate() == null || vista.getLblEstado().getText().equals("") || vista.getTbdetallefactura().getRowCount() == 0) {
             JOptionPane.showMessageDialog(null, "Ingrese todos los campos de la factura");
         } else {
-          
-        Conexion conexion = new Conexion();
-        Date fecha = vista.getDtFecha().getDate();
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        String fechaFinalComoString = sdf.format(fecha);
-
-        try {
-            JasperReport reporte = (JasperReport) JRLoader.loadObject(
-                    getClass().getResource("/proyecto_final2024/newpackagevista/reportes/factura.jasper"));
             
-            Map<String, Object> parametros = new HashMap<>();
+            Conexion conexion = new Conexion();
+            Date fecha = vista.getDtFecha().getDate();
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            String fechaFinalComoString = sdf.format(fecha);
             
-            parametros.put("logo", this.getClass().getResourceAsStream(ruta));
-            parametros.put("subtotal", Double.parseDouble(vista.getTxtsubtotal().getText()));
-            parametros.put("iva", Double.parseDouble(vista.getTxtiva().getText()));
-            parametros.put("idFactutra", Integer.parseInt(vista.getTxtcodigoFactura().getText()));
-            parametros.put("nombreoperario", vista.getTxtnombreAdmin().getText());
-            parametros.put("idOperario", vista.getTxtcodigoAdmin().getText());
-            parametros.put("nombrec", vista.getTxtnombrecliente().getText());
-            parametros.put("apellidoc", vista.getTxtapellidocliente().getText());
-            parametros.put("cedulac", vista.getTxtcedulacliente().getText());
-            parametros.put("fechaemicion", fechaFinalComoString);
-
-            JasperPrint jp = JasperFillManager.fillReport(
-                    reporte,
-                    parametros,
-                    conexion.getCon()
-            );
-            JasperViewer jv = new JasperViewer(jp, false);
-            jv.setVisible(true);
-        } catch (JRException ex) {
-            Logger.getLogger(ControladorFactura.class.getName()).log(Level.SEVERE, null, ex);
-        }
+            try {
+                JasperReport reporte = (JasperReport) JRLoader.loadObject(
+                        getClass().getResource("/proyecto_final2024/newpackagevista/reportes/factura.jasper"));
+                
+                Map<String, Object> parametros = new HashMap<>();
+                
+                parametros.put("logo", this.getClass().getResourceAsStream(ruta));
+                parametros.put("subtotal", Double.parseDouble(vista.getTxtsubtotal().getText()));
+                parametros.put("iva", Double.parseDouble(vista.getTxtiva().getText()));
+                parametros.put("idFactutra", Integer.parseInt(vista.getTxtcodigoFactura().getText()));
+                parametros.put("nombreoperario", vista.getTxtnombreAdmin().getText());
+                parametros.put("idOperario", vista.getTxtcodigoAdmin().getText());
+                parametros.put("nombrec", vista.getTxtnombrecliente().getText());
+                parametros.put("apellidoc", vista.getTxtapellidocliente().getText());
+                parametros.put("cedulac", vista.getTxtcedulacliente().getText());
+                parametros.put("fechaemicion", fechaFinalComoString);
+                
+                JasperPrint jp = JasperFillManager.fillReport(
+                        reporte,
+                        parametros,
+                        conexion.getCon()
+                );
+                JasperViewer jv = new JasperViewer(jp, false);
+                jv.setVisible(true);
+            } catch (JRException ex) {
+                Logger.getLogger(ControladorFactura.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }
-
+    
     public void salir() {
         VistaPrincipal.btnProducos.setEnabled(true);
         VistaPrincipal.btnFactura.setEnabled(true);
-        
+        VistaPrincipal.lblMensajes.setText("Mensajes");
         try {
             ssk.close();
         } catch (IOException ex) {
@@ -643,7 +642,7 @@ public class ControladorFactura {
         vista.dispose();
         
     }
-
+    
     public void anularFactura() {
         idFactura = vista.getTxtcodigoFactura().getText();
         if (vista.getLblEstado().getText().equals("ACTIVA")) {
@@ -659,7 +658,7 @@ public class ControladorFactura {
             JOptionPane.showMessageDialog(null, "No se ha podido anular la factura");
         }
     }
-
+    
     public void aumentarStok() {
         ModeloFactura fac = new ModeloFactura();
         cantidadProductos = vista.getTbdetallefactura().getRowCount();
@@ -684,7 +683,7 @@ public class ControladorFactura {
             }
         }
     }
-
+    
     public static String subirFrecuencia() {
         if (ModeloFactura.obtenerCalificacion() <= 5) {
             return "baja";
@@ -694,19 +693,19 @@ public class ControladorFactura {
             return "alta";
         }
     }
-
+    
     public void crearCliente() {
-        if (vista.getTxtcodigocliente().getText().equals("") || vista.getTxtnombrecliente().getText().equals("") || 
-            vista.getTxtapellidocliente().getText().equals("") ||  vista.getTxtcedulacliente().getText().equals("")) {
+        if (vista.getTxtcodigocliente().getText().equals("") || vista.getTxtnombrecliente().getText().equals("")
+                || vista.getTxtapellidocliente().getText().equals("") || vista.getTxtcedulacliente().getText().equals("")) {
             vista.getBtnenviar().setEnabled(true);
-        VistaCliente cliente = new VistaCliente();
-        controladorClientes crearClienteS = new controladorClientes(cliente);
-        crearClienteS.iniciarControl2();
-        }else{
+            VistaCliente cliente = new VistaCliente();
+            controladorClientes crearClienteS = new controladorClientes(cliente);
+            crearClienteS.iniciarControl2();
+        } else {
             JOptionPane.showMessageDialog(null, "No se puede crear un cliente si ya haz seleccionado uno anterirmente");
         }
     }
-
+    
     public void enviarDatosCreados() {
         vista.getTxtcodigocliente().setText(ModeloFactura.obtenerIdClienteCreado());
         vista.getTxtnombrecliente().setText(controladorClientes.nombreCFac);
@@ -714,35 +713,32 @@ public class ControladorFactura {
         vista.getTxtcedulacliente().setText(controladorClientes.cedulaCFac);
     }
     
-    public void quitarCliente(){
-        if (vista.getTxtcodigocliente().getText().equals("") || vista.getTxtnombrecliente().getText().equals("") || 
-            vista.getTxtapellidocliente().getText().equals("") ||  vista.getTxtcedulacliente().getText().equals("")) {
+    public void quitarCliente() {
+        if (vista.getTxtcodigocliente().getText().equals("") || vista.getTxtnombrecliente().getText().equals("")
+                || vista.getTxtapellidocliente().getText().equals("") || vista.getTxtcedulacliente().getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Aun no seleccionas ningun cliente");
-        }else{
-        vista.getTxtcodigocliente().setText("");
-        vista.getTxtnombrecliente().setText("");
-        vista.getTxtapellidocliente().setText("");
-        vista.getTxtcedulacliente().setText("");
+        } else {
+            vista.getTxtcodigocliente().setText("");
+            vista.getTxtnombrecliente().setText("");
+            vista.getTxtapellidocliente().setText("");
+            vista.getTxtcedulacliente().setText("");
         }
     }
     
-     public void controlKey() {
+    public void controlKey() {
         vista.getTxtcantidadproducto().addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                Validar.numero(vista.getTxtcantidadproducto(), 1000); 
+            public void keyPressed(KeyEvent e) {
+                Validar.numero(vista.getTxtcantidadproducto(), 1000);
             }
         });
-     
-
+        
     }
-     public void fecha(){
-         vista.getDtFecha().setDate(fecha_actual);
-         vista.getDtFecha().setEnabled(false);
-         
-         
-     }
     
-     
+    public void fecha() {
+        vista.getDtFecha().setDate(fecha_actual);
+        vista.getDtFecha().setEnabled(false);
+        
+    }
     
 }

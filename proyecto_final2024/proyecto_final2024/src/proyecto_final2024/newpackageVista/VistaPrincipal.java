@@ -9,6 +9,7 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import javax.swing.JButton;
 import javax.swing.JDesktopPane;
+import javax.swing.JLabel;
 import javax.swing.JMenuItem;
 
 /**
@@ -60,6 +61,10 @@ public class VistaPrincipal extends javax.swing.JFrame {
         return btnProducos;
     }
 
+    public JLabel getLblMensajes() {
+        return lblMensajes;
+    }
+
     public JButton getBtnFactura() {
         return btnFactura;
     }
@@ -90,6 +95,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         dktPrincipal = new javax.swing.JDesktopPane();
         jLabel4 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
+        lblMensajes = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
@@ -199,19 +205,14 @@ public class VistaPrincipal extends javax.swing.JFrame {
         getContentPane().add(dktPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 1430, 430));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 51));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblMensajes.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblMensajes.setText("Mensajes");
+        jPanel2.add(lblMensajes, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 610, 30));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/fondo2.jpeg"))); // NOI18N
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 1430, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 53, Short.MAX_VALUE)
-        );
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(-4, 0, 2240, 53));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 560, 1430, 50));
 
@@ -245,6 +246,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JToolBar jToolBar1;
+    public static javax.swing.JLabel lblMensajes;
     private javax.swing.JMenuItem mnReporte;
     // End of variables declaration//GEN-END:variables
 }

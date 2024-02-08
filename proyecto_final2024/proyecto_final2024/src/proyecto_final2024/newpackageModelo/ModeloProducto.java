@@ -95,7 +95,7 @@ public class ModeloProducto extends Producto {
 
         String sql;
         sql = "SELECT id_producto, nombre_producto, id_proveedor, descripcion_producto, cantidad_en_bodega, disponibilidad, "
-                + "id_categoria, precio_de_compra, precio_de_venta, codigo_barras FROM producto WHERE CAST(id_producto AS VARCHAR) LIKE '" + controladorProducto.codigoBuscar + "%' or codigo_barras LIKE '" + controladorProducto.codigoBuscar + "%'";
+                + "id_categoria, precio_de_compra, precio_de_venta, codigo_barras FROM producto WHERE CAST(id_producto AS VARCHAR) LIKE '" + controladorProducto.codigoBuscar + "%' or codigo_barras LIKE '" + controladorProducto.codigoBuscar + "%' or nombre_producto LIKE '" + controladorProducto.codigoBuscar+ "%'";
        ResultSet rs = cpg.consultaDB(sql);
     try{
             while (rs.next()) {

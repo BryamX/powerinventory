@@ -75,6 +75,7 @@ public class ControladorPaginaPrincipal {
         controPro.iniciarControl();
         vista.getBtnProducos().setEnabled(false);
         vista.getBtnFactura().setEnabled(false);
+        vista.getLblMensajes().setText("Cierra esta ventana si quieres abrir la factura");
     }
 
    
@@ -96,6 +97,7 @@ public class ControladorPaginaPrincipal {
         vista.getBtnProducos().setEnabled(false);
         vista.getBtnProducos().setEnabled(false);
         vista.getBtnFactura().setEnabled(false);
+         vista.getLblMensajes().setText("Cierra esta ventana si quieres abrir la ventana productos");
     }
 
     public void abrirCloente() {

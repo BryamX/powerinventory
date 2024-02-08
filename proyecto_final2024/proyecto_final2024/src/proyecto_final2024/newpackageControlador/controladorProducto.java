@@ -363,6 +363,7 @@ vista.getTxtdescripcion().addKeyListener(new KeyAdapter() {
         }
         VistaPrincipal.btnProducos.setEnabled(true);
         VistaPrincipal.btnFactura.setEnabled(true);
+        VistaPrincipal.lblMensajes.setText("Mensajes");
         vista.dispose();
      
     }
@@ -423,9 +424,11 @@ vista.getTxtdescripcion().addKeyListener(new KeyAdapter() {
                             vista.getTxtBUSCAR().setText(mensaje);
                             codigoBuscar = vista.getTxtBUSCAR().getText();
                         }
+                        
                         if (vista.getjDialog1().getTitle().contentEquals("Editar producto")) {
                             vista.getTxtcodigobarras().setText(mensaje);
-                        } else if (vista.getjDialog1().getTitle().contentEquals("Crear nuevo producto")) {
+                        }
+                        if (vista.getjDialog1().getTitle().contentEquals("Crear nuevo producto")) {
                             vista.getTxtcodigobarras().setText(mensaje);
                         }
                         System.out.println("salio");
