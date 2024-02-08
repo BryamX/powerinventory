@@ -145,6 +145,7 @@ public class ModeloReporte {
                 + "JOIN detallefactura d ON f.idfactura = d.id_factura\n"
                 + "WHERE f.fecha_factura >= DATE_TRUNC('day', CURRENT_DATE) - INTERVAL '2 days' -- Incluye el día actual y los dos días anteriores\n"
                 + "AND f.fecha_factura < DATE_TRUNC('day', CURRENT_DATE) + INTERVAL '1 day' -- Excluye el día siguiente\n"
+                + "AND f.fac_estado <> 'Anulado'\n"
                 + "GROUP BY EXTRACT(DOW FROM f.fecha_factura)\n"
                 + "ORDER BY \n"
                 + "CASE \n"
@@ -156,7 +157,7 @@ public class ModeloReporte {
                 + "WHEN EXTRACT(DOW FROM f.fecha_factura) = 6 THEN 6\n"
                 + "WHEN EXTRACT(DOW FROM f.fecha_factura) = 0 THEN 7\n"
                 + "END;";
-        ResultSet rs = cpg.consultaDB(sql);
+            ResultSet rs = cpg.consultaDB(sql);
 
         try {
             while (rs.next()) {
