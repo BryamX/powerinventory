@@ -30,6 +30,7 @@ import proyecto_final2024.newpackageModelo.Conexion;
 import proyecto_final2024.newpackageModelo.Empresa;
 import proyecto_final2024.newpackageModelo.ModeloProveedor;
 import proyecto_final2024.newpackageModelo.Proveedor;
+import proyecto_final2024.newpackageVista.VistaPrincipal;
 import proyecto_final2024.newpackageVista.VistaProveedor;
 
 /**
@@ -40,7 +41,7 @@ public class controladorProveedor {
 
     VistaProveedor vista;
 
-    static public String id_persona, nombresC, apellidosC, direccionC, generoC, telefonoC, fecha_nacimientoC,cedulaC;
+    static public String id_persona, nombresC, apellidosC, direccionC, generoC, telefonoC, fecha_nacimientoC, cedulaC;
     static public String empresa, idProveedor;
     static public String cedulaCienteBuscado;
 
@@ -51,17 +52,17 @@ public class controladorProveedor {
         this.vista.setLocation(0, -23);
         controlKey();
         desactivar();
-            vista.getjTableAdmin().setDefaultEditor(Object.class, null);
+        vista.getjTableAdmin().setDefaultEditor(Object.class, null);
     }
 
     public void inicarControladorCliente() {
-         vista.getjTableAdmin().addMouseListener(new MouseAdapter() {
-    @Override
-    public void mouseClicked(MouseEvent e) {
-        // Actualizar el estado del botón de editar
-        actualizarEstadoBotonEditar();
-    }
-});
+        vista.getjTableAdmin().addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                // Actualizar el estado del botón de editar
+                actualizarEstadoBotonEditar();
+            }
+        });
         vista.getTxtidPer().setText(ModeloProveedor.generarCodigoPersona());
         listaEmpresas();
         listarProveedores();
@@ -103,24 +104,23 @@ public class controladorProveedor {
         vista.getBtnSalir().addActionListener(l -> salir());
         vista.getBtnIMPRIMIR().addActionListener(l -> imprimirProveedor());
     }
-    
-    
-    public void imprimirProveedor(){
+
+    public void imprimirProveedor() {
         try {
             JasperReport proveedor = (JasperReport) JRLoader.loadObject(
                     getClass().getResource("/proyecto_final2024/newpackagevista/reportes/proveedor.jasper"));
-       
-        Conexion con = new Conexion();
-        Map<String, Object> parametros = new HashMap <String, Object>();
-        parametros.put("titulo", "LISTADO DE PROVEEDORES" );
-        parametros.put("fecha", "29/01/2024" );
-        
-//        parametros.put("marcar", 250d);
-        JasperPrint jp = JasperFillManager.fillReport(proveedor, parametros, con.getCon());
 
-        JasperViewer Jv = new JasperViewer(jp, false);
-        Jv.setVisible(true);
-        
+            Conexion con = new Conexion();
+            Map<String, Object> parametros = new HashMap<String, Object>();
+            parametros.put("titulo", "LISTADO DE PROVEEDORES");
+            parametros.put("fecha", "29/01/2024");
+
+//        parametros.put("marcar", 250d);
+            JasperPrint jp = JasperFillManager.fillReport(proveedor, parametros, con.getCon());
+
+            JasperViewer Jv = new JasperViewer(jp, false);
+            Jv.setVisible(true);
+
         } catch (JRException ex) {
             Logger.getLogger(controladorAdministrador.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -165,7 +165,7 @@ public class controladorProveedor {
             }
 
             ModeloProveedor per = new ModeloProveedor();
-            
+
             per.setCedula(cedula);
             per.setNombres(nombres);
             per.setApellidos(apellidos);
@@ -203,7 +203,7 @@ public class controladorProveedor {
                     i = listaEmpresas.size();
                 }
             }
-            
+
             ModeloProveedor per = new ModeloProveedor();
             per.setCedula(cedula);
             per.setNombres(nombres);
@@ -231,7 +231,7 @@ public class controladorProveedor {
         mTabla = (DefaultTableModel) vista.getjTableAdmin().getModel();
         mTabla.setNumRows(0);
         miListaAdmin.stream().forEach(admin -> {
-            String[] rowData = {admin.getId_proveedor(), admin.getCedula(), admin.getNombres(), admin.getApellidos(), admin.getDireccion(), admin.getGenero(), admin.getTelefono(), String.valueOf(admin.getFecha_nacimiento()), admin.getId_empresa(),admin.getid_persona()};
+            String[] rowData = {admin.getId_proveedor(), admin.getCedula(), admin.getNombres(), admin.getApellidos(), admin.getDireccion(), admin.getGenero(), admin.getTelefono(), String.valueOf(admin.getFecha_nacimiento()), admin.getId_empresa(), admin.getid_persona()};
             mTabla.addRow(rowData);
         });
     }
@@ -260,83 +260,86 @@ public class controladorProveedor {
             java.util.logging.Logger.getLogger(controladorAdministrador.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
     public void limpiar() {
-            vista.getTxtcedula().setText("");
-            vista.getTxtnombres().setText("");
-            vista.getTxtapellidos().setText("");
-            vista.getTxtdireccion().setText("");
-            vista.getCmbgenero().setSelectedIndex(0);
-            vista.getTxttelefono().setText("");
-            vista.getdtfecha().setDate(null);
-            vista.getCmbIdEmpresa().setSelectedItem("");
-            vista.getTxtidPer().setText(ModeloProveedor.generarCodigoPersona());
+        vista.getTxtcedula().setText("");
+        vista.getTxtnombres().setText("");
+        vista.getTxtapellidos().setText("");
+        vista.getTxtdireccion().setText("");
+        vista.getCmbgenero().setSelectedIndex(0);
+        vista.getTxttelefono().setText("");
+        vista.getdtfecha().setDate(null);
+        vista.getCmbIdEmpresa().setSelectedItem("");
+        vista.getTxtidPer().setText(ModeloProveedor.generarCodigoPersona());
     }
 
-  public void eliminarPro() {
-    int confirmacion = JOptionPane.showConfirmDialog(null, "¿Estás seguro de que quieres eliminar este proveedor?", "Confirmación de eliminación", JOptionPane.YES_NO_OPTION);
-    
-    if (confirmacion == JOptionPane.YES_OPTION) {
-        ModeloProveedor proveedor = new ModeloProveedor();
-        if (proveedor.eliminarPro() == null) {
-            JOptionPane.showMessageDialog(null, "Proveedor eliminado con éxito");
-            listarProveedores();
-            desactivar();
+    public void eliminarPro() {
+        int confirmacion = JOptionPane.showConfirmDialog(null, "¿Estás seguro de que quieres eliminar este proveedor?", "Confirmación de eliminación", JOptionPane.YES_NO_OPTION);
+
+        if (confirmacion == JOptionPane.YES_OPTION) {
+            ModeloProveedor proveedor = new ModeloProveedor();
+            if (proveedor.eliminarPro() == null) {
+                JOptionPane.showMessageDialog(null, "Proveedor eliminado con éxito");
+                listarProveedores();
+                desactivar();
+            } else {
+                JOptionPane.showMessageDialog(null, "No se pudo eliminar el proveedor");
+            }
         } else {
-            JOptionPane.showMessageDialog(null, "No se pudo eliminar el proveedor");
+            JOptionPane.showMessageDialog(null, "Operación de eliminación cancelada");
         }
-    } else {
-        JOptionPane.showMessageDialog(null, "Operación de eliminación cancelada");
     }
-}
-    
-    public void salir(){
+
+    public void salir() {
         vista.dispose();
     }
-     public void controlKey() {
+
+    public void controlKey() {
         vista.getTxtcedula().addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                Validar.numero(vista.getTxtcedula(), 10); 
+            public void keyPressed(KeyEvent e) {
+                Validar.numero(vista.getTxtcedula(), 10);
             }
         });
         vista.getTxtnombres().addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                Validar.letras_espacios(vista.getTxtnombres(), 20); 
+            public void keyPressed(KeyEvent e) {
+                Validar.letras_espacios(vista.getTxtnombres(), 20);
             }
         });
         vista.getTxtapellidos().addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                Validar.letras_espacios(vista.getTxtnombres(), 20); 
+            public void keyPressed(KeyEvent e) {
+                Validar.letras_espacios(vista.getTxtnombres(), 20);
             }
         });
         vista.getTxtdireccion().addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                Validar.letras_espacios(vista.getTxtdireccion(), 80); 
+            public void keyPressed(KeyEvent e) {
+                Validar.letras_espacios(vista.getTxtdireccion(), 80);
             }
         });
         vista.getTxttelefono().addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                Validar.numero(vista.getTxttelefono(), 10); 
+            public void keyPressed(KeyEvent e) {
+                Validar.numero(vista.getTxttelefono(), 10);
             }
         });
-        
-
 
     }
-      private void activar() {
-           vista.getBtnEDITAR().setEnabled(true);
-        
+
+    private void activar() {
+        vista.getBtnEDITAR().setEnabled(true);
+
     }
-        private void desactivar() {
-           vista.getBtnEDITAR().setEnabled(false);
-        
+
+    private void desactivar() {
+        vista.getBtnEDITAR().setEnabled(false);
+
     }
-        private void actualizarEstadoBotonEditar() {
-        
-            activar();
-        }
+
+    private void actualizarEstadoBotonEditar() {
+
+        activar();
+    }
 }

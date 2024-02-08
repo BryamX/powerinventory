@@ -9,9 +9,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -22,10 +20,10 @@ import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.view.JasperViewer;
-import proyecto_final2024.newpackageControlador.Validar;
 import proyecto_final2024.newpackageModelo.Conexion;
 import proyecto_final2024.newpackageModelo.ModeloProducto;
 import proyecto_final2024.newpackageModelo.Producto;
+import proyecto_final2024.newpackageVista.VistaPrincipal;
 import proyecto_final2024.newpackageVista.VistaProducto;
 
 /**
@@ -320,6 +318,7 @@ public class controladorProducto {
         });
     }
 
+    public static boolean activar = false;
     public void salir() {
         try {
             ssk.close();
@@ -327,6 +326,9 @@ public class controladorProducto {
             ex.toString();
         }
         leercodigodeBarras(false);
+        activar = true;
+        ControladorPaginaPrincipal control = new ControladorPaginaPrincipal();
+        control.activarFacturayProducoto();
         vista.dispose();
     }
 

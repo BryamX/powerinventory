@@ -24,6 +24,9 @@ public class ControladorPaginaPrincipal {
 
     VistaPrincipal vista;
 
+    public ControladorPaginaPrincipal() {
+    }
+
     public ControladorPaginaPrincipal(VistaPrincipal vista) {
         this.vista = vista;
         this.vista.setVisible(true);
@@ -72,8 +75,14 @@ public class ControladorPaginaPrincipal {
         proveedor.setSize(vista.getDktPrincipal().getSize().width, vista.getDktPrincipal().getSize().height);
         controladorProducto controPro = new controladorProducto(proveedor);
         controPro.iniciarControl();
+        vista.getBtnProducos().setEnabled(false);
+        vista.getBtnFactura().setEnabled(false);
     }
 
+    public void activarFacturayProducoto(){
+        vista.getBtnProducos().setEnabled(controladorProducto.activar);
+        vista.getBtnFactura().setEnabled(controladorProducto.activar);
+    }
     public void abrirCategoria() {
         VistaCategoria proveedor = new VistaCategoria();
         vista.getDktPrincipal().add(proveedor);
@@ -88,6 +97,8 @@ public class ControladorPaginaPrincipal {
         fac.setSize(vista.getDktPrincipal().getSize().width, vista.getDktPrincipal().getSize().height);
         ControladorFactura controPro = new ControladorFactura(fac);
         controPro.inicarControl();
+        vista.getBtnFactura().setEnabled(false);
+        vista.getBtnProducos().setEnabled(false);
     }
 
     public void abrirCloente() {
