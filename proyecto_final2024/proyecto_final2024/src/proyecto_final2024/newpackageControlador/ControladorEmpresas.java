@@ -208,13 +208,13 @@ public class ControladorEmpresas {
         vista.getTxtNombreEm().addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e){
-                Validar.letras(vista.getTxtNombreEm(), 15); 
+                Validar.letras_espacios(vista.getTxtNombreEm(), 15); 
             }
         });
         vista.getTxtDs().addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e){
-                Validar.letrasAREA(vista.getTxtDs(), 15); 
+                Validar.letras_espaciosAREA(vista.getTxtDs(), 100); 
             }
         });
 

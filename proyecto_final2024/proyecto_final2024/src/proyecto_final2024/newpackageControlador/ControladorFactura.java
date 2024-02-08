@@ -4,9 +4,11 @@
  * and open the template in the editor.
  */
 package proyecto_final2024.newpackageControlador;
-
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.BufferedReader;
@@ -87,6 +89,8 @@ public class ControladorFactura {
         this.vista.setLocation(0, -23);
         fecha();
         controlKey();
+        vista.getBtnanadir().setEnabled(false);
+        vista.getQuitar().setEnabled(false);
        
           vista.getTbFacturabuscada().setDefaultEditor(Object.class, null);
            vista.getTbClientes().setDefaultEditor(Object.class, null);
@@ -96,6 +100,25 @@ public class ControladorFactura {
     }
 
     public void inicarControl() {
+         this.vista.getTxtcantidadproducto().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+               vista.getBtnanadir().setEnabled(true);
+        vista.getQuitar().setEnabled(true);
+            } 
+
+             @Override
+             public void keyPressed(KeyEvent e) {
+               
+             }
+
+             @Override
+             public void keyReleased(KeyEvent e) {
+                      }
+         });
+          
+
+          
        vista.getFechaDesde().addPropertyChangeListener(new java.beans.PropertyChangeListener() {
     public void propertyChange(java.beans.PropertyChangeEvent evt) {
         if ("date".equals(evt.getPropertyName())) {
@@ -106,6 +129,8 @@ public class ControladorFactura {
         }
     }
 });
+       
+       
         listarProveedores();
         leercodigodeBarras();
         vista.getTxtcodigoFactura().setText(ModeloFactura.generarCodigoFacrura());
@@ -155,10 +180,11 @@ public class ControladorFactura {
         vista.getTxtapellidocliente().setText("");
         vista.getTxtcedulacliente().setText("");
         vista.getTxtTotal().setText("");
-        vista.getDtFecha().setDate(null);
+       
         vista.getLblEstado().setText("PENDIENTE");
         DefaultTableModel model = (DefaultTableModel) vista.getTbdetallefactura().getModel();
         model.setRowCount(0);
+        fecha();
 
     }
 
@@ -711,6 +737,7 @@ public class ControladorFactura {
          
          
      }
+    
      
     
 }

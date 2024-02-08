@@ -216,15 +216,15 @@ public class controladorCategoria {
         vista.getTxtnombre().addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e){
-                Validar.letras(vista.getTxtnombre(), 15); 
+                Validar.letras_espacios(vista.getTxtnombre(), 15); 
             }
         });
-//        vista.getTxtdescripcion().addKeyListener(new KeyAdapter() {
-//            @Override
-//            public void keyPressed(KeyEvent e){
-//                Validar.letras(vista.getTxtdescripcion(), 15); 
-//            }
-//        });
+        vista.getTxtdescripcion().addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e){
+                Validar.letras_espaciosAREA(vista.getTxtdescripcion(), 100); 
+            }
+        });
 
     }
     public void imprimirCategorias() {
