@@ -24,8 +24,6 @@ public class ControladorPaginaPrincipal {
 
     VistaPrincipal vista;
 
-    public ControladorPaginaPrincipal() {
-    }
 
     public ControladorPaginaPrincipal(VistaPrincipal vista) {
         this.vista = vista;
@@ -79,10 +77,7 @@ public class ControladorPaginaPrincipal {
         vista.getBtnFactura().setEnabled(false);
     }
 
-    public void activarFacturayProducoto(){
-        vista.getBtnProducos().setEnabled(controladorProducto.activar);
-        vista.getBtnFactura().setEnabled(controladorProducto.activar);
-    }
+   
     public void abrirCategoria() {
         VistaCategoria proveedor = new VistaCategoria();
         vista.getDktPrincipal().add(proveedor);
@@ -99,6 +94,8 @@ public class ControladorPaginaPrincipal {
         controPro.inicarControl();
         vista.getBtnFactura().setEnabled(false);
         vista.getBtnProducos().setEnabled(false);
+        vista.getBtnProducos().setEnabled(false);
+        vista.getBtnFactura().setEnabled(false);
     }
 
     public void abrirCloente() {

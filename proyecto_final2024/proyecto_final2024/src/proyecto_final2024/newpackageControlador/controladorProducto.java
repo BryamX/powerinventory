@@ -95,7 +95,7 @@ public class controladorProducto {
                 });
             }
         });
-        leercodigodeBarras(true);
+        leercodigodeBarras();
     }
 
     private void abrirDialogo(boolean nuevo) {
@@ -318,18 +318,17 @@ public class controladorProducto {
         });
     }
 
-    public static boolean activar = false;
+  
     public void salir() {
         try {
             ssk.close();
         } catch (IOException ex) {
-            ex.toString();
+            Logger.getLogger(controladorProducto.class.getName()).log(Level.SEVERE, null, ex);
         }
-        leercodigodeBarras(false);
-        activar = true;
-        ControladorPaginaPrincipal control = new ControladorPaginaPrincipal();
-        control.activarFacturayProducoto();
+        VistaPrincipal.btnProducos.setEnabled(true);
+        VistaPrincipal.btnFactura.setEnabled(true);
         vista.dispose();
+     
     }
 
     public void controlKey() {
@@ -365,9 +364,8 @@ public class controladorProducto {
         });
     }
 
-    public void leercodigodeBarras(Boolean activo) {
-        if (activo == true) {
-//            vaciarFields();
+    public void leercodigodeBarras() {
+        
             new Thread(() -> {
                 try {
                     System.out.println("entro");
@@ -402,7 +400,7 @@ public class controladorProducto {
                 }
             }).start();
         }
-    }
+    
     
     public void imprimirProductos() {
             

@@ -233,8 +233,8 @@ public class VistaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnCategoria;
     private javax.swing.JButton btnCliente;
     private javax.swing.JButton btnEmpresa;
-    private javax.swing.JButton btnFactura;
-    private javax.swing.JButton btnProducos;
+    public static javax.swing.JButton btnFactura;
+    public static javax.swing.JButton btnProducos;
     private javax.swing.JButton btnProveedores;
     private javax.swing.JDesktopPane dktPrincipal;
     private javax.swing.JLabel jLabel1;

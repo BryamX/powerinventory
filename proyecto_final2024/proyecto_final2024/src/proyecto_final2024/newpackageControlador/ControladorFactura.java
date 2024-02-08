@@ -42,6 +42,7 @@ import proyecto_final2024.newpackageModelo.buscadorFacturas;
 import proyecto_final2024.newpackageModelo.cargarDetalledeFactura;
 import proyecto_final2024.newpackageVista.VistaCliente;
 import proyecto_final2024.newpackageVista.VistaFacrura;
+import proyecto_final2024.newpackageVista.VistaPrincipal;
 
 /**
  *
@@ -100,6 +101,7 @@ public class ControladorFactura {
     }
 
     public void inicarControl() {
+        leercodigodeBarras();
          this.vista.getTxtcantidadproducto().addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {
@@ -132,7 +134,7 @@ public class ControladorFactura {
        
        
         listarProveedores();
-        leercodigodeBarras();
+        
         vista.getTxtcodigoFactura().setText(ModeloFactura.generarCodigoFacrura());
         vista.getTxtnombreAdmin().setText(ControladorLogin.usuariosaux);
         vista.getTxtcodigoAdmin().setText(ControladorLogin.id);
@@ -630,12 +632,15 @@ public class ControladorFactura {
     }
 
     public void salir() {
-        vista.dispose();
+        VistaPrincipal.btnProducos.setEnabled(true);
+        VistaPrincipal.btnFactura.setEnabled(true);
+        
         try {
             ssk.close();
         } catch (IOException ex) {
             Logger.getLogger(ControladorFactura.class.getName()).log(Level.SEVERE, null, ex);
         }
+        vista.dispose();
         
     }
 
