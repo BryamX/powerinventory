@@ -97,12 +97,7 @@ vista.getTxtdescripcion().addKeyListener(new KeyAdapter() {
         vista.getBtnGuardar().setEnabled(checkCamposLlenos());
     }
 });
-vista.getTxtcodigobarras().addKeyListener(new KeyAdapter() {
-    @Override
-    public void keyReleased(KeyEvent e) {
-        vista.getBtnGuardar().setEnabled(checkCamposLlenos());
-    }
-});
+
 
         
         listaProductos();
@@ -474,8 +469,7 @@ vista.getTxtcodigobarras().addKeyListener(new KeyAdapter() {
            !vista.getTxtprecioVenta().getText().isEmpty() &&
            !vista.getTxtpreciocompra().getText().isEmpty() &&
            !vista.getTxtcantidadbodega().getText().isEmpty() &&
-           !vista.getTxtdescripcion().getText().isEmpty()&&
-           !vista.getTxtcodigobarras().getText().isEmpty();
+           !vista.getTxtdescripcion().getText().isEmpty();
 }
 
 }
