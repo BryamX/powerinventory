@@ -5,7 +5,6 @@
  */
 package proyecto_final2024.newpackageControlador;
 
-import com.sun.org.apache.xerces.internal.impl.xpath.regex.Match;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
@@ -33,9 +32,6 @@ import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.view.JasperViewer;
-import proyecto_final2024.newpackageControlador.ControladorLogin;
-import proyecto_final2024.newpackageControlador.Validar;
-import proyecto_final2024.newpackageControlador.controladorClientes;
 import proyecto_final2024.newpackageModelo.ModeloFactura;
 import proyecto_final2024.newpackageModelo.Producto;
 import proyecto_final2024.newpackageModelo.Cliente;
@@ -110,9 +106,6 @@ public class ControladorFactura {
         }
     }
 });
-
-
-        
         listarProveedores();
         leercodigodeBarras();
         vista.getTxtcodigoFactura().setText(ModeloFactura.generarCodigoFacrura());
@@ -611,12 +604,13 @@ public class ControladorFactura {
     }
 
     public void salir() {
+        vista.dispose();
         try {
             ssk.close();
         } catch (IOException ex) {
             Logger.getLogger(ControladorFactura.class.getName()).log(Level.SEVERE, null, ex);
         }
-        vista.dispose();
+        
     }
 
     public void anularFactura() {

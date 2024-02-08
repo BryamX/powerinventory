@@ -181,7 +181,7 @@ public class controladorAdministrador {
 
     public void grabarAdministrador() {
         
-        if (vista.getjDialog1().getTitle().contentEquals("CREAR NUEVO ADMINISTRADOR")) {
+        if (vista.getjDialog1().getTitle().contentEquals("CREAR ADMINISTRADOR")) {
             idper2 = vista.getTxtid_persona().getText();
             String cedula = vista.getTxtcedula().getText();
             String nombres = vista.getTxtnombres().getText();
@@ -208,14 +208,14 @@ public class controladorAdministrador {
             per.setContraseña(hash.sha1(contrasena));
 
             if (per.grabarAdministrador() == null) {
-                JOptionPane.showMessageDialog(null, "Cliente creado con exito");
+                JOptionPane.showMessageDialog(null, "Administrador creado con exito");
                 listarAdministrador();
                 vista.getjDialog1().dispose();
             } else {
-                JOptionPane.showMessageDialog(null, "No se pudo crear el Cliente");
+                JOptionPane.showMessageDialog(null, "No se pudo crear el administrador");
             }
 
-        } else if (vista.getjDialog1().getTitle().contentEquals("EDITAR PERSONA")) {
+        } else if (vista.getjDialog1().getTitle().contentEquals("EDITAR ADMINISTRADOR")) {
             String cedula = vista.getTxtcedula().getText();
             String nombres = vista.getTxtnombres().getText();
             String apellidos = vista.getTxtapellidos().getText();

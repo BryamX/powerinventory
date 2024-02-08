@@ -7,6 +7,7 @@ package proyecto_final2024.newpackageVista;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JTable;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 /**
@@ -62,9 +63,10 @@ public class VistaCategoria extends javax.swing.JInternalFrame {
         return txtbuscar;
     }
 
-    public JTextField getTxtdescripcion() {
+    public JTextArea getTxtdescripcion() {
         return txtdescripcion;
     }
+
 
     public JTextField getTxtidcategoria() {
         return txtidcategoria;
@@ -90,7 +92,6 @@ public class VistaCategoria extends javax.swing.JInternalFrame {
 
         jDialog1 = new javax.swing.JDialog();
         jPanel2 = new javax.swing.JPanel();
-        txtdescripcion = new javax.swing.JTextField();
         btnaceptar = new javax.swing.JButton();
         btncancelar = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
@@ -98,9 +99,11 @@ public class VistaCategoria extends javax.swing.JInternalFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         txtidcategoria = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        txtdescripcion = new javax.swing.JTextArea();
+        jLabel6 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jSeparator1 = new javax.swing.JSeparator();
         txtbuscar = new javax.swing.JTextField();
@@ -120,9 +123,6 @@ public class VistaCategoria extends javax.swing.JInternalFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        txtdescripcion.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
-        jPanel2.add(txtdescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 210, 214, -1));
-
         btnaceptar.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
         btnaceptar.setText("Aceptar");
         jPanel2.add(btnaceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 390, 100, -1));
@@ -136,7 +136,7 @@ public class VistaCategoria extends javax.swing.JInternalFrame {
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 210, -1, -1));
 
         txtnombre.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
-        jPanel2.add(txtnombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 150, 214, -1));
+        jPanel2.add(txtnombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 150, 280, -1));
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
         jLabel2.setText("Nombre:");
@@ -147,10 +147,8 @@ public class VistaCategoria extends javax.swing.JInternalFrame {
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 90, -1, -1));
 
         txtidcategoria.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
-        jPanel2.add(txtidcategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 90, 220, -1));
-
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/WhatsApp Image 2024-01-21 at 10.41.50 PM.jpeg"))); // NOI18N
-        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 520, 410));
+        txtidcategoria.setEnabled(false);
+        jPanel2.add(txtidcategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 90, 280, -1));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/fondo2.jpeg"))); // NOI18N
         jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 530, 60));
@@ -158,11 +156,21 @@ public class VistaCategoria extends javax.swing.JInternalFrame {
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/fondo2.jpeg"))); // NOI18N
         jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 480, 530, 30));
 
+        txtdescripcion.setColumns(20);
+        txtdescripcion.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
+        txtdescripcion.setRows(5);
+        jScrollPane2.setViewportView(txtdescripcion);
+
+        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 200, 270, 160));
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/WhatsApp Image 2024-01-21 at 10.41.50 PM.jpeg"))); // NOI18N
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 520, 410));
+
         javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
         jDialog1.getContentPane().setLayout(jDialog1Layout);
         jDialog1Layout.setHorizontalGroup(
             jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         jDialog1Layout.setVerticalGroup(
             jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -275,10 +283,11 @@ public class VistaCategoria extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable tblcategorias;
     private javax.swing.JTextField txtbuscar;
-    private javax.swing.JTextField txtdescripcion;
+    private javax.swing.JTextArea txtdescripcion;
     private javax.swing.JTextField txtidcategoria;
     private javax.swing.JTextField txtnombre;
     // End of variables declaration//GEN-END:variables

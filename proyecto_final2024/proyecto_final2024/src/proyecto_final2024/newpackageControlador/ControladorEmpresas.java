@@ -131,7 +131,7 @@ public class ControladorEmpresas {
 
     public void grabareditarEmpresa() {
 
-        if (vista.getjDialog1().getTitle().contentEquals("Crear nueva empresa")) {
+        if (vista.getjDialog1().getTitle().contentEquals("CREAR EMPRESA")) {
             String nombreEm = vista.getTxtNombreEm().getText();
             String des = vista.getTxtDs().getText();
 
@@ -140,13 +140,13 @@ public class ControladorEmpresas {
             per.setDescripcion_empresa(des);
 
             if (per.grabarEmpre()== null) {
-                JOptionPane.showMessageDialog(null, "Proveedor creado con exito");
+                JOptionPane.showMessageDialog(null, "Empresa creado con exito");
                 listaEmpresas();
             } else {
-                JOptionPane.showMessageDialog(null, "No se pudo crear al proveedor");
+                JOptionPane.showMessageDialog(null, "No se pudo crear la empresa");
             }
 
-        } else if (vista.getjDialog1().getTitle().contentEquals("Editar empresa")) {
+        } else if (vista.getjDialog1().getTitle().contentEquals("EDITAR EMPRESA")) {
             String nombreEm = vista.getTxtNombreEm().getText();
             String des = vista.getTxtDs().getText();
 
@@ -155,10 +155,10 @@ public class ControladorEmpresas {
             per.setDescripcion_empresa(des);
 
             if (per.modificarEmpre()== null) {
-                JOptionPane.showMessageDialog(null, "Proveedor modificado con exito");
+                JOptionPane.showMessageDialog(null, "Empresa modificado con exito");
                 listaEmpresas();
             } else {
-                JOptionPane.showMessageDialog(null, "No se pudo modificar al proveedor");
+                JOptionPane.showMessageDialog(null, "No se pudo modificar la empresa");
             }
         }
     }

@@ -135,6 +135,7 @@ public class VistaProveedor extends javax.swing.JInternalFrame {
         jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, 110, -1));
 
         txtidPer.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
+        txtidPer.setEnabled(false);
         jPanel1.add(txtidPer, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 80, 220, -1));
 
         cmbgenero.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
@@ -169,13 +170,13 @@ public class VistaProveedor extends javax.swing.JInternalFrame {
         jTableAdmin.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
         jTableAdmin.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Id proveedor", "Cedula", "Nombre", "Apellido", "Dirección", "Genero", "Telefono", "Fecha de nacimiento", "Empresa del proveedor"
+                "Id proveedor", "Cedula", "Nombre", "Apellido", "Dirección", "Genero", "Telefono", "Fecha de nacimiento", "Empresa del proveedor", "Id persona"
             }
         ));
         jScrollPane1.setViewportView(jTableAdmin);

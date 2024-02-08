@@ -115,7 +115,7 @@ public class controladorCategoria {
 
     public void crearModificarCategoria() {
 
-        if (vista.getjDialog1().getTitle().contentEquals("CREAR NUEVA CATEGORIA")) {
+        if (vista.getjDialog1().getTitle().contentEquals("CREAR CATEGORIA")) {
             String id = vista.getTxtidcategoria().getText();
             String nombre = vista.getTxtnombre().getText();
             String descripcion = vista.getTxtdescripcion().getText();
@@ -219,12 +219,12 @@ public class controladorCategoria {
                 Validar.letras(vista.getTxtnombre(), 15); 
             }
         });
-        vista.getTxtdescripcion().addKeyListener(new KeyAdapter() {
-            @Override
-            public void keyPressed(KeyEvent e){
-                Validar.letras(vista.getTxtdescripcion(), 15); 
-            }
-        });
+//        vista.getTxtdescripcion().addKeyListener(new KeyAdapter() {
+//            @Override
+//            public void keyPressed(KeyEvent e){
+//                Validar.letras(vista.getTxtdescripcion(), 15); 
+//            }
+//        });
 
     }
     public void imprimirCategorias() {
