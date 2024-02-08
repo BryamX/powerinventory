@@ -73,7 +73,7 @@ public class VistaProveedor extends javax.swing.JInternalFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel1.add(dtFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 370, 170, 30));
+        jPanel1.add(dtFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 410, 220, 30));
 
         btnGuardar.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
         btnGuardar.setText("Guardar");
@@ -81,54 +81,54 @@ public class VistaProveedor extends javax.swing.JInternalFrame {
 
         jLabel7.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
         jLabel7.setText("Telefono:");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 330, 100, -1));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 370, 100, -1));
 
         jLabel8.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
         jLabel8.setText("Fecha de nacimiento:");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 380, 170, -1));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 420, 170, -1));
 
         jLabel9.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
         jLabel9.setText("Codigo de la empresa:");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 420, 190, -1));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 120, 190, -1));
 
         cmbIdEmpresa.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
         cmbIdEmpresa.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1" }));
-        jPanel1.add(cmbIdEmpresa, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 420, 170, -1));
+        jPanel1.add(cmbIdEmpresa, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 120, 220, -1));
 
         txttelefono.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
-        jPanel1.add(txttelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 330, 220, -1));
+        jPanel1.add(txttelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 370, 220, -1));
 
         jLabel6.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
         jLabel6.setText("Genero:");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 290, 100, -1));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 330, 100, -1));
 
         txtapellidos.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
-        jPanel1.add(txtapellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 200, 220, -1));
+        jPanel1.add(txtapellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 240, 220, -1));
 
         txtdireccion.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
-        jPanel1.add(txtdireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 240, 220, -1));
+        jPanel1.add(txtdireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 280, 220, -1));
 
         jLabel4.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
         jLabel4.setText("Apellido:");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 200, 100, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 240, 100, -1));
 
         jLabel5.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
         jLabel5.setText("Direccion:");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 240, 100, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 280, 100, -1));
 
         txtcedula.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
-        jPanel1.add(txtcedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 120, 220, -1));
+        jPanel1.add(txtcedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 160, 220, -1));
 
         txtnombres.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
-        jPanel1.add(txtnombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 160, 220, -1));
+        jPanel1.add(txtnombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 200, 220, -1));
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
         jLabel2.setText("Cedula:");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 120, 110, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 160, 110, -1));
 
         jLabel3.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
         jLabel3.setText("Nombres:");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 160, 100, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 200, 100, -1));
 
         jLabel14.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
         jLabel14.setText("Codigo:");
@@ -136,11 +136,11 @@ public class VistaProveedor extends javax.swing.JInternalFrame {
 
         txtidPer.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
         txtidPer.setEnabled(false);
-        jPanel1.add(txtidPer, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 80, 220, -1));
+        jPanel1.add(txtidPer, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 80, 220, -1));
 
         cmbgenero.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
         cmbgenero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "Masculino", "Femenino" }));
-        jPanel1.add(cmbgenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 280, 220, -1));
+        jPanel1.add(cmbgenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 320, 220, -1));
 
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/fondo2.jpeg"))); // NOI18N
         jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 540, 60));

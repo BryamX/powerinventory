@@ -4,6 +4,7 @@ package proyecto_final2024.newpackageControlador;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.HashMap;
@@ -53,6 +54,43 @@ public class ControladorEmpresas {
     public void inicarControlador(){
         
         listaEmpresas();
+        this.vista.getTxtNombreEm().addKeyListener(new KeyListener() {
+    @Override
+    public void keyTyped(KeyEvent e) {
+      
+        vista.getBtnGuardar().setEnabled(!vista.getTxtNombreEm().getText().isEmpty() && !vista.getTxtDs().getText().isEmpty());
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+      
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+       
+        vista.getBtnGuardar().setEnabled(!vista.getTxtNombreEm().getText().isEmpty() && !vista.getTxtDs().getText().isEmpty());
+    }
+});
+
+this.vista.getTxtDs().addKeyListener(new KeyListener() {
+    @Override
+    public void keyTyped(KeyEvent e) {
+       
+        vista.getBtnGuardar().setEnabled(!vista.getTxtNombreEm().getText().isEmpty() && !vista.getTxtDs().getText().isEmpty());
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+     
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+       
+        vista.getBtnGuardar().setEnabled(!vista.getTxtNombreEm().getText().isEmpty() && !vista.getTxtDs().getText().isEmpty());
+    }
+});
         vista.getTxtBUSCAR().addKeyListener(new KeyAdapter() {
             @Override
             public void keyReleased(KeyEvent e) {
@@ -227,6 +265,7 @@ public class ControladorEmpresas {
     }
         private void desactivar() {
            vista.getBtnEDITAR().setEnabled(false);
+           vista.getBtnGuardar().setEnabled(false);
         
     }
         private void actualizarEstadoBotonEditar() {

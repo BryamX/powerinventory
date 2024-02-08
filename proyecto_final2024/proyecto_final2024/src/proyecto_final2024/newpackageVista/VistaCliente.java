@@ -376,4 +376,8 @@ public class VistaCliente extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtnombres;
     private javax.swing.JTextField txttelefono;
     // End of variables declaration//GEN-END:variables
+
+    public Object getJCalendar() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

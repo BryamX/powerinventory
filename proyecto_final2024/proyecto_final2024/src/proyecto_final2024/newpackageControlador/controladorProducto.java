@@ -63,6 +63,47 @@ public class controladorProducto {
         actualizarEstadoBotonEditar();
     }
 });
+           vista.getTxtnombre().addKeyListener(new KeyAdapter() {
+    @Override
+    public void keyReleased(KeyEvent e) {
+        vista.getBtnGuardar().setEnabled(checkCamposLlenos());
+    }
+});
+
+vista.getTxtprecioVenta().addKeyListener(new KeyAdapter() {
+    @Override
+    public void keyReleased(KeyEvent e) {
+        vista.getBtnGuardar().setEnabled(checkCamposLlenos());
+    }
+});
+
+vista.getTxtpreciocompra().addKeyListener(new KeyAdapter() {
+    @Override
+    public void keyReleased(KeyEvent e) {
+        vista.getBtnGuardar().setEnabled(checkCamposLlenos());
+    }
+});
+
+vista.getTxtcantidadbodega().addKeyListener(new KeyAdapter() {
+    @Override
+    public void keyReleased(KeyEvent e) {
+        vista.getBtnGuardar().setEnabled(checkCamposLlenos());
+    }
+});
+
+vista.getTxtdescripcion().addKeyListener(new KeyAdapter() {
+    @Override
+    public void keyReleased(KeyEvent e) {
+        vista.getBtnGuardar().setEnabled(checkCamposLlenos());
+    }
+});
+vista.getTxtcodigobarras().addKeyListener(new KeyAdapter() {
+    @Override
+    public void keyReleased(KeyEvent e) {
+        vista.getBtnGuardar().setEnabled(checkCamposLlenos());
+    }
+});
+
         
         listaProductos();
         vista.getTxtcodigoproducto().setEditable(false);
@@ -421,11 +462,20 @@ public class controladorProducto {
     }
         private void desactivar() {
            vista.getBtnMODIFICAR().setEnabled(false);
+           vista.getBtnGuardar().setEnabled(false);
         
     }
         private void actualizarEstadoBotonEditar() {
         
             activar();
         }
+        private boolean checkCamposLlenos() {
+    return !vista.getTxtnombre().getText().isEmpty() &&
+           !vista.getTxtprecioVenta().getText().isEmpty() &&
+           !vista.getTxtpreciocompra().getText().isEmpty() &&
+           !vista.getTxtcantidadbodega().getText().isEmpty() &&
+           !vista.getTxtdescripcion().getText().isEmpty()&&
+           !vista.getTxtcodigobarras().getText().isEmpty();
+}
 
 }

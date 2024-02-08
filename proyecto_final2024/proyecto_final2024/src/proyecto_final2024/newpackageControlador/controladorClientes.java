@@ -4,11 +4,18 @@
  */
 package proyecto_final2024.newpackageControlador;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import proyecto_final2024.newpackageControlador.controladorAdministrador;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.io.FileInputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -68,6 +75,110 @@ public class controladorClientes {
     }
 
     public void iniciaControl() {
+        this.vista.getCmbgenero().addItemListener((ItemEvent e) -> {
+            vista.getBtnGuardar().setEnabled(checkCamposLlenos());
+        });
+       this.vista.getdtfecha().getDateEditor().addPropertyChangeListener(new PropertyChangeListener() {
+    @Override
+    public void propertyChange(PropertyChangeEvent evt) {
+        if ("date".equals(evt.getPropertyName())) {
+            // Verificar si todos los campos están llenos para activar el botón guardar
+            vista.getBtnGuardar().setEnabled(checkCamposLlenos());
+        }
+    }
+});
+        
+        this.vista.getTxtcedula().addKeyListener(new KeyListener() {
+    @Override
+    public void keyTyped(KeyEvent e) {
+        
+        vista.getBtnGuardar().setEnabled(checkCamposLlenos());
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+       
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+      
+        vista.getBtnGuardar().setEnabled(checkCamposLlenos());
+    }
+});
+     this.vista.getTxtnombres().addKeyListener(new KeyListener() {
+    @Override
+    public void keyTyped(KeyEvent e) {
+        
+        vista.getBtnGuardar().setEnabled(checkCamposLlenos());
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+       
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+      
+        vista.getBtnGuardar().setEnabled(checkCamposLlenos());
+    }
+});
+      this.vista.getTxtapellidos().addKeyListener(new KeyListener() {
+    @Override
+    public void keyTyped(KeyEvent e) {
+        
+        vista.getBtnGuardar().setEnabled(checkCamposLlenos());
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+       
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+      
+        vista.getBtnGuardar().setEnabled(checkCamposLlenos());
+    }
+});
+       this.vista.getTxtdireccion().addKeyListener(new KeyListener() {
+    @Override
+    public void keyTyped(KeyEvent e) {
+        
+        vista.getBtnGuardar().setEnabled(checkCamposLlenos());
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+       
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+      
+        vista.getBtnGuardar().setEnabled(checkCamposLlenos());
+    }
+});
+        this.vista.getTxttelefono().addKeyListener(new KeyListener() {
+    @Override
+    public void keyTyped(KeyEvent e) {
+        
+        vista.getBtnGuardar().setEnabled(checkCamposLlenos());
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+       
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+      
+        vista.getBtnGuardar().setEnabled(checkCamposLlenos());
+    }
+});
+        
          vista.getjTableAdmin().addMouseListener(new MouseAdapter() {
     @Override
     public void mouseClicked(MouseEvent e) {
@@ -317,7 +428,7 @@ public void eliminarAdmin() {
         vista.getTxtapellidos().addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
-                Validar.letras_espacios(vista.getTxtnombres(), 20);
+                Validar.letras_espacios(vista.getTxtapellidos(), 20);
             }
         });
         vista.getTxtdireccion().addKeyListener(new KeyAdapter() {
@@ -340,11 +451,22 @@ public void eliminarAdmin() {
     }
         private void desactivar() {
            vista.getBtnEDITAR().setEnabled(false);
+           vista.getBtnGuardar().setEnabled(false);
         
     }
         private void actualizarEstadoBotonEditar() {
         
             activar();
         }
+        private boolean checkCamposLlenos() {
+    return !vista.getTxtcedula().getText().isEmpty() &&
+           !vista.getTxtnombres().getText().isEmpty() &&
+           !vista.getTxtapellidos().getText().isEmpty() &&
+           !vista.getTxtdireccion().getText().isEmpty() &&
+           !vista.getTxttelefono().getText().isEmpty() &&
+           vista.getCmbgenero().getSelectedItem() != "" &&
+           vista.getDtFecha().getDate()!= null
+            ;
+}
     
 }

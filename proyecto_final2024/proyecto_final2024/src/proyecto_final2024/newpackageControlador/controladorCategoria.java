@@ -49,6 +49,19 @@ public class controladorCategoria {
     
     public void iniciarcontroladorCategoria(){
         listarCategoria();
+        vista.getTxtnombre().addKeyListener(new KeyAdapter() {
+    @Override
+    public void keyReleased(KeyEvent e) {
+        vista.getBtnaceptar().setEnabled(checkCamposLlenos());
+    }
+});
+
+vista.getTxtdescripcion().addKeyListener(new KeyAdapter() {
+    @Override
+    public void keyReleased(KeyEvent e) {
+        vista.getBtnaceptar().setEnabled(checkCamposLlenos());
+    }
+});
          vista.getTblcategorias().addMouseListener(new MouseAdapter() {
     @Override
     public void mouseClicked(MouseEvent e) {
@@ -246,12 +259,17 @@ public class controladorCategoria {
     }
         private void desactivar() {
            vista.getBtnModificar().setEnabled(false);
+           vista.getBtnaceptar().setEnabled(false);
         
     }
         private void actualizarEstadoBotonEditar() {
         
             activar();
         }
+        private boolean checkCamposLlenos() {
+    return !vista.getTxtnombre().getText().isEmpty() &&
+           !vista.getTxtdescripcion().getText().isEmpty();
+}
     
     
 }
