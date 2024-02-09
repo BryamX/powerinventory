@@ -246,7 +246,7 @@ this.vista.getTxtDs().addKeyListener(new KeyListener() {
         vista.getTxtNombreEm().addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e){
-                Validar.letras_espacios(vista.getTxtNombreEm(), 15); 
+                Validar.letras_espacios(vista.getTxtNombreEm(), 40); 
             }
         });
         vista.getTxtDs().addKeyListener(new KeyAdapter() {

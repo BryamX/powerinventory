@@ -230,7 +230,7 @@ vista.getTxtdescripcion().addKeyListener(new KeyAdapter() {
         vista.getTxtnombre().addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e){
-                Validar.letras_espacios(vista.getTxtnombre(), 15); 
+                Validar.letras_espacios(vista.getTxtnombre(), 30); 
             }
         });
         vista.getTxtdescripcion().addKeyListener(new KeyAdapter() {

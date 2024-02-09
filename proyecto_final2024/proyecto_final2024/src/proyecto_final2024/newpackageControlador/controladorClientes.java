@@ -422,13 +422,13 @@ public void eliminarAdmin() {
         vista.getTxtnombres().addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
-                Validar.letras_espacios(vista.getTxtnombres(), 20);
+                Validar.letras_espacios(vista.getTxtnombres(), 30);
             }
         });
         vista.getTxtapellidos().addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
-                Validar.letras_espacios(vista.getTxtapellidos(), 20);
+                Validar.letras_espacios(vista.getTxtapellidos(), 30);
             }
         });
         vista.getTxtdireccion().addKeyListener(new KeyAdapter() {
