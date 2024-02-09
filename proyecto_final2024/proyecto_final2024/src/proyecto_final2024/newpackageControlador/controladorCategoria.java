@@ -138,6 +138,7 @@ vista.getTxtdescripcion().addKeyListener(new KeyAdapter() {
             cat.setDescripcion_categoria(descripcion);
 
             if (cat.crearCategoria() == null) {
+                limpiar();
                 JOptionPane.showMessageDialog(null, "Categoria creada con exito");
                 listarCategoria();
             } else {
